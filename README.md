@@ -1,4 +1,1 @@
-This is a widget factory platform.
-
-mw was here
-br was here
+This is a widget factory platform default developer branch. test.
