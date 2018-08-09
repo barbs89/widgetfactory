@@ -1,1 +1,1 @@
-This is a widget factory platform default developer branch. test
+This is a widget factory platform default developer branch. test.
