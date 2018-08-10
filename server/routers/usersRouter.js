@@ -1,14 +1,15 @@
 const express = require('express')
-const router = express.Router()
+const usersRouter = express.Router()
 
-// place relevant controllers below:
-const usersController = require('../controllers/usersController')
+// place relevant controllers
 
-// POST /api/user/create:
+// const usersController = require('../controllers/usersController')
 
-router.route('/create')
-  .post(usersController.createUser)
+// Place relevant routes
 
-// .post(authorize, authManager, employeesController.createEmployee) // route > 'createEmployee' in 'employeesController'
+usersRouter.get('/user', (req, res) => {
+  res.send('hello form the users page')
+})
 
-module.exports = router
+
+module.exports = usersRouter
