@@ -14,18 +14,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-<<<<<<< HEAD
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/barbs89/widgetfactory.git"
-  },
-  "bugs": {
-    "url": "https://github.com/barbs89/widgetfactory/issues"
-  },
-  "homepage": "https://github.com/barbs89/widgetfactory#readme",
-  "dependencies": {
-    "mongoose": "^5.2.7"
-=======
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
@@ -34,6 +22,5 @@
   "devDependencies": {
     "concurrently": "^3.6.1",
     "nodemon": "^1.18.3"
->>>>>>> development
   }
 }
