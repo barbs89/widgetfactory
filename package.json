@@ -1,12 +1,23 @@
 {
   "name": "widgetfactory",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a widget factory platform default developer branch. test.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barbs89/widgetfactory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/barbs89/widgetfactory/issues"
+  },
+  "homepage": "https://github.com/barbs89/widgetfactory#readme",
+  "dependencies": {
+    "mongoose": "^5.2.7"
+  }
 }
