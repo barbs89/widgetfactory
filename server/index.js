@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 // Setup Express Server //
 
 const app = express()
-let dbURL = `${process.env.MONGO_URL}:${process.env.MONGO_PORT}`
+const dbURL = `${process.env.MONGO_URL}:${process.env.MONGO_PORT}`
 
 // Mongoose connect to DB //
 
