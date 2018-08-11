@@ -5,18 +5,18 @@ class Login extends React.Compnent {
     loading: false,
     email: null,
     password: null
-  }
+  };
 
-  handleOnChange = e => {
+  handleOnChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <div>
-        <form onSubmit={this.hundleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input
             name="email"
             type="email"
@@ -38,7 +38,7 @@ class Login extends React.Compnent {
           </button>
         </form>
       </div>
-    )
+    );
   }
 }
 
