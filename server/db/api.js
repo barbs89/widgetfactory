@@ -7,8 +7,9 @@ axios({
   headers: {'Authorization': `Bearer ${process.env.API_KEY}`}
 })
 .then(response => console.log(response.data))
-.then(response => response.send(response))
 .catch(error => console.log(error.message))
+
+module.exports = { axios }
 
 
 
