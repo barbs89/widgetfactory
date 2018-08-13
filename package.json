@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/index.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/index.js",
@@ -22,6 +23,10 @@
     "express": "^4.16.3",
     "mongoose": "^5.2.7",
     "npm": "^6.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barbs89/widgetfactory"
   },
   "devDependencies": {
     "concurrently": "^3.6.1",
