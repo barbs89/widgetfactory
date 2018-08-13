@@ -1,16 +1,21 @@
 {
   "name": "widgetfactory",
   "description": "A widget platform that can be used externally",
-  "scripts": {
-  },
+  "scripts": {},
   "env": {
+    "MONGODB_URI": {
+      "required": true
+    }
   },
   "formation": {
+    "web": {
+      "quantity": 1
+    }
   },
-  "addons": [
-
-  ],
+  "addons": [],
   "buildpacks": [
-
+    {
+      "url": "heroku/nodejs"
+    }
   ]
 }

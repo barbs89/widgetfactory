@@ -17,38 +17,14 @@ app.use(express.json());
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
-// mongoose
-//   .connect(
-//     port,
-//     { useNewUrlParser: true }
-//   )
-//   .then(() => {
-//     console.log(dbURL);
-//     console.log('Mongo Connection established.');
-//     // runSeeder() // Seed data
-//   })
-//   .catch((error) => {
-//     console.error('MONGO_CONNECT_ERROR: Have you started your mongodb?');
-//     console.log(`Error Details: ${error}`);
-//     process.exit(); // Quits Server on Error
-//   });
-
-// Import routers //
-
-const { homeRouter } = require('./routers/homeRouter');
-// const { widgetsRouter } = require('./routers/widgetsRouter')
-// const { usersRouter } = require('./routers/usersRouter')
-
-// Set base outes //
-
-app.use('/api', homeRouter);
-// app.use('/api/user', usersRouter)
-// app.use('/api/widget', widgetsRouter)
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
 
