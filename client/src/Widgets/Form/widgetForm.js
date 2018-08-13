@@ -14,7 +14,7 @@ class WidgetForm extends React.Component {
 
           </div>
           <div className='loc-submit'>
-                  <input type='submit' value='Add New Store'/>
+                  <input type='submit' value='Save Changes'/>
           </div>
         </form>
       </div>
