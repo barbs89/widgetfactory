@@ -1,16 +1,14 @@
-require('dotenv').config() 
-const mongoose = require('mongoose')
+require('dotenv').config()
+const express = require('express')
+const axios = require('axios')
 
-mongoose.connect(process.env.API_URI)
-    .then(() => {
-        console.info(
-            'House of home API connection established'
-        )
-    })
-    .catch(err => {
-        console.error(
-            `House of home API connection failure: ${err.message}`
-        )
-    })
+axios({
+  url: process.env.API_URI,
+  headers: {'Authorization': `Bearer ${process.env.API_KEY}`}
+})
+.then(response => console.log(response.data))
+.then(response => response.send(response))
+.catch(error => console.log(error.message))
 
-module.exports = mongoose
+
+
