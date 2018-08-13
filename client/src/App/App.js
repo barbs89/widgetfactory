@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-// import Home from '../Home';
-// import Navbar from '../Navbar';
-import logo from './logo.svg';
-import './app.css';
+import React, { Component } from 'react'
+// import { Route, Switch, Redirect } from 'react-router-dom'
+import { WidgetPage } from '../widgetPage/WidgetPage'
+// import Home from '../Home'
+// import Navbar from '../Navbar'
+import logo from './logo.svg'
+import './app.css'
 
 class App extends Component {
   state = {
@@ -32,7 +34,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">{this.state.response}</p>
+        <WidgetPage/>
       </div>
+
     );
   }
 }
