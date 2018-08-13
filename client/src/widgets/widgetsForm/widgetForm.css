@@ -1,0 +1,26 @@
+.widget-form-container {
+  display: flex;
+  flex-direction: column;
+  background-color: dodgerblue;
+  margin: 0 5vw 0 5vw
+}
+
+.widget-form {
+  padding: 1em;
+  text-align: left
+}
+
+.widget-form-section {
+  padding: 1em
+}
+
+.widget-form-banner {
+  background-color: #333331;
+  color: #FFFFFF;
+  padding: .5em;
+}
+
+.widget-form {
+  display: flex;
+  flex-direction: column;
+}
