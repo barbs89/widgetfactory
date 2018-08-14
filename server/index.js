@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 
 const { mongoose } = require('./db/mongoose');
+const { axios } = require('./db/api')
 
 // Setup Express Server //
 
