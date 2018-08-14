@@ -1,9 +1,11 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser')
+const axios = require('axios')
 
 const { mongoose } = require('./db/mongoose');
-const { axios } = require('./db/api')
+const { fetchAdverts } = require('./db/api')
 
 // Setup Express Server //
 
@@ -12,11 +14,14 @@ const port = process.env.PORT || 5000;
 
 // Middleware //
 app.use(express.json());
+app.use(bodyParser.json());
 
 // API routes
+
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
+
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files

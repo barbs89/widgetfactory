@@ -12,6 +12,19 @@ class App extends Component {
   };
 
   componentDidMount() {
+    const adverts = 'http://localhost:5000'
+
+    //  parseAdds(() =>  {
+
+    // })
+
+    fetch(adverts)
+    .then(response => response.json())
+    .then(advertData => {
+      console.log(advertData);
+      // const adds = advertData.map(parseAdds)
+    })
+
     this.callApi()
       .then((res) => this.setState({ response: res.express }))
       .catch((err) => console.log(err));

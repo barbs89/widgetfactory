@@ -1,15 +1,15 @@
 require('dotenv').config()
+const bodyParser = require('body-parser')
 const express = require('express')
 const axios = require('axios')
 
-axios({
+const fetchAdverts = axios({
   url: process.env.API_URI,
-  headers: {'Authorization': `Bearer ${process.env.API_KEY}`}
+  headers: {'Authorization': `Bearer ${process.env.API}`}
 })
-.then(response => console.log(response.data))
+.then(response => console.log(response))
 .catch(error => console.log(error.message))
 
-module.exports = { axios }
+const data = fetchAdverts
 
-
-
+module.exports = { fetchAdverts }
