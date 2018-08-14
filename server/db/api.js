@@ -1,10 +1,5 @@
 require('dotenv').config()
-const bodyParser = require('body-parser')
-const express = require('express')
 const axios = require('axios')
-
-var app = express()
-app.use(bodyParser.json())
 
   axios({
   url: process.env.API_URI,
@@ -13,7 +8,7 @@ app.use(bodyParser.json())
     })
     .then(response =>   {
        data = response.data
-      console.log(data.data[0].attributes)
+      console.log(data.data)
       
     })
     .catch(error => console.log(error.message))
