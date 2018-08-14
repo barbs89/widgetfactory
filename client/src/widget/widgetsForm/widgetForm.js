@@ -26,7 +26,7 @@ class WidgetForm extends React.Component {
             <input onChange={this.props.handleChange} type='checkbox' name='callToAction'/>
             <label htmlFor='callToAction' >Include Call to Action</label>
             {/* // onChange={this.props.handleShow} */}
-            <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...'/>
+            <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...' onChange={this.props.handleChange} />
 
           </section>
 
@@ -48,10 +48,10 @@ class WidgetForm extends React.Component {
           </label>
 
           <label>Border
-            <select name='border'>
-              <option defaultValue="">none</option>
-              <option defaultValue="border-thin">thin</option>
-              <option defaultValue="border-thick">thick</option>
+            <select name='border' onChange={this.props.handleChange}>
+              <option value="">none</option>
+              <option value="border-thin">thin</option>
+              <option value="border-thick">thick</option>
             </select>
           </label>
 
@@ -71,22 +71,24 @@ class WidgetForm extends React.Component {
           <section className='widget-form-section'>
 
             <label>Font
-              <select name='font'>
-                <option defaultValue='Roboto'>Roboto</option>
-                <option defaultValue='Segoe UI'>Segoe UI</option>
-                <option defaultValue='Ubuntu'>Ubuntu</option>
-                <option defaultValue='Open Sans'>Open Sans</option>
-                <option defaultValue='Helvetica Neue'>Helvetica Neue</option>
+              <select name='font' onChange={this.props.handleChange} >
+                <option value='null'>Select a font</option>
+                <option value='Roboto'>Roboto</option>
+                <option value='Segoe UI'>Segoe UI</option>
+                <option value='Ubuntu'>Ubuntu</option>
+                <option value='Open Sans'>Open Sans</option>
+                <option value='Helvetica Neue'>Helvetica Neue</option>
               </select>
             </label>
 
             <label>Size
-              <select name='fontSize'>
-                <option defaultValue='14px'>14px</option>
-                <option defaultValue='16px'>16px</option>
-                <option defaultValue='18px'>18px</option>
-                <option defaultValue='20px'>20px</option>
-                <option defaultValue='24px'>24px</option>
+              <select name='fontSize'  onChange={this.props.handleChange}>
+                <option value='null'>Select a size</option>
+                <option value='14px'>14px</option>
+                <option value='16px'>16px</option>
+                <option value='18px'>18px</option>
+                <option value='20px'>20px</option>
+                <option value='24px'>24px</option>
               </select>
             </label>
 
