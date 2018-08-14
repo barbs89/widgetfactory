@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
-    "test": "jest",
+    "test": "jest server/tests/index.test.js --forceExit",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/index.js",
     "client": "cd client && npm start",
@@ -32,6 +32,7 @@
   "devDependencies": {
     "concurrently": "^3.6.1",
     "jest": "^23.5.0",
-    "nodemon": "^1.18.3"
+    "nodemon": "^1.18.3",
+    "supertest": "^3.1.0"
   }
 }
