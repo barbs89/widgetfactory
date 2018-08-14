@@ -2,10 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser')
-const axios = require('axios')
-
-const { mongoose } = require('./db/mongoose');
-const { fetchAdverts } = require('./db/api')
 
 // Setup Express Server //
 
