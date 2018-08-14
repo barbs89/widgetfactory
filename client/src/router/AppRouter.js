@@ -4,16 +4,6 @@ import { HomePage } from '../homePage/HomePage'
 
 import './AppRouter.scss'
 
-
-// TODO: create form handlers
-
-  // TODO: handleShow
-
-  // TODO: HandleSubmit
-
-  // TODO: HandleOnChange
-
-
 const AppRouter = () => (
   <BrowserRouter>
 
