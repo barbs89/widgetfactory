@@ -14,10 +14,10 @@ state = {
   description: false,
   callToAction: false,
   callToActionDesc: '',
-  backgroundColor: '',
-  cardColor: '',
-  buttonColor: '',
-  border: '',
+  backgroundColor: '#C4C4C4',
+  cardColor: '#F0F0F0',
+  buttonColor: '#5CC5CF',
+  border: 'none',
   borderStyle: false,
   font: '',
   fontStyle: '',
@@ -39,13 +39,13 @@ state = {
 
 handleFormChange = (e) => {
   const target = e.target
-  const value =  target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
+  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
   const name = target.name
 
   e.preventDefault()
   console.log(`input namos ${name}. input value is ${value}`)
   this.setState({
-    [name]: target.value,
+    [name]: value,
   })
   console.log(this.state)
   }
@@ -53,6 +53,15 @@ handleFormChange = (e) => {
 
 handleFormSubmit = (e) => {
   e.preventDefault()
+  const target = e.target
+  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
+  const name = target.name
+
+  e.preventDefault()
+  console.log(`input nams ${name}. input value is ${value}`)
+  this.setState({
+    [name]: value,
+  })
   console.log(this.state)
 }
 
