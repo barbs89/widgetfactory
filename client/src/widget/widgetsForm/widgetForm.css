@@ -1,7 +1,6 @@
 .widget-form-container {
   display: flex;
   flex-direction: column;
-  background-color: dodgerblue;
   margin: 0 5vw 0 5vw
 }
 
@@ -23,4 +22,12 @@
 .widget-form {
   display: flex;
   flex-direction: column;
+}
+
+.submit-button {
+  border: none;
+  width: 10em;
+  background: #5CC5CF;
+  text-align: center;
+  padding:  .5em 0 .5em 0
 }
