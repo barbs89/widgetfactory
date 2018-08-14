@@ -14,19 +14,19 @@ class WidgetForm extends React.Component {
         </div>
           <section className='widget-form-section'>
             
-            <input type='checkbox' defaultValue='checked' id='title' name='title' onChange={this.props.handleChange}/>
+            <input onChange={this.props.handleChange} type='checkbox' defaultValue='checked' id='title' name='title'/>
             <label htmlFor='title' >Include Title</label>
             
-            <input type='checkbox' name='description' id='description'/>
+            <input onChange={this.props.handleChange} type='checkbox' name='description' id='description'/>
             <label htmlFor='description'>Include Description</label>
             
-            <input type='checkbox' name='price'/>
+            <input onChange={this.props.handleChange} type='checkbox' name='price'/>
             <label htmlFor='price'>Include Price</label>
 
-            <input type='checkbox' name='callToAction'/>
+            <input onChange={this.props.handleChange} type='checkbox' name='callToAction'/>
             <label htmlFor='callToAction' >Include Call to Action</label>
             {/* // onChange={this.props.handleShow} */}
-            <input type='text' name='callToActionDesc' placeholder='Buy Now...' />
+            <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...'/>
 
           </section>
 
@@ -36,15 +36,15 @@ class WidgetForm extends React.Component {
           <section className='widget-form-section'>
           
           <label>Background Colour
-            <input type='color' name='backgroundColor' defaultValue='#C4C4C4'/>
+            <input onChange={this.props.handleChange} type='color' name='backgroundColor' defaultValue='#C4C4C4'/>
           </label>
 
           <label>Card Colour
-            <input type='color' defaultValue='#F0F0F0' name='cardColor'/>
+            <input onChange={this.props.handleChange} type='color' defaultValue='#F0F0F0' name='cardColor'/>
           </label>
 
           <label>Button Colour
-            <input type='color' defaultValue='#5CC5CF' name='buttonColor'/>
+            <input onChange={this.props.handleChange} type='color' defaultValue='#5CC5CF' name='buttonColor'/>
           </label>
 
           <label>Border
@@ -56,8 +56,8 @@ class WidgetForm extends React.Component {
           </label>
 
           <label>Border Style
-            <input type='radio' id="border-style-1" name='borderStyle'/>
-            <input type='radio' id="border-style-2" name='borderStyle'/>
+            <input onChange={this.props.handleChange} type='radio' id="border-style-1" name='borderStyle'/>
+            <input onChange={this.props.handleChange} type='radio' id="border-style-2" name='borderStyle'/>
           </label>
 
           {/* // TODO: remove radio default */}
@@ -91,25 +91,25 @@ class WidgetForm extends React.Component {
             </label>
 
             <label>Alignment
-              <input type='radio' id="alignment1" name='alignment'/>
-              <input type='radio' id="alignment2" name='alignment'/>
-              <input type='radio' id="alignment3" name='alignment'/>
-              <input type='radio' id="alignment4" name='alignment'/>
+              <input onChange={this.props.handleChange} type='radio' id="alignment1" name='alignment'/>
+              <input onChange={this.props.handleChange} type='radio' id="alignment2" name='alignment'/>
+              <input onChange={this.props.handleChange} type='radio' id="alignment3" name='alignment'/>
+              <input onChange={this.props.handleChange} type='radio' id="alignment4" name='alignment'/>
             </label>
 
             <label>Style
-              <input type='radio' id="bold" name='fontStyle'/>
-              <input type='radio' id="italics" name='fontStyle'/>
+              <input onChange={this.props.handleChange} type='radio' id="bold" name='fontStyle'/>
+              <input onChange={this.props.handleChange} type='radio' id="italics" name='fontStyle'/>
             </label>
 
             <label>Font Colour
-              <input type='color' defaultValue='#5CC5CF' name='fontColor'/>
+              <input onChange={this.props.handleChange} type='color' defaultValue='#5CC5CF' name='fontColor'/>
             </label>
 
           </section>
 
           <div className='submit-button'>
-              <input type='submit' defaultValue='Generate Code Snippet'/>
+              <input onChange={this.props.handleChange} type='submit' defaultValue='Generate Code Snippet'/>
           </div>
         </form>
       </div>

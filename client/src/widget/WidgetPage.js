@@ -8,7 +8,6 @@ import WidgetForm from './widgetsForm/widgetForm'
 
 class WidgetPage extends React.Component {
 
-// TODO: declare state
 state = {
   title: false,
   price: false,
@@ -27,6 +26,7 @@ state = {
   alignment: ''
 }
 
+// TODO: handleShow
 // handleShow = () => {
 //   const ctaChecked = document.getElementsByName('callToAction')
 //   const ctaDesc = document.getElementsByName('callToActionDesc')
@@ -38,30 +38,22 @@ state = {
 // }
 
 handleFormChange = (e) => {
+  const target = e.target
+  const value =  target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
+  const name = target.name
+
   e.preventDefault()
-  console.log(e.target.value)
-}
+  console.log(`input namos ${name}. input value is ${value}`)
+  this.setState({
+    [name]: target.value,
+  })
+  console.log(this.state)
+  }
+
 
 handleFormSubmit = (e) => {
   e.preventDefault()
-  console.log(e.target.input.value)
-  this.setState({
-    title: e.target.value,
-    price: e.target.value,
-    description: e.target.value,
-    callToAction: e.target.value,
-    callToActionDesc: e.target.value,
-    backgroundColor: e.target.value,
-    cardColor: e.target.value,
-    buttonColor: e.target.value,
-    border: e.target.value,
-    borderStyle: e.target.value,
-    font: e.target.value,
-    fontStyle: e.target.value,
-    fontColor: e.target.value,
-    fontSize: e.target.value,
-    alignment: e.target.value
-  })
+  console.log(this.state)
 }
 
 
