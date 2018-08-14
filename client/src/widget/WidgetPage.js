@@ -27,9 +27,24 @@ state = {
   alignment: ''
 }
 
+// handleShow = () => {
+//   const ctaChecked = document.getElementsByName('callToAction')
+//   const ctaDesc = document.getElementsByName('callToActionDesc')
+//   if (ctaChecked.checked !== true) {
+//     ctaDesc.style.display = 'none'
+//   } else {
+//     ctaDesc.style.display = 'block'
+//   }
+// }
+
+handleFormChange = (e) => {
+  e.preventDefault()
+  console.log(e.target.value)
+}
 
 handleFormSubmit = (e) => {
   e.preventDefault()
+  console.log(e.target.input.value)
   this.setState({
     title: e.target.value,
     price: e.target.value,
@@ -46,15 +61,9 @@ handleFormSubmit = (e) => {
     fontColor: e.target.value,
     fontSize: e.target.value,
     alignment: e.target.value
-    
-  })
-  .then(() => {
-    console.log(this.state)
-  })
-  .catch(err => {
-    console.log(err)
   })
 }
+
 
 // TODO: create form handlers
 
@@ -69,8 +78,9 @@ handleFormSubmit = (e) => {
   render() {
     return (
       <WidgetForm 
-      handleSubmit={this.state.handleFormSubmit}
-      handleShow={this.state.handleShow}
+      handleSubmit={this.handleFormSubmit}
+      handleChange={this.handleFormChange}
+      // handleShow={this.state.handleShow}
       />
 
   // TODO: Redner Widget
