@@ -1,15 +1,19 @@
 require('dotenv').config()
-const express = require('express')
 const axios = require('axios')
 
-axios({
+  axios({
   url: process.env.API_URI,
-  headers: {'Authorization': `Bearer ${process.env.API_KEY}`}
-})
-.then(response => console.log(response.data))
-.catch(error => console.log(error.message))
+    headers: {'Authorization': `Bearer ${process.env.API}`,
+  }
+    })
+    .then(response =>   {
+       data = response.data
+      console.log(data.data)
+      
+    })
+    .catch(error => console.log(error.message))
+  
+
+
 
 module.exports = { axios }
-
-
-
