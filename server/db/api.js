@@ -12,11 +12,10 @@ app.use(bodyParser.json())
   }
     })
     .then(response =>   {
-       data = response.req.body
-      console.log(data)
+       data = response.data
+      console.log(data.data[0].attributes)
       
     })
-    // console.log(response))
     .catch(error => console.log(error.message))
   
 

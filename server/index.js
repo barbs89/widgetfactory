@@ -21,10 +21,9 @@ app.use(bodyParser.json());
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
-app.get('/widget', (req,res) =>{
-  console.log(req.body)
-  res.send({ 'success' })
-})
+// app.get('/widget', (req, res) =>{
+//   console.log(req.body)
+// })
 
 
 if (process.env.NODE_ENV === 'production') {
