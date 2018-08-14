@@ -5,7 +5,15 @@ const widgetsRouter = express.Router()
 
 // Place relevant routes
 widgetsRouter.get('/widget', (req, res, next) => {
-  res.send('hello form the widgets page')
+  Widget.find()
+  .then(widgets => {
+    res.status(200).json(widgets)
+  })
+  .catch(() => {
+    res.status(500).json(err.message)
+  })
 })
+
+
 
 module.exports = { widgetsRouter }
