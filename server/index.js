@@ -13,7 +13,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware //
-app.use(express.json());
+// app.use(express.json());
 app.use(bodyParser.json());
 
 // API routes
@@ -21,6 +21,10 @@ app.use(bodyParser.json());
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
+app.get('/widget', (req,res) =>{
+  console.log(req.body)
+  res.send({ 'success' })
+})
 
 
 if (process.env.NODE_ENV === 'production') {
