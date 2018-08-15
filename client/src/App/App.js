@@ -12,7 +12,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const adverts = 'http://localhost:5000';
+    const adverts = 'http://localhost:5000/adverts';
 
     //  parseAdds(() =>  {
 
