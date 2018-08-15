@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Route, Switch, Redirect } from 'react-router-dom'
-import { WidgetPage } from '../Widget/WidgetPage';
+import { WidgetPage } from '../widget/WidgetPage';
 // import Home from '../Home'
 // import Navbar from '../Navbar'
 import logo from './logo.svg';
