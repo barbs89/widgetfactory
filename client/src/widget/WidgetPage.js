@@ -29,17 +29,7 @@ state = {
   alignment: ''
 }
 
-// TODO: handleShow
-// handleShow = () => {
-//   const ctaChecked = document.getElementsByName('callToAction')
-//   const ctaDesc = document.getElementsByName('callToActionDesc')
-//   if (ctaChecked.checked !== true) {
-//     ctaDesc.style.display = 'none'
-//   } else {
-//     ctaDesc.style.display = 'block'
-//   }
-// }
-
+// Functions
 handleFormChange = (e) => {
   const target = e.target
   const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
@@ -53,20 +43,6 @@ handleFormChange = (e) => {
   console.log(this.state)
 }
 
-
-// handleFormSubmit = (e) => {
-//   e.preventDefault()
-//   const target = e.target
-//   const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
-//   const name = target.name
-
-//   e.preventDefault()
-//   this.setState({
-//     [name]: value,
-//   })
-//   console.log(this.state)
-// }
-
 handleFormSubmit = (e) => {
   e.preventDefault()
   const target = e.target
@@ -79,15 +55,25 @@ handleFormSubmit = (e) => {
 }
 
 // TODO: handleShow
-
-// TODO: Handle Update prop
-
-// updateOutputProperty = (e) => {
-//   e.preventDefault()
-//   section.style.setProperty('--color', this.state.backgroundColor.value)
+// handleShow = () => {
+//   const ctaChecked = document.getElementsByName('callToAction')
+//   const ctaDesc = document.getElementsByName('callToActionDesc')
+//   if (ctaChecked.checked !== true) {
+//     ctaDesc.style.display = 'none'
+//   } else {
+//     ctaDesc.style.display = 'block'
+//   }
 // }
 
-// TODO: Render Widget Form
+// TODO: Handle Update Property
+
+updateOutputProperty = (e) => {
+  e.preventDefault()
+  const element = document.getElementById(123456)
+  element.style.setProperty('--color', this.state.backgroundColor)
+}
+
+// TODO: Render Widget Code Snippet
 
   render() {
     return (
@@ -116,9 +102,8 @@ handleFormSubmit = (e) => {
         <section className='widget-out-section'>
           <h1>Widget Output</h1>
 
-          < WidgetOutput 
-          updateProp={this.updateOutputProperty}
-          />
+          < WidgetOutput />
+          <button onClick={this.updateOutputProperty}>I am a button, click me</button>
         </section>
     </div>
     )

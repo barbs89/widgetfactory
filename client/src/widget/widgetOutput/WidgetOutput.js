@@ -18,7 +18,7 @@ logState = (e) => {
 render()
   {
     return (
-    <div className='widget-output-container'>
+    <div id='123456' className='widget-output-container'>
 
     {/* //TODO: Create custom code that links to the variables selected */}
       <div className='carousel-container'>
