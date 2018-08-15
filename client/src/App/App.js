@@ -12,19 +12,16 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const adverts = 'http://localhost:5000/widgets'
-  
-
     //  parseAdds(() =>  {
 
     // })
 
     fetch(adverts)
-    .then(response => response.json())
-    .then(advertData => {
-      console.log(advertData);
-      // const adds = advertData.map(parseAdds)
-    })
+      .then((response) => response.json())
+      .then((advertData) => {
+        console.log(advertData);
+        // const adds = advertData.map(parseAdds)
+      });
 
     this.callApi()
       .then((res) => this.setState({ response: res.express }))
