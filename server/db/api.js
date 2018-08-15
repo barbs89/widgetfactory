@@ -33,7 +33,7 @@ const instance = axios.create({
     })
     .then(response =>   {
        data = response.data.data
-      console.log(data)
+      // console.log(` Response Client: ${data}`)
       
     })
     .catch(error => console.log(error.message))
