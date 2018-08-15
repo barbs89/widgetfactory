@@ -13,22 +13,22 @@ const generateUsers = async () => {
   // 3. Generate users
   const usersArray = [
     new User({
-      email: 'steve@redrocks.com',
+      email: 'steve@markplacer.com',
       password: password,
       accessKey: 'thisisnotanactualkey',
       admin: false,
       firstName: 'Steven',
       lastName: 'Salad',
-      company: 'Really Good Build Co',
+      company: 'Markplacer',
     }),
     new User({
-      email: 'maggie@redrocks.com',
+      email: 'maggie@arkplacer.com',
       password: password,
       accessKey: 'thisisnotanactualkey2',
       admin: false,
       firstName: 'Maggie',
       lastName: 'Margella',
-      company: 'Really Good Build Co',
+      company: 'Markplacer',
     }),
   ]
 

@@ -1,9 +1,11 @@
 import React from 'react'
 
 // TODO: Import CSS
+import './WidgetPage.css'
 
 //components
 import WidgetForm from './widgetsForm/widgetForm'
+import WidgetOutput from './widgetOutput/WidgetOutput'
 
 
 class WidgetPage extends React.Component {
@@ -48,8 +50,21 @@ handleFormChange = (e) => {
     [name]: value,
   })
   console.log(this.state)
-  }
+}
 
+
+// handleFormSubmit = (e) => {
+//   e.preventDefault()
+//   const target = e.target
+//   const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
+//   const name = target.name
+
+//   e.preventDefault()
+//   this.setState({
+//     [name]: value,
+//   })
+//   console.log(this.state)
+// }
 
 handleFormSubmit = (e) => {
   e.preventDefault()
@@ -58,42 +73,51 @@ handleFormSubmit = (e) => {
   const name = target.name
 
   e.preventDefault()
-  console.log(`input nams ${name}. input value is ${value}`)
   this.setState({
     [name]: value,
   })
   console.log(this.state)
 }
 
+// TODO: handleShow
 
-// TODO: create form handlers
+// TODO: Handle Update prop
 
-  // TODO: handleShow
+updateOutputProperty = (e) => {
+  e.style.setProperty('--color', this.state.backgroundColor.value)
+}
 
-  // TODO: HandleSubmit
-
-  // TODO: HandleOnChange
-
-  // TODO: Render Widget Form
+// TODO: Render Widget Form
 
   render() {
     return (
-      <WidgetForm 
-      handleSubmit={this.handleFormSubmit}
-      handleChange={this.handleFormChange}
-      // handleShow={this.state.handleShow}
-      />
+    <div className='widget-page-container'>
+    {/* // TODO: handleShow on event checkedCTA */}
 
-  // TODO: Redner Widget
+        <section className='widget-form-section'>
+          <h1>Widget Form</h1>
+          < WidgetForm 
+          handleSubmit={this.handleFormSubmit}
+          handleChange={this.handleFormChange}
+          />
+        </section>
 
-    // <Widget />
-    
+    {/* // TODO: Render Widget */}
 
-  // TODO: Render Exportable Code
+        <section className='widget-render-section'>
+          <h1>Rendered Widget</h1>
+        </section>
 
-    // <ClientCode />
-  
+      {/* // TODO: Render Exportable Code */}
 
+        <section className='widget-out-section'>
+          <h1>Widget Output</h1>
+
+          < WidgetOutput 
+          updateProp={this.updateOutputProperty}
+          />
+        </section>
+    </div>
     )
   }
 }

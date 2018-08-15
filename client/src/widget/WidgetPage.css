@@ -1,0 +1,10 @@
+:root {
+  --color: #000000
+}
+
+.carousel-container {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  background-color: var(--color)
+}
