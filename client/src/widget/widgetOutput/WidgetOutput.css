@@ -1,0 +1,41 @@
+.widget-output-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10vw 0 10vw;
+  background-color: red;
+  height: 100px
+}
+
+.carousel-container {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  /* background-color: navy */
+}
+
+* {
+  --title-color: #1E90FF
+}
+
+.title {
+  color: var(--title-color)
+}
+
+/* // state = {
+  //   title: false,
+  //   price: false,
+  //   description: false,
+  //   callToAction: false,
+  //   callToActionDesc: '',
+  //   backgroundColor: '#C4C4C4',
+  //   cardColor: '#F0F0F0',
+  //   buttonColor: '#5CC5CF',
+  //   border: 'none',
+  //   borderStyle: false,
+  //   font: '',
+  //   fontStyle: '',
+  //   fontColor: '',
+  //   fontSize: '',
+  //   alignment: ''
+  // } */
+  
