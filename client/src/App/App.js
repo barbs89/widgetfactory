@@ -12,11 +12,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    //  parseAdds(() =>  {
-
-    // })
-
-    fetch(adverts)
+    fetch('http://localhost:5000/widgets')
       .then((response) => response.json())
       .then((advertData) => {
         console.log(advertData);
