@@ -12,7 +12,12 @@ class App extends Component {
   };
 
   componentDidMount() {
+<<<<<<< HEAD
     const adverts = 'http://localhost:5000/adverts';
+=======
+    const adverts = 'http://localhost:5000/widgets'
+  
+>>>>>>> 3bd25caaac3779e9dfa23da9531a68960776c9f0
 
     //  parseAdds(() =>  {
 
