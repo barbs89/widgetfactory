@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser')
 
+
+
 // Setup Express Server //
 
 const app = express();
@@ -17,9 +19,11 @@ app.use(bodyParser.json());
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
-// app.get('/widget', (req, res) =>{
-//   console.log(req.body)
-// })
+
+app.get('/widgets', (req, res) =>{
+  res.send(req.body)
+  console.log(req.body)
+})
 
 
 if (process.env.NODE_ENV === 'production') {
