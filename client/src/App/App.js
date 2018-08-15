@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Route, Switch, Redirect } from 'react-router-dom'
-import { WidgetPage } from '../widget/WidgetPage';
+import { WidgetPage } from '../Widget/WidgetPage';
 // import Home from '../Home'
 // import Navbar from '../Navbar'
 import logo from './logo.svg';
@@ -12,18 +12,18 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const adverts = 'http://localhost:5000'
+    const adverts = 'http://localhost:5000';
 
     //  parseAdds(() =>  {
 
     // })
 
     fetch(adverts)
-    .then(response => response.json())
-    .then(advertData => {
-      console.log(advertData);
-      // const adds = advertData.map(parseAdds)
-    })
+      .then((response) => response.json())
+      .then((advertData) => {
+        console.log(advertData);
+        // const adds = advertData.map(parseAdds)
+      });
 
     this.callApi()
       .then((res) => this.setState({ response: res.express }))
