@@ -6,6 +6,7 @@ import './WidgetPage.css'
 //components
 import WidgetForm from './widgetsForm/widgetForm'
 import WidgetOutput from './widgetOutput/WidgetOutput'
+import WidgetCarousel from './carouselWidget/WidgetCarousel'
 
 
 class WidgetPage extends React.Component {
@@ -71,8 +72,6 @@ handleFormSubmit = (e) => {
   const target = e.target
   const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
   const name = target.name
-
-  e.preventDefault()
   this.setState({
     [name]: value,
   })
@@ -83,9 +82,10 @@ handleFormSubmit = (e) => {
 
 // TODO: Handle Update prop
 
-updateOutputProperty = (e) => {
-  e.style.setProperty('--color', this.state.backgroundColor.value)
-}
+// updateOutputProperty = (e) => {
+//   e.preventDefault()
+//   section.style.setProperty('--color', this.state.backgroundColor.value)
+// }
 
 // TODO: Render Widget Form
 
@@ -106,6 +106,9 @@ updateOutputProperty = (e) => {
 
         <section className='widget-render-section'>
           <h1>Rendered Widget</h1>
+          
+          <WidgetCarousel />
+
         </section>
 
       {/* // TODO: Render Exportable Code */}
