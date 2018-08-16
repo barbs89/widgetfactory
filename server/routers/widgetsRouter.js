@@ -9,6 +9,8 @@ const widgetRoutes = (app) => {
   app.get('/widgets', (req, res, next) => {
     fetchAdds()
     .then(({ data, status }) => {
+      console.log('Hi there')
+      console.log(data)
       res.status(status).json(data)
     })
     .catch((err) => {
@@ -21,3 +23,6 @@ const widgetRoutes = (app) => {
 
 
 module.exports = widgetRoutes
+
+
+ 

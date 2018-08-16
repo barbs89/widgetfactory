@@ -22,13 +22,12 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-
-
 // API routes
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
+
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
