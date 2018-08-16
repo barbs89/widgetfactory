@@ -5,6 +5,7 @@ import Home from '../home/HomePage'
 // import Navbar from '../Navbar'
 import logo from './logo.svg';
 import './app.css';
+import axios from 'axios'
 
 class App extends Component {
   state = {
@@ -14,31 +15,10 @@ class App extends Component {
 
   componentDidMount() {
     
-    this.fetchAdds()
-      // 
+    axios.get('http://localhost:5000/widgets')  
+      .then(response =>  console.log(response.data))
+      .catch(error => console.info(error.message))
     
-    this.callApi()
-      .then((res) => this.setState({ response: res.express }))
-      .catch((err) => console.log(err));
-    }
-    
-    fetchAdds = (() => {
-      const adds =  fetch('http://localhost:5000/widgets')
-      .then(response => response.json())
-      .then((res) => this.setState({ adverts: res}))
-      .catch(err => console.error(err.message))
-        // const adds = advertData.map(parseAdds)
-        return adds
-      })
-
-
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
   };
 
   render() {
@@ -57,7 +37,7 @@ class App extends Component {
           }} />
 
           < Route exact path="/widgets" render={() => {
-          return <WidgetPage /> }}/>
+          return <WidgetPage fetchAdds={ this.fetchAdds }/> }}/>
         
       </div>
     </ BrowserRouter >

@@ -1,7 +1,14 @@
 require('dotenv').config()
 const axios = require('axios')
-const widgetsRouter = require('../routers/widgetsRouter.js')
 
+fetchAdds = () => axios({
+  url: process.env.API_URI,
+    headers: {'Authorization': `Bearer ${process.env.API}`,
+  }
+    })
+    .then(({ data, status }) =>   {
+      return {data, status}
+    })
 
 // const instance = axios.create({
 //   baseURL: 'https://houseofhome.staging.marketplacer.com/api/v2/client/adverts',
@@ -15,32 +22,5 @@ const widgetsRouter = require('../routers/widgetsRouter.js')
 //   console.log(res.json())
   
 // })
-
-
-// function get(url) {
-//   return new Promise((resolve, reject) => {
-//     instance(url)
-//     .then(res => res.json())
-//     .then(data => resolve(data))›
-//     .catch(err => reject(err))
-//   }
-// )}
-
-fetchAdds (() => { axios({
-  url: process.env.API_URI,
-    headers: {'Authorization': `Bearer ${process.env.API}`,
-  }
-    })
-    .then(response =>   {
-      console.log('Api Response:');
-      console.log(response.data)
-      // console.log(` Response Api: ${response.data}`)
-      
-    })
-    .catch(error => console.log(error.message))
-  })
-  
-  
-
 
 module.exports = fetchAdds
