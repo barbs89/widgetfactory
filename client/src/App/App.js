@@ -14,18 +14,23 @@ class App extends Component {
 
   componentDidMount() {
     
-     
-    fetch('http://localhost:5000/widgets')
-    .then(response => response.json())
-    .then(response => {
-     console.log(response)
-      // const adds = advertData.map(parseAdds)
-    })
-    .catch(err => console.error(err.message))
+    this.fetchAdds()
+      // 
     
     this.callApi()
       .then((res) => this.setState({ response: res.express }))
       .catch((err) => console.log(err));
+    }
+    
+    fetchAdds = (() => {
+      const adds =  fetch('http://localhost:5000/widgets')
+      .then(response => response.json())
+      .then((res) => this.setState({ adverts: res}))
+      .catch(err => console.error(err.message))
+        // const adds = advertData.map(parseAdds)
+        return adds
+      })
+
 
   callApi = async () => {
     const response = await fetch('/api/hello');
@@ -34,8 +39,7 @@ class App extends Component {
     if (response.status !== 200) throw Error(body.message);
 
     return body;
-    };
-  }
+  };
 
   render() {
     return (
