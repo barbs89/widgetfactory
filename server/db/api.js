@@ -3,11 +3,11 @@ const axios = require('axios')
 const widgetsRouter = require('../routers/widgetsRouter.js')
 
 
-const instance = axios.create({
-  baseURL: 'https://houseofhome.staging.marketplacer.com/api/v2/client/adverts',
-  timeout: 15000,
-  headers: {'Authorization': `Bearer ${process.env.API}`}
-})
+// const instance = axios.create({
+//   baseURL: 'https://houseofhome.staging.marketplacer.com/api/v2/client/adverts',
+//   timeout: 15000,
+//   headers: {'Authorization': `Bearer ${process.env.API}`}
+// })
 
 
 // instance.get('/${:_id}', (req, res) => {
@@ -26,20 +26,21 @@ const instance = axios.create({
 //   }
 // )}
 
-  axios({
+fetchAdds (() => { axios({
   url: process.env.API_URI,
     headers: {'Authorization': `Bearer ${process.env.API}`,
   }
     })
     .then(response =>   {
-       data = response.data.data
-      // console.log(` Response Client: ${data}`)
+      console.log('Api Response:');
+      console.log(response.data)
+      // console.log(` Response Api: ${response.data}`)
       
     })
     .catch(error => console.log(error.message))
-  
+  })
   
   
 
 
-module.exports = axios
+module.exports = fetchAdds
