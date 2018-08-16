@@ -21,7 +21,7 @@ render()
         <div id='123456' className='carousel-card'>
 
             <section className='card-header'>
-              <h2 className='card-title'>Latvian Wooden Chair</h2>          
+              <h2 className='cardTitle'>Latvian Wooden Chair</h2>          
               <h2 className='card-price'>$299</h2>
             </section>
 

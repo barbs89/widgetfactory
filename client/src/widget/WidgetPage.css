@@ -1,14 +1,14 @@
 
 /* defined variables */
 :root {
-  --backgroundColor: #000000;
+  --backgroundColor: #000000; /* done*/
   --buttonColor: #ca7a7a;
   --cardColor: #000000;
   --borderOutline: solid;
+  --headerWeight: bold;
   --borderStyle: .3em;
-  --headerStyle: bold;
-  --fontItalics: italic; 
   --font: Roboto;
+  --fontStyle: italic; 
   --fontColor: #ffffff;
   --headerFontSize: 14px;
   --bodyFontSize: 12px;
