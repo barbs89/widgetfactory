@@ -25,7 +25,8 @@ state = {
   font: '',
   fontStyle: '',
   fontColor: '',
-  fontSize: '',
+  headerFontSize: '',
+  bodyFontSize: '',
   alignment: ''
 }
 
@@ -67,10 +68,28 @@ handleFormSubmit = (e) => {
 
 // TODO: Handle Update Property
 
+// updateOutputProperty = (e) => {
+//   e.preventDefault()
+//   const element = document.getElementById(123456)
+//   element.style.setProperty('--cardColor', this.state.cardColor)
+// }
+
+
 updateOutputProperty = (e) => {
   e.preventDefault()
-  const element = document.getElementById(123456)
-  element.style.setProperty('--color', this.state.backgroundColor)
+  const keys = Object.keys(this.state)
+  const values = Object.values(this.state)
+  const arrayLength = keys.length
+  console.log(keys)
+  console.log(values)
+  for (let i = 0; i < arrayLength; i++) {
+    const element = document.getElementsByClassName(keys)
+    element.style.setProperty(`--${keys[i]}`, values[i])
+  }
+  // const element = document.getElementsByClassName(keys)
+  // console.log(element)
+  // element.style.setProperty(`--${keys}`, values)
+  
 }
 
 // TODO: Render Widget Code Snippet
@@ -100,8 +119,9 @@ updateOutputProperty = (e) => {
       {/* // TODO: Render Exportable Code */}
 
         <section className='widget-out-section'>
+        <div>
           <h1>Widget Output</h1>
-
+        </div>
           < WidgetOutput />
           <button onClick={this.updateOutputProperty}>I am a button, click me</button>
         </section>
