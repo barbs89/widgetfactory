@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-// import { Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { WidgetPage } from '../widget/WidgetPage';
-// import Home from '../Home'
+import Home from '../home/HomePage'
 // import Navbar from '../Navbar'
 import logo from './logo.svg';
 import './app.css';
 
 class App extends Component {
   state = {
-    response: ''
+    response: '',
+    adverts: null
   };
 
   componentDidMount() {
     
+     
     fetch('http://localhost:5000/widgets')
     .then(response => response.json())
     .then(response => {
@@ -24,7 +26,6 @@ class App extends Component {
     this.callApi()
       .then((res) => this.setState({ response: res.express }))
       .catch((err) => console.log(err));
-  }
 
   callApi = async () => {
     const response = await fetch('/api/hello');
@@ -33,18 +34,29 @@ class App extends Component {
     if (response.status !== 200) throw Error(body.message);
 
     return body;
-  };
+    };
+  }
 
   render() {
     return (
+      <BrowserRouter >
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">{this.state.response}</p>
-        <WidgetPage />
+         {/* TODO: Routes for register and Login SC */}
+
+          < Route exact path="/" render={() => {
+            return < Home />
+          }} />
+
+          < Route exact path="/widgets" render={() => {
+          return <WidgetPage /> }}/>
+        
       </div>
+    </ BrowserRouter >
     );
   }
 }

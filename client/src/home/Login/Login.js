@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Login extends React.Compnent {
+class Login extends React.Component {
   state = {
     loading: false,
     email: null,
