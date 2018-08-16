@@ -6,7 +6,6 @@ class WidgetCarousel extends React.Component {
 
   render() {
     const params = {
-      pagination: '.swiper-pagination',
       centeredSlides: true,
       paginationClickable: true,
       spaceBetween: 30,
@@ -24,8 +23,7 @@ class WidgetCarousel extends React.Component {
           <div>Slide 5</div>
           <div>Slide 6</div>
         </Swiper>
-        <button onClick={this.goNext}>Next</button>
-        <button onClick={this.goPrev}>Prev</button>
+
       </div>
     )
   }
