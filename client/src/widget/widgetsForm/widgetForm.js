@@ -48,9 +48,10 @@ class WidgetForm extends React.Component {
 
           <label>Border
             <select name='border' onChange={this.props.handleChange}>
-              <option value="">none</option>
-              <option value="border-thin">thin</option>
-              <option value="border-thick">thick</option>
+              <option value="none">none</option>
+              <option value="solid">solid</option>
+              <option value="inset">inset</option>
+              <option value="outset">outset</option>
             </select>
           </label>
 
@@ -80,8 +81,19 @@ class WidgetForm extends React.Component {
               </select>
             </label>
 
-            <label>Size
-              <select name='fontSize'  onChange={this.props.handleChange}>
+            <label>Main Size
+              <select name='bodyFontSize' onChange={this.props.handleChange}>
+                <option value='null'>Select a size</option>
+                <option value='10px'>10px</option>
+                <option value='12px'>12px</option>
+                <option value='14px'>14px</option>
+                <option value='16px'>16px</option>
+                <option value='18px'>18px</option>
+              </select>
+            </label>
+
+            <label>Header Size
+              <select name='headerFontSize' onChange={this.props.handleChange}>
                 <option value='null'>Select a size</option>
                 <option value='14px'>14px</option>
                 <option value='16px'>16px</option>
@@ -119,4 +131,4 @@ class WidgetForm extends React.Component {
   }
 }
 
-export default WidgetForm
+export {WidgetForm}
