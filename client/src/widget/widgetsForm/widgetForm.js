@@ -14,7 +14,7 @@ class WidgetForm extends React.Component {
         </div>
           <section className='widget-form-section'>
             
-            <input onChange={this.props.handleChange} type='checkbox' defaultValue='checked' id='title' name='title'/>
+            <input onClick={this.props.handleChange} type='checkbox' id='title' name='title'/>
             <label htmlFor='title' >Include Title</label>
             
             <input onChange={this.props.handleChange} type='checkbox' name='description' id='description'/>
@@ -25,8 +25,7 @@ class WidgetForm extends React.Component {
 
             <input onChange={this.props.handleChange} type='checkbox' name='callToAction'/>
             <label htmlFor='callToAction' >Include Call to Action</label>
-            {/* // onChange={this.props.handleShow} */}
-            <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...' onChange={this.props.handleChange} />
+            <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...'/>
 
           </section>
 
