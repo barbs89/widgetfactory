@@ -41,4 +41,4 @@ render()
   }
 }
 
-export default WidgetOutput
+export {WidgetOutput}

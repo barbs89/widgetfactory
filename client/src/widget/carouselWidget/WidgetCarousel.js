@@ -1,10 +1,10 @@
 import React from 'react';
-import Slider from './slider';
+import {Slider} from './slider';
 import '../WidgetPage.css';
 
-export default (props) => {
+const WidgetCarousel = (props) => {
   const params = {
-    pagination: '.swiper-pagination',
+    // pagination: '.swiper-pagination',
     slidesPerView: 3,
     paginationClickable: true,
     spaceBetween: 30,
@@ -21,3 +21,5 @@ export default (props) => {
     </div>
   );
 };
+
+export {WidgetCarousel}

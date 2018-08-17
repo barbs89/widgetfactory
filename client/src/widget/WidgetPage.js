@@ -4,9 +4,9 @@ import React from 'react';
 import './WidgetPage.css';
 
 //components
-import WidgetForm from './widgetsForm/widgetForm';
-import WidgetOutput from './widgetOutput/WidgetOutput';
-import WidgetCarousel from './carouselWidget/WidgetCarousel';
+import {WidgetForm} from './widgetsForm/widgetForm';
+import {WidgetOutput} from './widgetOutput/WidgetOutput';
+import {WidgetCarousel} from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
   state = {
@@ -86,7 +86,6 @@ updateOutputProperty = (e) => {
 
 
 // TODO: Render Widget Code Snippet
-
 
   render() 
   {

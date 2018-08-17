@@ -131,4 +131,4 @@ class WidgetForm extends React.Component {
   }
 }
 
-export default WidgetForm
+export {WidgetForm}
