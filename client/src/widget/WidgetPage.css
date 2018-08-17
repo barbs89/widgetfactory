@@ -2,6 +2,51 @@
   padding: 0;
 }
 
+
+/* defined variables */
+:root {
+  --backgroundColor: #000000;
+  --buttonColor: #ca7a7a;
+  --cardColor: #000000;
+  --borderOutline: solid;
+  --headerWeight: bold;
+  --borderStyle: .3em;
+  --font: Roboto;
+  --fontStyle: italic; 
+  --fontColor: #ffffff;
+  --headerFontSize: 14px;
+  --bodyFontSize: 12px;
+  --fontAlignment: justify;
+  --imageCrop: contain;
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--backgroundColor)
+}
+
+.carousel-card {
+  padding: 1em;
+  border-style: var(--borderOutline);
+  border-radius: var(--borderStyle);
+  background-color: var(--cardColor);
+  font-family: var(--font);
+  text-align: var(--fontAlignment);
+  object-fit: var(--imageCrop); 
+}
+
+.card-header {
+  font-size: var(--headerFontSize);
+  font-style: var(--headerStyle);
+}
+
+.card-body {
+  font-size: var(--bodyFontSize);
+}
+/* ---------------- */
+
 :root {
   --color: #000000;
 }

@@ -32,6 +32,7 @@ class WidgetPage extends React.Component {
 
 
 // Functions
+
 handleFormChange = (e) => {
   const target = e.target
   const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
@@ -64,22 +65,12 @@ updateOutputProperty = (e) => {
   // console.log(document.styleSheets[1])
 
   for (let i = 0; i < arrayLength; i++) {
-    console.log(keys[i])
-    console.log(values[i])
-
-    // TODO: if this className return null, skip
-
+    // console.log(keys[i])
+    // console.log(values[i])
     document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
-
-
-    // element.style.setProperty(`--${keys[i]}`, values[i])   
   }
-  // const element = document.getElementsByClassName(keys)
-  // console.log(element)
-  // element.style.setProperty(`--${keys}`, values)
+
 }
-
-
 
 // TODO: handleShow
 // handleShow = () => {
@@ -93,16 +84,9 @@ updateOutputProperty = (e) => {
 // }
 
 
-// TODO: Handle Update Property (original)
-
-// updateOutputProperty = (e) => {
-//   e.preventDefault()
-//   const element = document.getElementById(123456)
-//   element.style.setProperty('--cardColor', this.state.cardColor)
-// }
-
 
 // TODO: Render Widget Code Snippet
+
 
   render() 
   {
