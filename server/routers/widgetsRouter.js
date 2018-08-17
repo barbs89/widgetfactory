@@ -1,6 +1,6 @@
-const express = require('express')
-const Widget = require('../models/Widget')
-const fetchAdds  = require('../db/api.js')
+const express = require('express');
+const Widget = require('../models/Widget');
+const fetchAdds = require('../db/api.js');
 
 // Place relevant routes
 
@@ -8,18 +8,15 @@ const fetchAdds  = require('../db/api.js')
 const widgetRoutes = (app) => {
   app.get('/widgets', (req, res, next) => {
     fetchAdds()
-    .then(({ data, status }) => {
-      console.log('Hi there')
-      console.log(data.data)
-      res.status(status).json(data)
-    })
-    .catch((err) => {
-      res.status(500).json(err.message)
-    })
-  })
-}
+      .then(({ data, status }) => {
+        console.log('Hi there');
+        console.log(data);
+        res.status(status).json(data);
+      })
+      .catch((err) => {
+        res.status(500).json(err.message);
+      });
+  });
+};
 
-module.exports = widgetRoutes
-
-
- 
+module.exports = widgetRoutes;
