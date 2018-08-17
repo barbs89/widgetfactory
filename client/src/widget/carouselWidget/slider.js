@@ -1,7 +1,7 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
 import Slides from './demo-data';
-import Background from '../../Assets/images/carousel_1.jpg';
+import Background from '../../Assets/carousel_1.jpg'
 export default (props) => {
   const _divStyle = (slide) => {
     return props.showImage ? { backgroundImage: `url(${Background})` } : {};

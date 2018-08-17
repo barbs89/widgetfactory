@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 import './WidgetOutput.css'
 
 //import style variables
@@ -14,16 +13,15 @@ logState = (e) => {
 
 render()
   {
-    const cardProp = classNames('carousel-card', 'borderStyle', 'borderOutline', 'cardColor') 
 
     return (
     <div className='widget-output-container'>
     {/* //TODO: Create custom code that links to the variables selected */}
       <div className='carousel-container'>
-        <div id='123456' className={cardProp}>
+        <div id='123456' className='carousel-card'>
 
             <section className='card-header'>
-              <h2 classNames='cardTitle'>Data Name</h2>          
+              <h2 className='cardTitle'>Data Name</h2>          
               <h2 className={'card-price'}>Data Price</h2>
             </section>
 
