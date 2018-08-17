@@ -1,7 +1,7 @@
+/* WidgetPageGlobal */
 * {
   padding: 0;
 }
-
 
 /* defined variables */
 :root {
@@ -20,6 +20,7 @@
   --imageCrop: contain;
 }
 
+/* 
 .carousel-container {
   display: flex;
   justify-content: center;
@@ -44,17 +45,16 @@
 
 .card-body {
   font-size: var(--bodyFontSize);
-}
-/* ---------------- */
+} */
 
-:root {
-  --color: #000000;
-}
-
-.carousel-container {
+/* .carousel-container {
   display: flex;
   align-items: center;
   background-color: var(--color);
+} */
+/* ---------------- */
+.slider-header {
+  font-family: var(--font)
 }
 
 .swiper-container {

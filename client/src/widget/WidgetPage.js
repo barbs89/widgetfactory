@@ -91,8 +91,8 @@ updateOutputProperty = (e) => {
   {
     return (
       <div className="widget-page-container">
-        {/* // TODO: handleShow on event checkedCTA */}
 
+        {/* // TODO: handleShow on event checkedCTA */}
         <section className="widget-form-section">
           <h1>Widget Form</h1>
           <WidgetForm
@@ -101,16 +101,12 @@ updateOutputProperty = (e) => {
           />
         </section>
 
-        {/* // TODO: Render Widget */}
-
         <section className="widget-render-section">
           <h1>Rendered Widget</h1>
-
           <WidgetCarousel />
         </section>
 
         {/* // TODO: Render Exportable Code */}
-
         <section className='widget-out-section'>
         <div>
           <h1>Widget Output</h1>
