@@ -1,7 +1,6 @@
-import React from 'react'
+import React from 'react';
 import Slider from './slider';
-import '../WidgetPage.css'
-
+import '../WidgetPage.css';
 
 export default (props) => {
   const params = {
@@ -11,14 +10,14 @@ export default (props) => {
     spaceBetween: 30,
     navigation: {
       nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      prevEl: '.swiper-button-prev'
     },
     loop: true
   }
 
-  return(
+  return (
     <div>
       <Slider params={params} showImage="true" />
     </div>
-  )
+  );
 };

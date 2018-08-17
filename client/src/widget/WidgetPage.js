@@ -1,16 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 // TODO: Import CSS
-import './WidgetPage.css'
+import './WidgetPage.css';
 
 //components
-import WidgetForm from './widgetsForm/widgetForm'
-import WidgetOutput from './widgetOutput/WidgetOutput'
-import WidgetCarousel from './carouselWidget/WidgetCarousel'
-
+import WidgetForm from './widgetsForm/widgetForm';
+import WidgetOutput from './widgetOutput/WidgetOutput';
+import WidgetCarousel from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
-
   state = {
     title: false,
     price: false,
@@ -109,27 +107,26 @@ updateOutputProperty = (e) => {
   render() 
   {
     return (
-    <div className='widget-page-container'>
-    {/* // TODO: handleShow on event checkedCTA */}
+      <div className="widget-page-container">
+        {/* // TODO: handleShow on event checkedCTA */}
 
-        <section className='widget-form-section'>
+        <section className="widget-form-section">
           <h1>Widget Form</h1>
-          < WidgetForm 
-          handleSubmit={this.handleFormSubmit}
-          handleChange={this.handleFormChange}
+          <WidgetForm
+            handleSubmit={this.handleFormSubmit}
+            handleChange={this.handleFormChange}
           />
         </section>
 
-    {/* // TODO: Render Widget */}
+        {/* // TODO: Render Widget */}
 
-        <section className='widget-render-section'>
+        <section className="widget-render-section">
           <h1>Rendered Widget</h1>
-          
-          <WidgetCarousel />
 
+          <WidgetCarousel />
         </section>
 
-      {/* // TODO: Render Exportable Code */}
+        {/* // TODO: Render Exportable Code */}
 
         <section className='widget-out-section'>
         <div>
@@ -138,9 +135,9 @@ updateOutputProperty = (e) => {
           < WidgetOutput />
           <button onClick={this.updateOutputProperty}>I am a button, click me</button>
         </section>
-    </div>
-    )
+      </div>
+    );
   }
 }
 
-export { WidgetPage }
+export { WidgetPage };
