@@ -2,7 +2,7 @@
   "name": "widgetfactory",
   "description": "A widget platform that can be used externally",
   "scripts": {},
-  "env": {
+  "environment": {
     "MONGODB_URI": {
       "required": true
     }

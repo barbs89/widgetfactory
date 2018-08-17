@@ -1,33 +1,32 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const widgetRoutes = require('./routers/widgetsRouter.js')
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const widgetRoutes = require('./routers/widgetsRouter.js');
 
-
+// const fetchAdds = require('./db/api.js');
 
 // Setup Express Server //
 
 const app = express();
 const port = process.env.PORT || 5000;
-widgetRoutes(app)
+widgetRoutes(app);
 
 // Middleware //
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: "*",
+  origin: '*',
   credentials: true
-}
-app.use(cors(corsOptions))
+};
+app.use(cors(corsOptions));
 
 // API routes
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
-
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
