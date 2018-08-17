@@ -1,7 +1,8 @@
 import React from 'react'
+import classNames from 'classnames'
+import './WidgetOutput.css'
 
 //import style variables
-import './WidgetOutput.css'
 
 class WidgetOutput extends React.Component {
 
@@ -13,23 +14,24 @@ logState = (e) => {
 
 render()
   {
+    const cardProp = classNames('carousel-card', 'borderStyle', 'borderOutline', 'cardColor') 
+
     return (
     <div className='widget-output-container'>
-
     {/* //TODO: Create custom code that links to the variables selected */}
       <div className='carousel-container'>
-        <div id='123456' className='carousel-card'>
+        <div id='123456' className={cardProp}>
 
             <section className='card-header'>
-              <h2 className='cardTitle'>Latvian Wooden Chair</h2>          
-              <h2 className='card-price'>$299</h2>
+              <h2 classNames='cardTitle'>Data Name</h2>          
+              <h2 className={'card-price'}>Data Price</h2>
             </section>
 
             <section className='card-body'>
-              <p className='card-copy'>this is a special lativan chair. It is made by Ron Swonson</p>
+              <p className='card-copy'>Data description ..... .... .... .... .... ... ..</p>
             </section>
 
-            <section className='botton'>
+            <section className='button'>
               <button className='cta-button'>Buy Now</button>
             </section>
                     

@@ -1,7 +1,7 @@
 
 /* defined variables */
 :root {
-  --backgroundColor: #000000; /* done*/
+  --backgroundColor: #000000;
   --buttonColor: #ca7a7a;
   --cardColor: #000000;
   --borderOutline: solid;
@@ -25,6 +25,7 @@
 
 .carousel-card {
   padding: 1em;
+  border-style: var(--borderOutline);
   border-radius: var(--borderStyle);
   background-color: var(--cardColor);
   font-family: var(--font);
