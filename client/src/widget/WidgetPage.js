@@ -11,36 +11,38 @@ import WidgetCarousel from './carouselWidget/WidgetCarousel'
 
 class WidgetPage extends React.Component {
 
-state = {
-  title: false,
-  price: false,
-  description: false,
-  callToAction: false,
-  callToActionDesc: '',
-  backgroundColor: '#C4C4C4',
-  cardColor: '#F0F0F0',
-  buttonColor: '#5CC5CF',
-  border: 'none',
-  borderStyle: false,
-  font: '',
-  fontStyle: '',
-  fontColor: '',
-  fontSize: '',
-  alignment: ''
-}
+  state = {
+    title: false,
+    price: false,
+    description: false,
+    callToAction: false,
+    borderOutline: 'none',
+    borderStyle: '.3em',
+    cardColor: '#F0F0F0',
+    callToActionDesc: 'Buy Now',
+    backgroundColor: '#C4C4C4',
+    buttonColor: '#5CC5CF',
+    headerWeight: 'bold',
+    font: 'Roboto',
+    fontStyle: 'italic',
+    fontColor: 'F0F0F0',
+    headerFontSize: '16px',
+    bodyFontSize: '14px',
+    fontAlignment: 'left'
+  }
+
+
 
 // Functions
 handleFormChange = (e) => {
   const target = e.target
   const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
   const name = target.name
-
   e.preventDefault()
-  console.log(`input namos ${name}. input value is ${value}`)
+  console.log(`Key is ${name} with a value of ${value}`)
   this.setState({
     [name]: value,
   })
-  console.log(this.state)
 }
 
 handleFormSubmit = (e) => {
@@ -54,6 +56,33 @@ handleFormSubmit = (e) => {
   console.log(this.state)
 }
 
+updateOutputProperty = (e) => {
+  e.preventDefault()
+  const keys = Object.keys(this.state)
+  const values = Object.values(this.state)
+  const arrayLength = keys.length
+  // console.log(keys)
+  // console.log(values)
+  // console.log(document.styleSheets[1])
+
+  for (let i = 0; i < arrayLength; i++) {
+    console.log(keys[i])
+    console.log(values[i])
+
+    // TODO: if this className return null, skip
+
+    document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
+
+
+    // element.style.setProperty(`--${keys[i]}`, values[i])   
+  }
+  // const element = document.getElementsByClassName(keys)
+  // console.log(element)
+  // element.style.setProperty(`--${keys}`, values)
+}
+
+
+
 // TODO: handleShow
 // handleShow = () => {
 //   const ctaChecked = document.getElementsByName('callToAction')
@@ -65,17 +94,20 @@ handleFormSubmit = (e) => {
 //   }
 // }
 
-// TODO: Handle Update Property
 
-updateOutputProperty = (e) => {
-  e.preventDefault()
-  const element = document.getElementById(123456)
-  element.style.setProperty('--color', this.state.backgroundColor)
-}
+// TODO: Handle Update Property (original)
+
+// updateOutputProperty = (e) => {
+//   e.preventDefault()
+//   const element = document.getElementById(123456)
+//   element.style.setProperty('--cardColor', this.state.cardColor)
+// }
+
 
 // TODO: Render Widget Code Snippet
 
-  render() {
+  render() 
+  {
     return (
     <div className='widget-page-container'>
     {/* // TODO: handleShow on event checkedCTA */}
@@ -100,8 +132,9 @@ updateOutputProperty = (e) => {
       {/* // TODO: Render Exportable Code */}
 
         <section className='widget-out-section'>
+        <div>
           <h1>Widget Output</h1>
-
+        </div>
           < WidgetOutput />
           <button onClick={this.updateOutputProperty}>I am a button, click me</button>
         </section>
