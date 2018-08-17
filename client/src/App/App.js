@@ -8,20 +8,26 @@ import './app.css';
 import axios from 'axios'
 
 class App extends Component {
+  
   state = {
-    response: '',
-    adverts: null
+    adverts: ''
   };
 
+  
   componentDidMount() {
-    
+    // Requests the data from the server and sets the data to state.adverts //
     axios.get('http://localhost:5000/widgets')  
-      .then(response =>  console.log(response.data))
-      .catch(error => console.info(error.message))
-    
+    .then(response =>  {
+      this.setState({ adverts: response.data})
+      console.log(this.state.adverts)})
+    .catch(error => console.info(error.message))
   };
-
+  
   render() {
+    const adverts = this.state.adverts
+    if(!adverts) {
+      return <h1>Loading...</h1>
+    }
     return (
       <BrowserRouter >
       <div className="App">
@@ -37,7 +43,7 @@ class App extends Component {
           }} />
 
           < Route exact path="/widgets" render={() => {
-          return <WidgetPage fetchAdds={ this.fetchAdds }/> }}/>
+          return <WidgetPage fetchAdds={ this.fetchAdds } adverts={this.state.adverts}/> }}/>
         
       </div>
     </ BrowserRouter >

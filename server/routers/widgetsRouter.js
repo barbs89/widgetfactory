@@ -2,9 +2,9 @@ const express = require('express')
 const Widget = require('../models/Widget')
 const fetchAdds = require('../db/api.js')
 
-// place relevant controllers
-
 // Place relevant routes
+
+// Connects App.js(Client side) with fetchAdds in api.js(Server side). //
 const widgetRoutes = (app) => {
   app.get('/widgets', (req, res, next) => {
     fetchAdds()
