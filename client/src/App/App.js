@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { WidgetPage } from '../widget/WidgetPage';
-import Home from '../home/HomePage';
+import Home from '../Home/HomePage';
 // import Navbar from '../Navbar'
 import logo from './logo.svg';
 import './app.css';
@@ -13,27 +13,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    //   fetch('http://localhost:5000/widgets')
-    //   .then(response => response.json())
-    //   .then(response => {
-    //    console.log(response)
-    //     // const adds = advertData.map(parseAdds)
-    //   })
-    //   .catch(err => console.error(err.message))
-
-    this.callApi()
-      .then((res) => this.setState({ response: res.express }))
-      .catch((err) => console.log(err));
-  }
-
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-    // Requests the data from the server and sets the data to state.adverts //
     axios
       .get('http://localhost:5000/widgets')
       .then((response) => {
@@ -41,7 +20,7 @@ class App extends Component {
         console.log(this.state.adverts);
       })
       .catch((error) => console.info(error.message));
-  };
+  }
 
   render() {
     const adverts = this.state.adverts;
