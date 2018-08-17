@@ -15,7 +15,7 @@ fetchAdds = () =>
     return { data, status };
   });
 
-// const instance = axios.create({
+// const instance =  axios.create({
 //   baseURL: 'https://houseofhome.staging.marketplacer.com/api/v2/client/adverts',
 //   timeout: 15000,
 //   headers: {'Authorization': `Bearer ${process.env.API}`}
