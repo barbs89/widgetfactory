@@ -1,6 +1,6 @@
 const express = require('express')
 const Widget = require('../models/Widget')
-const fetchAdds = require('../db/api.js')
+const fetchAdds  = require('../db/api.js')
 
 // Place relevant routes
 
@@ -10,7 +10,7 @@ const widgetRoutes = (app) => {
     fetchAdds()
     .then(({ data, status }) => {
       console.log('Hi there')
-      console.log(data)
+      console.log(data.data)
       res.status(status).json(data)
     })
     .catch((err) => {
@@ -18,9 +18,6 @@ const widgetRoutes = (app) => {
     })
   })
 }
-
-
-
 
 module.exports = widgetRoutes
 

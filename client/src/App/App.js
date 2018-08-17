@@ -19,8 +19,8 @@ class App extends Component {
     axios.get('http://localhost:5000/widgets')  
     .then(response =>  {
       this.setState({ adverts: response.data})
-      console.log(this.state.adverts)})
-    .catch(error => console.info(error.message))
+      console.log(this.state.adverts.data.id)})
+    .catch((error) => console.info(error.message))
   };
   
   render() {
