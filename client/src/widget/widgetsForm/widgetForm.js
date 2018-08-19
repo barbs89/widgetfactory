@@ -81,25 +81,14 @@ class WidgetForm extends React.Component {
               </select>
             </label>
 
-            <label>Main Size
-              <select name='bodyFontSize' onChange={this.props.handleChange}>
+            <label>Size
+              <select name='fontSize' onChange={this.props.handleChange}>
                 <option value='null'>Select a size</option>
                 <option value='10px'>10px</option>
                 <option value='12px'>12px</option>
                 <option value='14px'>14px</option>
                 <option value='16px'>16px</option>
                 <option value='18px'>18px</option>
-              </select>
-            </label>
-
-            <label>Header Size
-              <select name='headerFontSize' onChange={this.props.handleChange}>
-                <option value='null'>Select a size</option>
-                <option value='14px'>14px</option>
-                <option value='16px'>16px</option>
-                <option value='18px'>18px</option>
-                <option value='20px'>20px</option>
-                <option value='24px'>24px</option>
               </select>
             </label>
 

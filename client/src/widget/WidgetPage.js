@@ -24,8 +24,7 @@ class WidgetPage extends React.Component {
     font: 'Roboto',
     fontStyle: 'italic',
     fontColor: 'F0F0F0',
-    headerFontSize: '16px',
-    bodyFontSize: '14px',
+    fontSize: '14px',
     fontAlignment: 'left'
   }
 
@@ -54,6 +53,21 @@ handleFormSubmit = (e) => {
   })
   console.log(this.state)
 }
+
+// // Hex to RGB converter
+// hexToRgb = (hex) => {
+//     let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+//     return result ? {
+//         r: parseInt(result[1], 16),
+//         g: parseInt(result[2], 16),
+//         b: parseInt(result[3], 16)
+//       } : null
+//       .then((r) => {
+//         console.log(r.)
+//       })  
+// }
+
+
 
 updateOutputProperty = (e) => {
   e.preventDefault()

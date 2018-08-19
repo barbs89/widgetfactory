@@ -15,7 +15,7 @@ const Slider = (props) => {
         {Slides.map((slide) => {
           return (
             <div className="slide" key={slide.id} style={_divStyle(slide)}>
-              <section className='headerCard'>
+              <section className='slider-card-headers'>
                 <h2 className="title-card card">{slide.title}</h2>
                 <h2 className="price-card card">${slide.price}</h2>
               </section>
