@@ -54,19 +54,22 @@ handleFormSubmit = (e) => {
   console.log(this.state)
 }
 
-// // Hex to RGB converter
-// hexToRgb = (hex) => {
-//     let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-//     return result ? {
-//         r: parseInt(result[1], 16),
-//         g: parseInt(result[2], 16),
-//         b: parseInt(result[3], 16)
-//       } : null
-//       .then((r) => {
-//         console.log(r.)
-//       })  
-// }
+const colortype = "#ca7a7a"
 
+hexToRgb = (hex) => {
+  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  let value = {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16),
+  }
+  return value
+}
+
+RgbToString = (hex) => {
+  let newString = Object.values(hexToRgb(hex)).join(`, `)
+  return newString
+}
 
 
 updateOutputProperty = (e) => {
