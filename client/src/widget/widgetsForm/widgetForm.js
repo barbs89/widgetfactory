@@ -25,7 +25,7 @@ class WidgetForm extends React.Component {
         </div>
           <section className='widget-form-section'>
             
-            <input onClick={this.props.handleChange} type='checkbox' id='title' name='title'/>
+            <input onClick={this.props.handleCheck} type='checkbox' id='title' name='title'/>
             <label htmlFor='title' >Include Title</label>
             
             <input onChange={this.props.handleChange} type='checkbox' name='description' id='description'/>
@@ -46,19 +46,19 @@ class WidgetForm extends React.Component {
           <section className='widget-form-section'>
           
           <label>Background Colour
-            <input onChange={this.props.handleColor.bind(this)}type='color' name='backgroundColor' defaultValue='#C4C4C4'/>
+            <input onChange={this.props.handleColor.bind(this)} type='color' name='backgroundColor' defaultValue='#C4C4C4'/>
           </label>
 
           <label>Card Colour
-            <input onChange={this.props.handleChange} type='color' defaultValue='#F0F0F0' name='cardColor'/>
+            <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#F0F0F0' name='cardColor'/>
           </label>
 
           <label>Button Colour
-            <input onChange={this.props.handleChange} type='color' defaultValue='#5CC5CF' name='buttonColor'/>
+            <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#5CC5CF' name='buttonColor'/>
           </label>
 
           <label>Border
-            <select name='border' onChange={this.props.handleChange}>
+            <select name='borderOutline' onChange={this.props.handleChange}>
               <option value="none">none</option>
               <option value="solid">solid</option>
               <option value="inset">inset</option>
@@ -67,8 +67,8 @@ class WidgetForm extends React.Component {
           </label>
 
           <label>Border Style
-            <input onChange={this.props.handleChange} type='radio' id="border-style-1" name='borderStyle'/>
-            <input onChange={this.props.handleChange} type='radio' id="border-style-2" name='borderStyle'/>
+            <input onChange={this.props.handleRadio} type='radio' value='0' name='borderStyle'/>
+            <input onChange={this.props.handleRadio} type='radio' value='.3em' name='borderStyle'/>
           </label>
 
           {/* // TODO: remove radio default */}
@@ -104,19 +104,19 @@ class WidgetForm extends React.Component {
             </label>
 
             <label>Alignment
-              <input onChange={this.props.handleChange} type='radio' id="alignment1" name='alignment'/>
-              <input onChange={this.props.handleChange} type='radio' id="alignment2" name='alignment'/>
-              <input onChange={this.props.handleChange} type='radio' id="alignment3" name='alignment'/>
-              <input onChange={this.props.handleChange} type='radio' id="alignment4" name='alignment'/>
+              <input onChange={this.props.handleRadio} type='radio' value="left" name='fontAlignment'/>
+              <input onChange={this.props.handleRadio} type='radio' value="center" name='fontAlignment'/>
+              <input onChange={this.props.handleRadio} type='radio' value="right" name='fontAlignment'/>
+              <input onChange={this.props.handleRadio} type='radio' value="justify" name='fontAlignment'/>
             </label>
 
             <label>Style
-              <input onChange={this.props.handleChange} type='radio' id="bold" name='fontStyle'/>
-              <input onChange={this.props.handleChange} type='radio' id="italics" name='fontStyle'/>
+              <input onChange={this.props.handleRadio} type='radio' value="bold" name='fontStyle'/>
+              <input onChange={this.props.handleRadio} type='radio' value="italics" name='fontStyle'/>
             </label>
 
             <label>Font Colour
-              <input onChange={this.props.handleChange} type='color' defaultValue='#5CC5CF' name='fontColor'/>
+              <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#5CC5CF' name='fontColor'/>
             </label>
 
           </section>

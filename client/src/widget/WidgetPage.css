@@ -19,46 +19,18 @@
   --imageCrop: contain;
 }
 
-/* 
-.carousel-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--backgroundColor)
-}
-
-.carousel-card {
-  padding: 1em;
-  border-style: var(--borderOutline);
-  border-radius: var(--borderStyle);
-  background-color: var(--cardColor);
-  font-family: var(--font);
-  text-align: var(--fontAlignment);
-  object-fit: var(--imageCrop); 
-}
-
-.card-header {
-  font-size: var(--headerFontSize);
-  font-style: var(--headerStyle);
-}
-
-.card-body {
-  font-size: var(--bodyFontSize);
-} */
-
-/* .carousel-container {
-  display: flex;
-  align-items: center;
-  background-color: var(--color);
-} */
 /* ---------------- */
-.slider-card-headers {
-  grid-area: header;
-  display: flex;
-  justify-content: space-between;
-  margin: 0rem;
-  font-family: var(--font);
-  font-size: var(--headerFontSize)
+
+.slide {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 0.2fr 1fr 1fr .2fr;
+  grid-template-areas:
+    'header header header header header'
+    'desc desc desc desc desc'
+    '. . . . .'
+    '. . . . . '
+    'cta cta cta cta cta';
 }
 
 .swiper-container {
@@ -77,11 +49,9 @@
   display: flex;
   transition-property: transform;
   box-sizing: content-box;
-  color: rgba(202, 122, 122, .63)
 }
 
 .swiper-slide {
-  /* background: red; */
   flex-shrink: 0;
   height: 100%;
   width: 100px;
@@ -95,14 +65,36 @@
 }
 
 .card {
-  
+  padding: .5em;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-style: var(--borderOutline);
+  border-radius: var(--borderStyle);
+  background-color: var(--cardColor)
 }
 
-.title-card, .price-card{
-  background: var(--backgroundColor);
+.slide {
+  border-radius: var(--borderStyle);
+  color: var(--fontColor);
+  font-size: var(--fontSize);
+  
+}
+
+.slider-card-headers {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  margin: 0rem;
+}
+
+.title-card, .price-card, .desc-card {
+  background-color: var(--backgroundColor);
+  font-family: var(--font);
+  font-style: var(--fontStyle)
+}
+
+.title-card, .price-card {
   grid-area: header;
   margin: 2rem;
 }
@@ -110,23 +102,13 @@
 .desc-card {
   grid-area: desc;
   margin: 0 2rem;
-}
-.cta-card {
-  grid-area: cta;
-  margin: 2rem;
+  text-align: var(--fontAlignment)
 }
 
-.slide {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 0.2fr 1fr 1fr 1fr;
-  grid-template-areas:
-    'header header header header header'
-    'desc desc desc desc desc'
-    '. . . . .'
-    '. . . . . '
-    '. cta cta cta .';
-    font-size: var(--fontSize);
+.cta-card {
+  background: var(--buttonColor);
+  grid-area: cta;
+  margin: 2rem;
 }
 
 /* Arrows */

@@ -14,13 +14,12 @@ class WidgetPage extends React.Component {
     price: false,
     description: false,
     callToAction: false,
+    callToActionDesc: 'Buy Now',
     borderOutline: 'none',
     borderStyle: '.3em',
     cardColor: '#F0F0F0',
-    callToActionDesc: 'Buy Now',
     backgroundColor: '#C4C4C4',
     buttonColor: '#5CC5CF',
-    headerWeight: 'bold',
     font: 'Roboto',
     fontStyle: 'italic',
     fontColor: 'F0F0F0',
@@ -32,7 +31,7 @@ class WidgetPage extends React.Component {
 
 handleFormChange = (e) => {
   const target = e.target
-  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
+  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.value : target.value
   const name = target.name
   e.preventDefault()
   console.log(`Key is ${name} with a value of ${value}`)
@@ -41,17 +40,31 @@ handleFormChange = (e) => {
   })
 }
 
-// handleFormColorChange = (e) => {
-//   const target = e.target
-//   const hex = target.value
-//   const value = RgbToString(hex)
-//   const name = target.name
-//   e.preventDefault()
-//   console.log(`Key is ${name} with a value of ${value}`)
-//   this.setState({
-//     [name]: value,
-//   })
-// }
+handleCheckboxChange = (e) => {
+  const target = e.target
+  const name = target.name
+  if(target.checked === true) {
+    this.setState({ 
+      // [name]: target.checked = true
+      [name]: target.value = true
+    })
+  } else {
+    this.setState({ 
+      // [name]: target.checked = false
+      [name]: target.value = false
+    })
+  }
+}
+
+handleRadioChange = (e) => {
+  const target = e.target
+  const value = target.value
+  const name = target.name
+  this.setState({
+    [name]: value,
+  })
+  console.log(name, value, target)
+}
 
 handleFormSubmit = (e) => {
   e.preventDefault()
@@ -64,34 +77,25 @@ handleFormSubmit = (e) => {
   console.log(this.state)
 }
 
+
+
 updateOutputProperty = (e) => {
   e.preventDefault()
   const keys = Object.keys(this.state)
   const values = Object.values(this.state)
   const arrayLength = keys.length
-
   // console.log(keys)
   // console.log(values)
   // console.log(document.styleSheets[1])
-
   for (let i = 0; i < arrayLength; i++) {
-
     // console.log(keys[i])
     // console.log(values[i])
-    
     document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
   }
-
 }
 
 // Support Functions
 
-
-// rgbToString = (hex) => {
-  //   let newString = Object.values(hexToRgb(hex)).join(`, `)
-  //   return newString
-  // }
-  
 hexToRgb = (hex) => {
   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   let value = {
@@ -115,6 +119,7 @@ handleFormColorChange = (e) => {
 }
 
 // TODO: handleShow
+
 // handleShow = () => {
 //   const ctaChecked = document.getElementsByName('callToAction')
 //   const ctaDesc = document.getElementsByName('callToActionDesc')
@@ -142,21 +147,23 @@ handleFormColorChange = (e) => {
             handleChange={this.handleFormChange}
             handleColor={this.handleFormColorChange}            
             handleHex={this.hexToRgb}
+            handleCheck={this.handleCheckboxChange}
+            handleRadio={this.handleRadioChange}
           />
+          <button onClick={this.updateOutputProperty}>Render Widget</button>
+
         </section>
 
         <section className="widget-render-section">
           <h1>Rendered Widget</h1>
           <WidgetCarousel />
         </section>
-
         {/* // TODO: Render Exportable Code */}
         <section className='widget-out-section'>
         <div>
           <h1>Widget Output</h1>
         </div>
           < WidgetOutput />
-          <button onClick={this.updateOutputProperty}>I am a button, click me</button>
         </section>
       </div>
     );

@@ -18,21 +18,8 @@ render()
     <div className='widget-output-container'>
     {/* //TODO: Create custom code that links to the variables selected */}
       <div className='container'>
-        <div id='123456' className='carousel-card'>
-
-            <section className='card-header'>
-              <h2 className='cardTitle'>Data Name</h2>          
-              <h2 className={'card-price'}>Data Price</h2>
-            </section>
-
-            <section className='card-body'>
-              <p className='card-copy'>Data description ..... .... .... .... .... ... ..</p>
-            </section>
-
-            <section className='button'>
-              <button className='cta-button'>Buy Now</button>
-            </section>
-                    
+        <div className='carousel-card'>
+         <h1>the code output will go here</h1>           
         </div>   
       </div>
     </div>  
