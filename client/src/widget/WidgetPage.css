@@ -17,7 +17,6 @@
   --fontSize: 12px;
   --fontAlignment: justify;
   --imageCrop: contain;
-  --rgbcolor: (rgba(${result} 0.673))
 }
 
 /* 
@@ -78,6 +77,7 @@
   display: flex;
   transition-property: transform;
   box-sizing: content-box;
+  color: rgba(202, 122, 122, .63)
 }
 
 .swiper-slide {

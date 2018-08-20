@@ -3,7 +3,18 @@ import React from 'react'
 // css
 import './widgetForm.css'
 
+
 class WidgetForm extends React.Component {
+
+// hexToRgb = (hex) => {
+//   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+//   let value = {
+//     r: parseInt(result[1], 16),
+//     g: parseInt(result[2], 16),
+//     b: parseInt(result[3], 16),
+//   }
+//   return Object.values(value).join(`, `)
+// }
 
   render () {
     return (
@@ -35,7 +46,7 @@ class WidgetForm extends React.Component {
           <section className='widget-form-section'>
           
           <label>Background Colour
-            <input onChange={this.props.handleChange} type='color' name='backgroundColor' defaultValue='#C4C4C4'/>
+            <input onChange={this.props.handleColor.bind(this)}type='color' name='backgroundColor' defaultValue='#C4C4C4'/>
           </label>
 
           <label>Card Colour

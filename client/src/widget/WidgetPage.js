@@ -28,8 +28,6 @@ class WidgetPage extends React.Component {
     fontAlignment: 'left'
   }
 
-
-
 // Functions
 
 handleFormChange = (e) => {
@@ -43,6 +41,18 @@ handleFormChange = (e) => {
   })
 }
 
+// handleFormColorChange = (e) => {
+//   const target = e.target
+//   const hex = target.value
+//   const value = RgbToString(hex)
+//   const name = target.name
+//   e.preventDefault()
+//   console.log(`Key is ${name} with a value of ${value}`)
+//   this.setState({
+//     [name]: value,
+//   })
+// }
+
 handleFormSubmit = (e) => {
   e.preventDefault()
   const target = e.target
@@ -54,8 +64,34 @@ handleFormSubmit = (e) => {
   console.log(this.state)
 }
 
-const colortype = "#ca7a7a"
+updateOutputProperty = (e) => {
+  e.preventDefault()
+  const keys = Object.keys(this.state)
+  const values = Object.values(this.state)
+  const arrayLength = keys.length
 
+  // console.log(keys)
+  // console.log(values)
+  // console.log(document.styleSheets[1])
+
+  for (let i = 0; i < arrayLength; i++) {
+
+    // console.log(keys[i])
+    // console.log(values[i])
+    
+    document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
+  }
+
+}
+
+// Support Functions
+
+
+// rgbToString = (hex) => {
+  //   let newString = Object.values(hexToRgb(hex)).join(`, `)
+  //   return newString
+  // }
+  
 hexToRgb = (hex) => {
   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   let value = {
@@ -63,30 +99,19 @@ hexToRgb = (hex) => {
     g: parseInt(result[2], 16),
     b: parseInt(result[3], 16),
   }
-  return value
+  return `rgb(${Object.values(value).join(`, `)})`
 }
 
-RgbToString = (hex) => {
-  let newString = Object.values(hexToRgb(hex)).join(`, `)
-  return newString
-}
-
-
-updateOutputProperty = (e) => {
+handleFormColorChange = (e) => {
+  const target = e.target
+  const value = target.value
+  const name = target.name
+  const rgbVal = this.hexToRgb(value)
   e.preventDefault()
-  const keys = Object.keys(this.state)
-  const values = Object.values(this.state)
-  const arrayLength = keys.length
-  // console.log(keys)
-  // console.log(values)
-  // console.log(document.styleSheets[1])
-
-  for (let i = 0; i < arrayLength; i++) {
-    // console.log(keys[i])
-    // console.log(values[i])
-    document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
-  }
-
+  console.log(`Key is ${name} with a value of ${rgbVal}`)
+  this.setState({
+    [name]: rgbVal,
+  })
 }
 
 // TODO: handleShow
@@ -115,6 +140,8 @@ updateOutputProperty = (e) => {
           <WidgetForm
             handleSubmit={this.handleFormSubmit}
             handleChange={this.handleFormChange}
+            handleColor={this.handleFormColorChange}            
+            handleHex={this.hexToRgb}
           />
         </section>
 
