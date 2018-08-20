@@ -12,19 +12,21 @@ class App extends Component {
     adverts: ''
   };
 
+
   componentDidMount() {
     axios
       .get('http://localhost:5000/widgets')
       .then((response) => {
         this.setState({ adverts: response.data });
         console.log(this.state.adverts);
+        console.log(response)
       })
       .catch((error) => console.info(error.message));
   }
 
   render() {
     const adverts = this.state.adverts;
-    if (!adverts) {
+    if (adverts) {
       return <h1>Loading...</h1>;
     }
     return (
