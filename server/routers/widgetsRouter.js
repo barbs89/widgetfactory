@@ -10,7 +10,8 @@ const widgetRoutes = (app) => {
       res.json({
          adverts: adds,
          images: images
-      })})
+      })
+    })
     ).catch(err => console.log(err.message));
       })
     }

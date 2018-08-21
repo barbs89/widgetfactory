@@ -5,6 +5,10 @@ const axios = require('axios');
 
 // Axios request that interacts with MP API. The widgetsRouter calls this funciton and connects with the client side axios request. //
 
+let id = 200357509
+const images = '/images'
+const imageAPI = process.env.API_IMAGE + id + images,
+
 fetchAdds = () =>
   axios({
     url: process.env.API_URI,
@@ -12,13 +16,16 @@ fetchAdds = () =>
       Authorization: `Bearer ${process.env.API}`
     }
   }).then(({ data, status }) => {
+    id = data.data.id
+    console.log(imageAPI)
     return { data, status };
-  }).catch(err =>  console.log(err))
+  })
+  .catch(err =>  console.log(err))
   
 
   fetchImages = () =>
     axios({
-      url: process.env.API_IMAGE,
+      url: imageAPI,
       headers: {
         Authorization: `Bearer ${process.env.API}`
       }
