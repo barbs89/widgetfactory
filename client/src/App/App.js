@@ -34,13 +34,14 @@ class App extends Component {
       .then((response) => {
         this.setState({ adverts: response.data });
         console.log(this.state.adverts);
+        console.log(response);
       })
       .catch((error) => console.info(error.message));
   }
 
   render() {
     // const adverts = this.state.adverts;
-    // if (!adverts) {
+    // if (adverts) {
     //   return <h1>Loading...</h1>;
     // }
     return (
