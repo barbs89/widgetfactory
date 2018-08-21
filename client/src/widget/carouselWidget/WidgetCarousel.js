@@ -16,7 +16,7 @@ const WidgetCarousel = (props) => {
   }
 
   return (
-    <div>
+    <div className='slider-container'>
       <Slider params={params} showImage="true" />
     </div>
   );
