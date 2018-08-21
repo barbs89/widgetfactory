@@ -1,38 +1,66 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const nocache = require('nocache');
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const widgetRoutes = require('./routers/widgetsRouter.js');
 
-// const fetchAdds = require('./db/api.js');
+const { homeRouter } = require('./routers/homeRouter');
+const { usersRouter } = require('./routers/usersRouter');
+const { widgetsRouter } = require('./routers/widgetsRouter');
+
+// const widgetRoutes = require('./routers/widgetsRouter.js');
 
 // Setup Express Server //
 
 const app = express();
 const port = process.env.PORT || 5000;
-widgetRoutes(app);
+// const API_DIR = process.env.API_URI;
+// homeRouter(app);
+widgetsRouter(app);
 
 // Middleware //
 app.use(bodyParser.json());
-
+app.use(express.json());
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
+app.use(nocache());
 const corsOptions = {
   origin: '*',
   credentials: true
 };
 app.use(cors(corsOptions));
 
+//To prevent errors from Cross Origin Resource Sharing, we will set
+//our headers to allow CORS with middleware like so:
+// app.use(function(req, res, next) {
+//  res.setHeader(`Access-Control-Allow-Origin, `*`);
+//  res.setHeader(`Access-Control-Allow-Credentials`, `true`);
+//  res.setHeader(‘Access-Control-Allow-Methods’, ‘GET,HEAD,OPTIONS,POST,PUT,DELETE’);
+//  res.setHeader(‘Access-Control-Allow-Headers’, ‘Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers’);
+// //and remove cacheing so we get the most recent comments
+//  res.setHeader(‘Cache-Control’, ‘no-cache’);
+//  next();
+// });
+
 // API routes
+app.use('/', homeRouter);
+app.use('/login', usersRouter);
+app.use('/widgets', widgetsRouter);
+// widgetsRouter(app);
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
-if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, 'client/build')));
+app.all('*', (req, response) => {
+  console.log('Returning a 404 from the catch-all route');
+  return response.sendStatus(404);
+});
 
-  // Handle React routing, return all requests to React app
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
   app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });

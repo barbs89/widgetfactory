@@ -3,8 +3,9 @@ import React from 'react';
 class Login extends React.Component {
   state = {
     loading: false,
-    email: null,
-    password: null
+    email: '',
+    password: '',
+    error: null
   };
 
   handleOnChange = (e) => {
@@ -23,7 +24,7 @@ class Login extends React.Component {
             placeholder="email"
             value={this.state.email}
             onChange={this.handleOnChange}
-            require
+            require="true"
           />
           <input
             name="password"
@@ -31,7 +32,7 @@ class Login extends React.Component {
             placeholder="password"
             value={this.state.password}
             onChange={this.handleOnChange}
-            require
+            require="true"
           />
           <button type="submit">
             {this.state.loading ? 'Loading' : 'Login'}

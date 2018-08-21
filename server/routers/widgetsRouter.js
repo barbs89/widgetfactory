@@ -2,11 +2,10 @@ const express = require('express');
 const Widget = require('../models/Widget');
 const fetchAdds = require('../db/api.js');
 
-// Place relevant routes
+const widgetRoutes = express.Router();
 
-// Connects App.js(Client side) with fetchAdds in api.js(Server side). //
-const widgetRoutes = (app) => {
-  app.get('/widgets', (req, res, next) => {
+const widgetsRouter = (widgetRoutes) => {
+  widgetRoutes.get('/widgets', (req, res, next) => {
     fetchAdds()
       .then(({ data, status }) => {
         console.log('Hi there');
@@ -19,4 +18,4 @@ const widgetRoutes = (app) => {
   });
 };
 
-module.exports = widgetRoutes;
+module.exports = { widgetsRouter, widgetRoutes };

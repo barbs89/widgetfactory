@@ -3,7 +3,7 @@ const axios = require('axios');
 const { mongoose } = require('./mongoose');
 // const widgetsRouter = require('../routers/widgetsRouter.js');
 
-// Axios request that interacts with MP API. The widgetsRouter calls this funciton and connects with the client side axios request. //
+// Axios request that interacts with MP API. The widgetsRouter calls this function and connects with the client side axios request. //
 
 fetchAdds = () =>
   axios({
@@ -14,6 +14,16 @@ fetchAdds = () =>
   }).then(({ data, status }) => {
     return { data, status };
   });
+
+// fetchImg = () =>
+//   axios({
+//     url: process.env.API_IMG,
+//     headers: {
+//       Authorization: `Bearer ${process.env.API}`
+//     }
+//   }).then(({ data, status }) => {
+//     return { data, status };
+//   });
 
 // const instance =  axios.create({
 //   baseURL: 'https://houseofhome.staging.marketplacer.com/api/v2/client/adverts',

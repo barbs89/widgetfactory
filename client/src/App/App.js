@@ -1,11 +1,27 @@
+//Packages & Dependencies
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { WidgetPage } from '../widget/WidgetPage';
-import Home from '../home/HomePage';
-// import Navbar from '../Navbar'
+import { HomePage } from '../Home/HomePage';
+import axios from 'axios';
+//Page Components
+
+// import Navbar from '../Navbar';
 import logo from './logo.svg';
 import './app.css';
-import axios from 'axios';
+
+// const AuthRoute = ({ component: Component, ...rest }) => (
+//   <Route
+//     {...rest}
+//     render={(props) =>
+//       checkAuth() ? (
+//         <Component {...props} />
+//       ) : (
+//         <Redirect to={{ pathname: '/login' }} />
+//       )
+//     }
+//   />
+// );
 
 class App extends Component {
   state = {
@@ -23,10 +39,7 @@ class App extends Component {
   }
 
   render() {
-    const adverts = this.state.adverts;
-    if (!adverts) {
-      return <h1>Loading...</h1>;
-    }
+    //
     return (
       <BrowserRouter>
         <div className="App">
@@ -41,7 +54,7 @@ class App extends Component {
             exact
             path="/"
             render={() => {
-              return <Home />;
+              return <HomePage />;
             }}
           />
 
@@ -57,6 +70,18 @@ class App extends Component {
               );
             }}
           />
+          {/* <Route
+              exact
+              path="/widgets/1"
+              render={() => {
+                return (
+                  <WidgetPage
+                    fetchAdds={this.fetchAdds}
+                    adverts={this.state.adverts}
+                  />
+                );
+              }}
+            /> */}
         </div>
       </BrowserRouter>
     );
