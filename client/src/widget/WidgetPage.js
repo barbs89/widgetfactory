@@ -77,8 +77,6 @@ handleFormSubmit = (e) => {
   console.log(this.state)
 }
 
-
-
 updateOutputProperty = (e) => {
   e.preventDefault()
   const keys = Object.keys(this.state)
@@ -141,7 +139,6 @@ handleFormColorChange = (e) => {
 
         {/* // TODO: handleShow on event checkedCTA */}
         <section className="widget-form-section">
-          <h1>Widget Form</h1>
           <WidgetForm
             handleSubmit={this.handleFormSubmit}
             handleChange={this.handleFormChange}
