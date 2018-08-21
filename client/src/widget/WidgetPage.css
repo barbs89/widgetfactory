@@ -34,11 +34,7 @@
 }
 
 .swiper-container {
-  height: 400px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+  margin: 0 5vw 0 5vw;
 }
 
 .swiper-wrapper {

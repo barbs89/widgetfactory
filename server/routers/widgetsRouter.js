@@ -1,22 +1,23 @@
-const express = require('express');
-const Widget = require('../models/Widget');
-const fetchAdds = require('../db/api.js');
+const { fetchAdds, fetchImages } = require('../db/api.js');
+const axios = require('axios');
 
-// Place relevant routes
 
-// Connects App.js(Client side) with fetchAdds in api.js(Server side). //
+// The following function recieves two lots of data from the API (1. an advert and 2. an image to that)
 const widgetRoutes = (app) => {
-  app.get('/widgets', (req, res, next) => {
-    fetchAdds()
-      .then(({ data, status }) => {
-        console.log('Hi there');
-        console.log(data);
-        res.status(status).json(data);
+    app.get('/widgets', (req, res, next) =>{
+      axios.all([fetchAdds(),fetchImages()])
+      .then(axios.spread(function(adds,images){
+      res.json({
+         adverts: adds,
+         images: images
+      })})
+    ).catch(err => console.log(err.message));
       })
-      .catch((err) => {
-        res.status(500).json(err.message);
-      });
-  });
-};
+    }
+  
+
+
+
 
 module.exports = widgetRoutes;
+
