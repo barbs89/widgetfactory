@@ -1,20 +1,10 @@
-require('dotenv').config()
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-// const jwt = require('jsonwebtoken')
+require('dotenv').config();
+const mongoose = require('mongoose');
 
-const UserSchema = new Schema({
-  email: String,
-  password: String,
-  accessKey: String,
-  admin: Boolean,
-  firstName: String,
-  lastName: String,
-  company: String,
-})
+const user = mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  email: { type: String, required: true },
+  password: { type: String, required: true }
+});
 
-const User = mongoose.model('User', UserSchema)
-
-module.exports = {
-  User
-}
+module.exports = mongoose.model('User', user);

@@ -5,7 +5,7 @@ const homeRouter = express.Router();
 // const usersController = require('../controllers/usersController')
 
 // Place relevant routes
-homeRouter.get('/', (req, res, next) => {
+homeRouter.get('/', (req, res) => {
   res.send('hello form the users root page');
   console.log('hello from root page');
 });

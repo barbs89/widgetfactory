@@ -1,14 +1,21 @@
 //Packages & Dependencies
 import React, { Component } from 'react';
+// import { Security, ImplicitCallback } from '@okta/okta-react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { WidgetPage } from '../widget/WidgetPage';
 import { HomePage } from '../Home/HomePage';
-import axios from 'axios';
+// import axios from 'axios';
 //Page Components
 
 // import Navbar from '../Navbar';
 import logo from './logo.svg';
 import './app.css';
+
+// const config = {
+//   issuer: 'https://{yourOktaDomain}/oauth2/default',
+//   redirect_uri: window.location.origin + '/implicit/callback',
+//   client_id: '{clientId}'
+// };
 
 // const AuthRoute = ({ component: Component, ...rest }) => (
 //   <Route
@@ -29,14 +36,14 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get('http://localhost:5000/widgets')
-      .then((response) => {
-        this.setState({ adverts: response.data });
-        console.log(this.state.adverts);
-        console.log(response);
-      })
-      .catch((error) => console.info(error.message));
+    // axios
+    //   .get('http://localhost:5000/widgets')
+    //   .then((response) => {
+    //     this.setState({ adverts: response.data });
+    //     console.log(this.state.adverts);
+    //     console.log(response);
+    //   })
+    //   .catch((error) => console.info(error.message));
   }
 
   render() {

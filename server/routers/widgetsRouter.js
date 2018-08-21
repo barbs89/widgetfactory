@@ -1,4 +1,4 @@
-const { fetchAdds, fetchImages } = require('../db/api.js');
+const { fetchAdds } = require('../db/api.js');
 
 // Connects App.js(Client side) with fetchAdds in api.js(Server side). //
 // const widgetRoutes = (app) => {
@@ -21,19 +21,20 @@ const widgetsRouter = (app) => {
     fetchAdds()
       .then(({ data, status }) => {
         res.status(status).json(data);
+        console.log({ data, status });
         return { data };
       })
       .catch((err) => {
         res.json(err.message);
       });
-    fetchImages()
-      .then(({ data, status }) => {
-        res.status(status).json(data);
-        return { status };
-      })
-      .catch((err) => {
-        res.json(err.message);
-      });
+    // fetchImages()
+    //   .then(({ data, status }) => {
+    //     res.status(status).json(data);
+    //     return { status };
+    //   })
+    //   .catch((err) => {
+    //     res.json(err.message);
+    //   });
   });
 };
 
