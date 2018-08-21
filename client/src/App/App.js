@@ -31,9 +31,9 @@ class App extends Component {
 
   render() {
     const adverts = this.state.adverts;
-    if (!adverts) {
-      return <h1>Loading...</h1>;
-    }
+    // if (!adverts) {
+    //   return <h1>Loading...</h1>;
+    // }
     return (
       <BrowserRouter>
         <div className="App">
