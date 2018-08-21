@@ -33,4 +33,39 @@
 }
 
 /* Form icons and buttons */
+/* 
+[type='radio']:checked + span {
+  background-color: #5CC5CF;
+} */
 
+.ReactIcon {
+  width: 100px;
+}
+.IconBackground {
+  fill: #333331
+}
+[type=radio] {
+  opacity: 0;
+}
+label {
+  cursor: pointer;
+}
+
+[type=radio]:checked + label .IconBackground {
+  fill: #5CC5CF;
+}
+
+/* Border Styles - Icon  */
+
+.BorderRoundIcon-1 {
+  fill-opacity: 0;
+}
+.BorderRoundIcon-3 {
+  fill: #fff;
+}
+.BorderSharpIcon-1 {
+  fill-opacity: 0;
+}
+.BorderSharpIcon-3 {
+  fill: #fff;
+}

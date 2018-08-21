@@ -2,19 +2,11 @@ import React from 'react'
 
 // css
 import './widgetForm.css'
-
+// icon comps
+import {BorderRoundIcon} from '../../Assets/icons/icons.js'
+import {BorderSharpIcon} from '../../Assets/icons/icons.js'
 
 class WidgetForm extends React.Component {
-
-// hexToRgb = (hex) => {
-//   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-//   let value = {
-//     r: parseInt(result[1], 16),
-//     g: parseInt(result[2], 16),
-//     b: parseInt(result[3], 16),
-//   }
-//   return Object.values(value).join(`, `)
-// }
 
   render () {
     return (
@@ -25,16 +17,16 @@ class WidgetForm extends React.Component {
         </div>
           <section className='widget-form-section'>
             
-            <input onClick={this.props.handleCheck} type='checkbox' id='title' name='title'/>
-            <label htmlFor='title' >Include Title</label>
+            <input onClick={this.props.handleCheck} onChange={this.props.handleShow} type='checkbox' id='title' name='titleCard'/>
+            <label htmlFor='title'>Include Title</label>
             
-            <input onChange={this.props.handleChange} type='checkbox' name='description' id='description'/>
+            <input onClick={this.props.handleCheck} type='checkbox' id='description' name='descCard'/>
             <label htmlFor='description'>Include Description</label>
             
-            <input onChange={this.props.handleChange} type='checkbox' name='price'/>
+            <input onClick={this.props.handleCheck} type='checkbox' name='priceCard'/>
             <label htmlFor='price'>Include Price</label>
 
-            <input onChange={this.props.handleChange} type='checkbox' name='callToAction'/>
+            <input onClick={this.props.handleCheck} type='checkbox' name='ctaCard'/>
             <label htmlFor='callToAction' >Include Call to Action</label>
             <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...'/>
 
@@ -57,19 +49,27 @@ class WidgetForm extends React.Component {
             <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#5CC5CF' name='buttonColor'/>
           </label>
 
-          <label>Border
-            <select name='borderOutline' onChange={this.props.handleChange}>
-              <option value="none">none</option>
-              <option value="solid">solid</option>
-              <option value="inset">inset</option>
-              <option value="outset">outset</option>
-            </select>
+        <section className='border-outline'>
+          <select name='borderOutline' onChange={this.props.handleChange}>
+            <option value="none">none</option>
+            <option value="solid">solid</option>
+            <option value="inset">inset</option>
+            <option value="outset">outset</option>
+          </select>
+        </section>
+        
+        <section className='border-styles'>
+          <h4>Border Styles</h4>
+          <input onChange={this.props.handleRadio} type='radio' value='0' id='border-sharp' name='borderStyle'/>
+          <label htmlFor='border-sharp'>
+            <BorderSharpIcon />
           </label>
-
-          <label>Border Style
-            <input onChange={this.props.handleRadio} type='radio' value='0' name='borderStyle'/>
-            <input onChange={this.props.handleRadio} type='radio' value='.3em' name='borderStyle'/>
+          <input className='border-smooth' onChange={this.props.handleRadio} type='radio' value='.3em' id='border-smooth' name='borderStyle'/>
+          <label htmlFor='border-smooth'>
+            <BorderRoundIcon />
           </label>
+        </section>
+          
 
           {/* // TODO: remove radio default */}
 

@@ -10,7 +10,10 @@ import {WidgetCarousel} from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
   state = {
-    title: false,
+    titleCard: 'hidden',
+    priceCard: 'hidden',
+    descCard: 'hidden',
+    ctaCard: 'hidden',
     price: false,
     description: false,
     callToAction: false,
@@ -45,14 +48,14 @@ handleCheckboxChange = (e) => {
   const name = target.name
   if(target.checked === true) {
     this.setState({ 
-      // [name]: target.checked = true
-      [name]: target.value = true
+      [name]: target.value = 'visible'
     })
-  } else {
+    console.log(this.state)
+  } else if(target.checked === false) {
     this.setState({ 
-      // [name]: target.checked = false
-      [name]: target.value = false
+      [name]: target.value = 'hidden'
     })
+    console.log(this.state)
   }
 }
 
@@ -82,12 +85,8 @@ updateOutputProperty = (e) => {
   const keys = Object.keys(this.state)
   const values = Object.values(this.state)
   const arrayLength = keys.length
-  // console.log(keys)
-  // console.log(values)
-  // console.log(document.styleSheets[1])
+
   for (let i = 0; i < arrayLength; i++) {
-    // console.log(keys[i])
-    // console.log(values[i])
     document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
   }
 }
@@ -116,20 +115,6 @@ handleFormColorChange = (e) => {
   })
 }
 
-// TODO: handleShow
-
-// handleShow = () => {
-//   const ctaChecked = document.getElementsByName('callToAction')
-//   const ctaDesc = document.getElementsByName('callToActionDesc')
-//   if (ctaChecked.checked !== true) {
-//     ctaDesc.style.display = 'none'
-//   } else {
-//     ctaDesc.style.display = 'block'
-//   }
-// }
-
-
-
 // TODO: Render Widget Code Snippet
 
   render() 
@@ -146,6 +131,7 @@ handleFormColorChange = (e) => {
             handleHex={this.hexToRgb}
             handleCheck={this.handleCheckboxChange}
             handleRadio={this.handleRadioChange}
+            handleShow={this.handleTitleShow}
           />
           <button onClick={this.updateOutputProperty}>Render Widget</button>
 
