@@ -13,7 +13,7 @@ fetchAdds = () =>
     }
   }).then(({ data, status }) => {
     return { data, status };
-  })
+  }).catch(err =>  console.log(err))
   
 
   fetchImages = () =>
@@ -24,7 +24,8 @@ fetchAdds = () =>
       }
     }).then(({data, status}) => {
       return ({data, status})
-    })
+    }).catch(err => console.log(err))
+
 
 // const instance = axios.create({
 //   baseURL: 'https://houseofhome.staging.marketplacer.com/api/v2/client/adverts',

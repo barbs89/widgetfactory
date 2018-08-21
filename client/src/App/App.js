@@ -9,24 +9,29 @@ import axios from 'axios';
 
 class App extends Component {
   state = {
-    adverts: ''
+    adverts: null,
+    images: null
   };
 
 
   componentDidMount() {
+    // this makes a call to the routes(widgetsRouter) to hit the api //
     axios
       .get('http://localhost:5000/widgets')
       .then((response) => {
-        this.setState({ adverts: response.data });
-        console.log(this.state.adverts);
-        console.log(response)
+        // Adverts  //
+        this.setState({ adverts: response.data.adverts.data })
+        console.log(response.data.adverts.data) 
+        // Images // 
+        this.setState({ images: response.data.images.data.data})
+        console.info(response.data.images.data.data)
       })
-      .catch((error) => console.info(error.message));
+      .catch((error) => console.log(error.message))
   }
 
   render() {
     const adverts = this.state.adverts;
-    if (adverts) {
+    if (!adverts) {
       return <h1>Loading...</h1>;
     }
     return (
