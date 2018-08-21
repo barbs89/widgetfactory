@@ -13,31 +13,21 @@ fetchAdds = () =>
     .then(({ data, status }) => {
       return { data, status };
     })
-    .catch((error) => console.info(error.message));
+    .catch((err) => console.log(err));
 
-// fetchImages = () =>
-//   axios({
-//     url: process.env.API_IMAGE,
-//     headers: {
-//       Authorization: `Bearer ${process.env.API}`
-//     }
-//   })
-//     .then(({ data, status }) => {
-//       return { data, status };
-//     })
-//     .catch((error) => console.info(error.message));
+fetchImages = () =>
+  axios({
+    url: process.env.API_IMAGE,
+    headers: {
+      Authorization: `Bearer ${process.env.API}`
+    }
+  })
+    .then(({ data, status }) => {
+      return { data, status };
+    })
+    .catch((err) => console.log(err));
 
-// fetchImg = () =>
-//   axios({
-//     url: process.env.API_IMG,
-//     headers: {
-//       Authorization: `Bearer ${process.env.API}`
-//     }
-//   }).then(({ data, status }) => {
-//     return { data, status };
-//   });
-
-// const instance =  axios.create({
+// const instance = axios.create({
 //   baseURL: 'https://houseofhome.staging.marketplacer.com/api/v2/client/adverts',
 //   timeout: 15000,
 //   headers: {'Authorization': `Bearer ${process.env.API}`}

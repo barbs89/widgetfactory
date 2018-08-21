@@ -1,41 +1,21 @@
-const { fetchAdds } = require('../db/api.js');
+const { fetchAdds, fetchImages } = require('../db/api.js');
+const axios = require('axios');
 
-// Connects App.js(Client side) with fetchAdds in api.js(Server side). //
-// const widgetRoutes = (app) => {
-//   app.get('/widgets', (req, res, next) => {
-//     fetchAdds()
-//       .then(({ data, status }) => {
-//         console.log('Hi there');
-//         console.log(data.data.id);
-//         res.status(status).json(data);
-//       })
-//       .catch((err) => {
-//         res.status(500).json(err.message);
-//       });
-//   });
-// };
-
-// The following function recieves two lots of data from the API (1. an advert and 2. an image to that advert)
-const widgetsRouter = (app) => {
+// The following function recieves two lots of data from the API (1. an advert and 2. an image to that)
+const widgetRoutes = (app) => {
   app.get('/widgets', (req, res, next) => {
-    fetchAdds()
-      .then(({ data, status }) => {
-        res.status(status).json(data);
-        console.log({ data, status });
-        return { data };
-      })
-      .catch((err) => {
-        res.json(err.message);
-      });
-    // fetchImages()
-    //   .then(({ data, status }) => {
-    //     res.status(status).json(data);
-    //     return { status };
-    //   })
-    //   .catch((err) => {
-    //     res.json(err.message);
-    //   });
+    axios
+      .all([fetchAdds(), fetchImages()])
+      .then(
+        axios.spread(function(adds, images) {
+          res.json({
+            adverts: adds,
+            images: images
+          });
+        })
+      )
+      .catch((err) => console.log(err.message));
   });
 };
 
-module.exports = { widgetsRouter };
+module.exports = widgetRoutes;
