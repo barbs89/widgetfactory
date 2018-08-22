@@ -13,9 +13,6 @@
   --borderStyle: .3em;
   --font: Roboto;
   --fontStyle: normal; 
-  --defaultStyle: normal;
-  --fontWeight: normal;
-  --defaultWeight: normal;
   --fontColor: #ffffff;
   --fontSize: 12px;
   --fontAlignment: justify;
@@ -24,6 +21,7 @@
   --priceCard: hidden;
   --descCard: hidden;
   --ctaCard: hidden;
+  --fontWeight: normal
 }
 
 

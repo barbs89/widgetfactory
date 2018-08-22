@@ -2,9 +2,7 @@ import React from 'react'
 
 const BorderRoundIcon = () => (
   <svg viewBox="0 0 39 40" width="40" height="40">
-    <rect className="BorderRoundIcon-1" width="40" height="40"/>
     <path className="IconBackground" d="M0,0H40V40H0Z" transform="translate(0 0)"/>
-    <rect className="BorderRoundIcon-1" x="7" y="7" width="26" height="26"/>
     <rect className="IconFeature" x="7" y="7" width="26" height="26" rx="4" ry="4"/>
   </svg>
 ) 
@@ -72,8 +70,8 @@ const FontBoldIcon = () => (
 
 const CheckboxTickIcon = () => (
 <svg viewBox="0 0 39 40" width="40" height="40">
-  <path class="IconBackground" d="M0,0H39V40H0Z" transform="translate(0 0)"/>
-  <path class="IconFeature" d="M29.18,9.45a3.53,3.53,0,0,0-4.81,1.37L17.8,22.64,14,18.88a3.54,3.54,0,1,0-5,5L16.11,31a3.54,3.54,0,0,0,2.5,1,2.63,2.63,0,0,0,.49,0,3.54,3.54,0,0,0,2.61-1.78l8.84-15.92A3.53,3.53,0,0,0,29.18,9.45Z" transform="translate(0 0)"/>
+  <path className="IconBackground" d="M0,0H39V40H0Z" transform="translate(0 0)"/>
+  <path className="IconShowFeature" d="M29.18,9.45a3.53,3.53,0,0,0-4.81,1.37L17.8,22.64,14,18.88a3.54,3.54,0,1,0-5,5L16.11,31a3.54,3.54,0,0,0,2.5,1,2.63,2.63,0,0,0,.49,0,3.54,3.54,0,0,0,2.61-1.78l8.84-15.92A3.53,3.53,0,0,0,29.18,9.45Z" transform="translate(0 0)"/>
 </svg>
 )
 

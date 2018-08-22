@@ -17,31 +17,32 @@ class WidgetForm extends React.Component {
         </div>
         <section className='widget-form-section'>
           
+          <h4>Include Title</h4>
           <input onClick={this.props.handleShow} id='card-show-title' type='checkbox' name='titleCard'/>
           <label htmlFor='card-show-title'>
           <CheckboxTickIcon />
-          <h4>Product Title</h4>
           </label>
           
+          <h4>Include Description</h4>
           <input onClick={this.props.handleShow} id='card-show-description' type='checkbox' name='descCard'/>
           <label htmlFor='card-show-description'>
           <CheckboxTickIcon />
-          <h4>Product Description</h4>
           </label>
           
+          <h4>Include Price</h4>
           <input onClick={this.props.handleShow} id='card-show-price' type='checkbox' name='priceCard'/>
           <label htmlFor='card-show-price'> 
           <CheckboxTickIcon />
-          <h4>Product Price</h4>
           </label>
 
 
+          <h4>Include Call to Action</h4>
           <input onClick={this.props.handleShow} id='card-show-cta' type='checkbox' name='ctaCard'/>
           <label htmlFor='card-show-cta' >
           <CheckboxTickIcon />
-          <h4>Product Call to Action</h4>
           </label>
 
+          <h4>Call to Action</h4>
           <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...'/>
 
         </section>
