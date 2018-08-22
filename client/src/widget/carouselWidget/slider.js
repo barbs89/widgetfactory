@@ -1,7 +1,7 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
 import Slides from './demo-data';
-import Background from '../../assets/carousel_1.jpg'
+import Background from '../../Assets/carousel_1.jpg'
 
 const Slider = (props) => {
   const _divStyle = (slide) => {
@@ -15,7 +15,7 @@ const Slider = (props) => {
         {Slides.map((slide) => {
           return (
             <div className="slide" key={slide.id} style={_divStyle(slide)}>
-              <section className='slider-card-headers'>
+              <section className='slider-card-headers' id='slides-header'>
                 <h2 className="title-card card">{slide.title}</h2>
                 <h2 className="price-card card">${slide.price}</h2>
               </section>
