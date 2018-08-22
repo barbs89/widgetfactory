@@ -9,7 +9,7 @@ const cors = require('cors');
 const { homeRouter } = require('./routers/homeRouter');
 const user = require('./routers/usersRouter');
 // const user = require('./routers/usersRouter');
-const { widgetsRouter } = require('./routers/widgetsRouter');
+const widgetRoutes = require('./routers/widgetsRouter');
 
 // const widgetRoutes = require('./routers/widgetsRouter.js');
 
@@ -19,7 +19,6 @@ const app = express();
 const port = process.env.PORT || 5000;
 // const API_DIR = process.env.API_URI;
 // homeRouter(app);
-widgetsRouter(app);
 
 // Middleware //
 app.use(bodyParser.json());
@@ -29,7 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(nocache());
 
 app.use(cors());
-
+widgetRoutes(app);
 //To prevent errors from Cross Origin Resource Sharing, we will set
 //our headers to allow CORS with middleware like so:
 // app.use(function(req, res, next) {
@@ -61,7 +60,7 @@ app.use('/', homeRouter);
 app.use('/user', user);
 
 // app.use('/register');
-app.use('/widgets', widgetsRouter);
+app.use('/widgets', widgetRoutes);
 // widgetsRouter(app);
 
 app.get('/api/hello', (req, res, next) => {

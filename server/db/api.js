@@ -38,4 +38,4 @@ fetchImages = () =>
 
 // })
 
-module.exports = { fetchAdds };
+module.exports = { fetchAdds, fetchImages };

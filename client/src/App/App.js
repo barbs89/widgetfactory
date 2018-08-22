@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { WidgetPage } from '../widget/WidgetPage';
 import { HomePage } from '../Home/HomePage';
-// import axios from 'axios';
+import axios from 'axios';
 //Page Components
 
 // import Navbar from '../Navbar';
@@ -52,10 +52,10 @@ class App extends Component {
   }
 
   render() {
-    const adverts = this.state.adverts;
-    // if (!adverts) {
-    //   return <h1>Loading...</h1>;
-    // }
+    // const adverts = this.state.adverts;
+    // // if (!adverts) {
+    // //   return <h1>Loading...</h1>;
+    // // }
     return (
       <BrowserRouter>
         <div className="App">
