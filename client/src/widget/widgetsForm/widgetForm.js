@@ -2,19 +2,11 @@ import React from 'react'
 
 // css
 import './widgetForm.css'
+// icon comps
+import {BorderRoundIcon, BorderSharpIcon, AlignCentreIcon, AlignJustifyIcon, AlignLeftIcon, AlignRightIcon, FontItalicsIcon, FontBoldIcon} from '../../Assets/icons/icons.js'
 
 
 class WidgetForm extends React.Component {
-
-// hexToRgb = (hex) => {
-//   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-//   let value = {
-//     r: parseInt(result[1], 16),
-//     g: parseInt(result[2], 16),
-//     b: parseInt(result[3], 16),
-//   }
-//   return Object.values(value).join(`, `)
-// }
 
   render () {
     return (
@@ -23,65 +15,68 @@ class WidgetForm extends React.Component {
         <div className='widget-form-banner'>
               <h2>Form Options</h2>
         </div>
-          <section className='widget-form-section'>
-            
-            <input onClick={this.props.handleCheck} type='checkbox' id='title' name='title'/>
-            <label htmlFor='title' >Include Title</label>
-            
-            <input onChange={this.props.handleChange} type='checkbox' name='description' id='description'/>
-            <label htmlFor='description'>Include Description</label>
-            
-            <input onChange={this.props.handleChange} type='checkbox' name='price'/>
-            <label htmlFor='price'>Include Price</label>
-
-            <input onChange={this.props.handleChange} type='checkbox' name='callToAction'/>
-            <label htmlFor='callToAction' >Include Call to Action</label>
-            <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...'/>
-
-          </section>
-
-          <div className='widget-form-banner'>
-              <h2>Card Styles</h2>
-          </div>
-          <section className='widget-form-section'>
+        <section className='widget-form-section'>
           
-          <label>Background Colour
-            <input onChange={this.props.handleColor.bind(this)} type='color' name='backgroundColor' defaultValue='#C4C4C4'/>
-          </label>
+          <input onClick={this.props.handleCheck} onChange={this.props.handleShow} type='checkbox' id='title' name='titleCard'/>
+          <label htmlFor='title'>Include Title</label>
+          
+          <input onClick={this.props.handleCheck} type='checkbox' id='description' name='descCard'/>
+          <label htmlFor='description'>Include Description</label>
+          
+          <input onClick={this.props.handleCheck} type='checkbox' name='priceCard'/>
+          <label htmlFor='price'>Include Price</label>
 
-          <label>Card Colour
-            <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#F0F0F0' name='cardColor'/>
-          </label>
+          <input onClick={this.props.handleCheck} type='checkbox' name='ctaCard'/>
+          <label htmlFor='callToAction' >Include Call to Action</label>
 
-          <label>Button Colour
-            <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#5CC5CF' name='buttonColor'/>
-          </label>
+          <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...'/>
 
-          <label>Border
+        </section>
+
+        <div className='widget-form-banner'>
+            <h2>Card Styles</h2>
+        </div>
+
+        <section className='widget-form-section'>
+          <h4>Background Colour</h4>
+          <input onChange={this.props.handleColor.bind(this)} type='color' name='backgroundColor' defaultValue='#C4C4C4'/>
+
+          <h4>Card Colour</h4>
+          <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#F0F0F0' name='cardColor'/>
+
+          <h4>Button Colour</h4>
+          <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#5CC5CF' name='buttonColor'/>
+          
+          <h4>Border Outline</h4>
+          <section className='border-outline'>
             <select name='borderOutline' onChange={this.props.handleChange}>
               <option value="none">none</option>
               <option value="solid">solid</option>
               <option value="inset">inset</option>
               <option value="outset">outset</option>
             </select>
-          </label>
-
-          <label>Border Style
-            <input onChange={this.props.handleRadio} type='radio' value='0' name='borderStyle'/>
-            <input onChange={this.props.handleRadio} type='radio' value='.3em' name='borderStyle'/>
-          </label>
-
-          {/* // TODO: remove radio default */}
-
           </section>
+          
+          <section className='border-styles'>
+            <h4>Border Styles</h4>
+            <input onChange={this.props.handleRadio} type='radio' value='0' id='border-sharp' name='borderStyle'/>
+            <label htmlFor='border-sharp'>
+              <BorderSharpIcon />
+            </label>
+            <input className='border-smooth' onChange={this.props.handleRadio} type='radio' value='.3em' id='border-smooth' name='borderStyle'/>
+            <label htmlFor='border-smooth'>
+              <BorderRoundIcon />
+            </label>
+          </section>
+
+        </section>
 
           <div className='widget-form-banner'>
               <h2>Font Styles</h2>
           </div>
 
           <section className='widget-form-section'>
-
-            <label>Font
+            <h4>Font Family</h4>  
               <select name='font' onChange={this.props.handleChange} >
                 <option value='null'>Select a font</option>
                 <option value='Roboto'>Roboto</option>
@@ -90,9 +85,8 @@ class WidgetForm extends React.Component {
                 <option value='Open Sans'>Open Sans</option>
                 <option value='Helvetica Neue'>Helvetica Neue</option>
               </select>
-            </label>
 
-            <label>Size
+            <h4>Font Size</h4>  
               <select name='fontSize' onChange={this.props.handleChange}>
                 <option value='null'>Select a size</option>
                 <option value='10px'>10px</option>
@@ -101,23 +95,46 @@ class WidgetForm extends React.Component {
                 <option value='16px'>16px</option>
                 <option value='18px'>18px</option>
               </select>
-            </label>
 
-            <label>Alignment
-              <input onChange={this.props.handleRadio} type='radio' value="left" name='fontAlignment'/>
-              <input onChange={this.props.handleRadio} type='radio' value="center" name='fontAlignment'/>
-              <input onChange={this.props.handleRadio} type='radio' value="right" name='fontAlignment'/>
-              <input onChange={this.props.handleRadio} type='radio' value="justify" name='fontAlignment'/>
-            </label>
+            <h4>Text Alignment</h4>
+              <input onChange={this.props.handleRadio} id='align-left' type='radio' value="left" name='fontAlignment'/>
+              <label htmlFor='align-left'>
+                <AlignLeftIcon />
+              </label>
 
-            <label>Style
-              <input onChange={this.props.handleRadio} type='radio' value="bold" name='fontStyle'/>
-              <input onChange={this.props.handleRadio} type='radio' value="italics" name='fontStyle'/>
-            </label>
+              <input onChange={this.props.handleRadio} id='align-center'type='radio' value="center" name='fontAlignment'/>
+              <label htmlFor='align-center'>
+                <AlignCentreIcon />
+              </label>
 
-            <label>Font Colour
-              <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#5CC5CF' name='fontColor'/>
-            </label>
+              <input onChange={this.props.handleRadio} id='align-right' type='radio' value="right" name='fontAlignment'/>
+              <label htmlFor='align-right'>
+                <AlignRightIcon />
+              </label>
+
+              <input onChange={this.props.handleRadio} id='align-justify' type='radio' value="justify" name='fontAlignment'/>
+              <label htmlFor='align-justify'>
+                  <AlignJustifyIcon />
+              </label>
+
+            <h4>Font Style</h4>  
+              <input onChange={this.props.handleRadio} id='font-italics' type='radio' value="italic" name='fontStyle'/>
+              <label htmlFor='font-italics'>
+                <FontItalicsIcon />
+              </label>
+
+              <input onChange={this.props.handleRadio} id='font-bold' type='radio' value="bold" name='fontWeight'/>
+              <label htmlFor='font-bold'>
+                <FontBoldIcon />
+              </label>
+
+                 <input onChange={this.props.handleRadio} id='font-normal' type='radio' value="normal" name='fontWeight'/>
+              <label htmlFor='font-normal'>
+                <FontBoldIcon />
+              </label>
+
+            <h4>Font Colour</h4>  
+            <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#5CC5CF' name='fontColor'/>
 
           </section>
 

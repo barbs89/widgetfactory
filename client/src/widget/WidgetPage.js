@@ -10,10 +10,10 @@ import {WidgetCarousel} from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
   state = {
-    title: false,
-    price: false,
-    description: false,
-    callToAction: false,
+    titleCard: 'hidden',
+    priceCard: 'hidden',
+    descCard: 'visible',
+    ctaCard: 'hidden',
     callToActionDesc: 'Buy Now',
     borderOutline: 'none',
     borderStyle: '.3em',
@@ -21,13 +21,15 @@ class WidgetPage extends React.Component {
     backgroundColor: '#C4C4C4',
     buttonColor: '#5CC5CF',
     font: 'Roboto',
-    fontStyle: 'italic',
+    fontStyle: 'oblique',
     fontColor: 'F0F0F0',
     fontSize: '14px',
     fontAlignment: 'left'
   }
 
-// Functions
+// Form Handlers
+
+//Handle Input Change
 
 handleFormChange = (e) => {
   const target = e.target
@@ -40,21 +42,25 @@ handleFormChange = (e) => {
   })
 }
 
+// Handle Checkbox Inputs
+
 handleCheckboxChange = (e) => {
   const target = e.target
   const name = target.name
   if(target.checked === true) {
     this.setState({ 
-      // [name]: target.checked = true
-      [name]: target.value = true
+      [name]: target.value = 'visible'
     })
-  } else {
+    console.log(this.state)
+  } else if(target.checked === false) {
     this.setState({ 
-      // [name]: target.checked = false
-      [name]: target.value = false
+      [name]: target.value = 'hidden'
     })
+    console.log(this.state)
   }
 }
+
+// Handle Radio Inputs
 
 handleRadioChange = (e) => {
   const target = e.target
@@ -64,47 +70,10 @@ handleRadioChange = (e) => {
     [name]: value,
   })
   console.log(name, value, target)
-}
-
-handleFormSubmit = (e) => {
-  e.preventDefault()
-  const target = e.target
-  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
-  const name = target.name
-  this.setState({
-    [name]: value,
-  })
   console.log(this.state)
 }
 
-
-
-updateOutputProperty = (e) => {
-  e.preventDefault()
-  const keys = Object.keys(this.state)
-  const values = Object.values(this.state)
-  const arrayLength = keys.length
-  // console.log(keys)
-  // console.log(values)
-  // console.log(document.styleSheets[1])
-  for (let i = 0; i < arrayLength; i++) {
-    // console.log(keys[i])
-    // console.log(values[i])
-    document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
-  }
-}
-
-// Support Functions
-
-hexToRgb = (hex) => {
-  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  let value = {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16),
-  }
-  return `rgb(${Object.values(value).join(`, `)})`
-}
+// Handle Colour Input
 
 handleFormColorChange = (e) => {
   const target = e.target
@@ -118,17 +87,46 @@ handleFormColorChange = (e) => {
   })
 }
 
-// TODO: handleShow
+// Handle Form Submission
 
-// handleShow = () => {
-//   const ctaChecked = document.getElementsByName('callToAction')
-//   const ctaDesc = document.getElementsByName('callToActionDesc')
-//   if (ctaChecked.checked !== true) {
-//     ctaDesc.style.display = 'none'
-//   } else {
-//     ctaDesc.style.display = 'block'
-//   }
-// }
+handleFormSubmit = (e) => {
+  e.preventDefault()
+  const target = e.target
+  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
+  const name = target.name
+  this.setState({
+    [name]: value,
+  })
+  console.log(this.state)
+}
+
+// Render Widget
+
+updateOutputProperty = (e) => {
+  e.preventDefault()
+  const keys = Object.keys(this.state)
+  const values = Object.values(this.state)
+  const arrayLength = keys.length
+  
+
+  for (let i = 0; i < arrayLength; i++) {
+    document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
+    console.log(keys[i], values[i])
+  }
+  console.log(this.state)
+}
+
+// Convert Hexadecimal to RGB 
+
+hexToRgb = (hex) => {
+  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  let value = {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16),
+  }
+  return `rgb(${Object.values(value).join(`, `)})`
+}
 
 
 
@@ -141,7 +139,6 @@ handleFormColorChange = (e) => {
 
         {/* // TODO: handleShow on event checkedCTA */}
         <section className="widget-form-section">
-          <h1>Widget Form</h1>
           <WidgetForm
             handleSubmit={this.handleFormSubmit}
             handleChange={this.handleFormChange}
@@ -149,14 +146,15 @@ handleFormColorChange = (e) => {
             handleHex={this.hexToRgb}
             handleCheck={this.handleCheckboxChange}
             handleRadio={this.handleRadioChange}
+            handleShow={this.handleTitleShow}
           />
           <button onClick={this.updateOutputProperty}>Render Widget</button>
-
         </section>
 
         <section className="widget-render-section">
           <h1>Rendered Widget</h1>
-          <WidgetCarousel />
+          <WidgetCarousel
+            callToActionDesc={this.state.callToActionDesc}/>
         </section>
         {/* // TODO: Render Exportable Code */}
         <section className='widget-out-section'>
