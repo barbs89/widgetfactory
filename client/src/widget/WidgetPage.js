@@ -12,11 +12,8 @@ class WidgetPage extends React.Component {
   state = {
     titleCard: 'hidden',
     priceCard: 'hidden',
-    descCard: 'hidden',
+    descCard: 'visible',
     ctaCard: 'hidden',
-    price: false,
-    description: false,
-    callToAction: false,
     callToActionDesc: 'Buy Now',
     borderOutline: 'none',
     borderStyle: '.3em',
@@ -24,13 +21,15 @@ class WidgetPage extends React.Component {
     backgroundColor: '#C4C4C4',
     buttonColor: '#5CC5CF',
     font: 'Roboto',
-    fontStyle: 'italic',
+    fontStyle: 'oblique',
     fontColor: 'F0F0F0',
     fontSize: '14px',
     fontAlignment: 'left'
   }
 
-// Functions
+// Form Handlers
+
+//Handle Input Change
 
 handleFormChange = (e) => {
   const target = e.target
@@ -42,6 +41,8 @@ handleFormChange = (e) => {
     [name]: value,
   })
 }
+
+// Handle Checkbox Inputs
 
 handleCheckboxChange = (e) => {
   const target = e.target
@@ -59,6 +60,8 @@ handleCheckboxChange = (e) => {
   }
 }
 
+// Handle Radio Inputs
+
 handleRadioChange = (e) => {
   const target = e.target
   const value = target.value
@@ -67,41 +70,10 @@ handleRadioChange = (e) => {
     [name]: value,
   })
   console.log(name, value, target)
-}
-
-handleFormSubmit = (e) => {
-  e.preventDefault()
-  const target = e.target
-  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
-  const name = target.name
-  this.setState({
-    [name]: value,
-  })
   console.log(this.state)
 }
 
-updateOutputProperty = (e) => {
-  e.preventDefault()
-  const keys = Object.keys(this.state)
-  const values = Object.values(this.state)
-  const arrayLength = keys.length
-
-  for (let i = 0; i < arrayLength; i++) {
-    document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
-  }
-}
-
-// Support Functions
-
-hexToRgb = (hex) => {
-  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  let value = {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16),
-  }
-  return `rgb(${Object.values(value).join(`, `)})`
-}
+// Handle Colour Input
 
 handleFormColorChange = (e) => {
   const target = e.target
@@ -114,6 +86,49 @@ handleFormColorChange = (e) => {
     [name]: rgbVal,
   })
 }
+
+// Handle Form Submission
+
+handleFormSubmit = (e) => {
+  e.preventDefault()
+  const target = e.target
+  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
+  const name = target.name
+  this.setState({
+    [name]: value,
+  })
+  console.log(this.state)
+}
+
+// Render Widget
+
+updateOutputProperty = (e) => {
+  e.preventDefault()
+  const keys = Object.keys(this.state)
+  const values = Object.values(this.state)
+  const arrayLength = keys.length
+  
+
+  for (let i = 0; i < arrayLength; i++) {
+    document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
+    console.log(keys[i], values[i])
+  }
+  console.log(this.state)
+}
+
+// Convert Hexadecimal to RGB 
+
+hexToRgb = (hex) => {
+  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  let value = {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16),
+  }
+  return `rgb(${Object.values(value).join(`, `)})`
+}
+
+
 
 // TODO: Render Widget Code Snippet
 

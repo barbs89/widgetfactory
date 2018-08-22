@@ -3,27 +3,22 @@
   flex-direction: column;
   margin: 0 5vw 0 5vw
 }
-
 .widget-form {
   padding: 1em;
   text-align: left
 }
-
 .widget-form-section {
   padding: 1em
 }
-
 .widget-form-banner {
   background-color: #333331;
   color: #FFFFFF;
   padding: .5em;
 }
-
 .widget-form {
   display: flex;
   flex-direction: column;
 }
-
 .submit-button {
   border: none;
   width: 10em;
@@ -33,39 +28,28 @@
 }
 
 /* Form icons and buttons */
-/* 
-[type='radio']:checked + span {
-  background-color: #5CC5CF;
-} */
 
-.ReactIcon {
-  width: 100px;
-}
 .IconBackground {
   fill: #333331
 }
-[type=radio] {
-  opacity: 0;
+.IconFeature {
+  fill: #fff
+}
+[type=radio]:checked + label .IconBackground {
+  fill: #5CC5CF;
+}
+[type=radio]:checked + label .IconFeature {
+  fill: #333331;
 }
 label {
   cursor: pointer;
 }
-
-[type=radio]:checked + label .IconBackground {
-  fill: #5CC5CF;
+[type=radio] {
+  opacity: 0;
 }
 
 /* Border Styles - Icon  */
 
-.BorderRoundIcon-1 {
+.BorderRoundIcon-1, .BorderSharpIcon-1 {
   fill-opacity: 0;
-}
-.BorderRoundIcon-3 {
-  fill: #fff;
-}
-.BorderSharpIcon-1 {
-  fill-opacity: 0;
-}
-.BorderSharpIcon-3 {
-  fill: #fff;
 }

@@ -12,7 +12,8 @@
   --headerWeight: bold;
   --borderStyle: .3em;
   --font: Roboto;
-  --fontStyle: italic; 
+  --fontStyle: normal; 
+  --fontWeight: normal;
   --fontColor: #ffffff;
   --fontSize: 12px;
   --fontAlignment: justify;
@@ -21,7 +22,6 @@
   --priceCard: hidden;
   --descCard: hidden;
   --ctaCard: hidden;
-
 }
 
 
@@ -69,7 +69,7 @@
 .card {
   border-style: var(--borderOutline);
   border-radius: var(--borderStyle);
-  background-color: var(--cardColor)
+  background-color: var(--cardColor);
 }
 
 .slide {
@@ -88,13 +88,13 @@
 .titleCard, .price-card, .desc-card {
   background-color: var(--cardColor);
   font-family: var(--font);
-  font-style: var(--fontStyle)
 }
 
 .title-card, .price-card {
   grid-area: header;
   margin: 2rem;
   padding: .5rem;
+
 }
 
 .title-card {
@@ -111,6 +111,8 @@
   padding: .5rem;
   text-align: var(--fontAlignment);
   visibility: var(--descCard);
+  font-style: var(--fontStyle);
+  font-weight: var(--fontWeight);
 }
 
 .cta-card {
