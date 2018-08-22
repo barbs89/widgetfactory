@@ -14,7 +14,7 @@ class WidgetPage extends React.Component {
     price: false,
     description: false,
     callToAction: false,
-    callToActionDesc: 'Buy Now',
+    callToActionDesc: null,
     borderOutline: 'none',
     borderStyle: '.3em',
     cardColor: '#F0F0F0',
@@ -94,6 +94,9 @@ updateOutputProperty = (e) => {
   }
 }
 
+updateCTA = (e) => {
+}
+
 // Support Functions
 
 hexToRgb = (hex) => {
@@ -151,12 +154,12 @@ handleFormColorChange = (e) => {
             handleRadio={this.handleRadioChange}
           />
           <button onClick={this.updateOutputProperty}>Render Widget</button>
-
         </section>
 
         <section className="widget-render-section">
           <h1>Rendered Widget</h1>
-          <WidgetCarousel />
+          <WidgetCarousel
+            callToActionDesc={this.state.callToActionDesc}/>
         </section>
         {/* // TODO: Render Exportable Code */}
         <section className='widget-out-section'>

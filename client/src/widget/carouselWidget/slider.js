@@ -1,7 +1,7 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
 import Slides from './demo-data';
-import Background from '../../assets/carousel_1.jpg'
+import Background from '../../Assets/carousel_1.jpg'
 
 const Slider = (props) => {
   const _divStyle = (slide) => {
@@ -27,7 +27,7 @@ const Slider = (props) => {
                 className="cta-card card"
                 href="https://www.houseofhome.com.au/"
               >
-                <h2>BUY NOW</h2>
+                <h2>{props.callToActionDesc}</h2>
               </a>
             </div>
           );

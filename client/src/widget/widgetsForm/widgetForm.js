@@ -36,7 +36,7 @@ class WidgetForm extends React.Component {
 
             <input onChange={this.props.handleChange} type='checkbox' name='callToAction'/>
             <label htmlFor='callToAction' >Include Call to Action</label>
-            <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...'/>
+            <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder="e.g. 'Buy Now'"/>
 
           </section>
 
