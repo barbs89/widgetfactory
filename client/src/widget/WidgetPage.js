@@ -21,7 +21,7 @@ class WidgetPage extends React.Component {
     backgroundColor: '#C4C4C4',
     buttonColor: '#5CC5CF',
     font: 'Roboto',
-    fontStyle: 'oblique',
+    fontStyle: 'normal',
     fontColor: 'F0F0F0',
     fontSize: '14px',
     fontAlignment: 'left'
@@ -44,7 +44,7 @@ handleFormChange = (e) => {
 
 // Handle Checkbox Inputs
 
-handleCheckboxChange = (e) => {
+handleShowCheckbox = (e) => {
   const target = e.target
   const name = target.name
   if(target.checked === true) {
@@ -56,6 +56,23 @@ handleCheckboxChange = (e) => {
     this.setState({ 
       [name]: target.value = 'hidden'
     })
+    console.log(this.state)
+  }
+}
+
+handleCheckboxChange = (e) => {
+  const target = e.target
+  const name = target.name
+  const value = target.value
+  if(target.checked === true) {
+    this.setState({ 
+      [name]: value
+    })
+    console.log(this.state)
+  } else if(target.checked === false) {
+    this.setState({
+      [name]: 'normal'
+  })
     console.log(this.state)
   }
 }
@@ -146,7 +163,7 @@ hexToRgb = (hex) => {
             handleHex={this.hexToRgb}
             handleCheck={this.handleCheckboxChange}
             handleRadio={this.handleRadioChange}
-            handleShow={this.handleTitleShow}
+            handleShow={this.handleShowCheckbox}
           />
           <button onClick={this.updateOutputProperty}>Render Widget</button>
 

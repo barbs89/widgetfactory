@@ -3,7 +3,7 @@ import React from 'react'
 // css
 import './widgetForm.css'
 // icon comps
-import {BorderRoundIcon, BorderSharpIcon, AlignCentreIcon, AlignJustifyIcon, AlignLeftIcon, AlignRightIcon, FontItalicsIcon, FontBoldIcon} from '../../Assets/icons/icons.js'
+import {BorderRoundIcon, BorderSharpIcon, AlignCentreIcon, AlignJustifyIcon, AlignLeftIcon, AlignRightIcon, FontItalicsIcon, FontBoldIcon, CheckboxTickIcon} from '../../Assets/icons/icons.js'
 
 
 class WidgetForm extends React.Component {
@@ -17,17 +17,30 @@ class WidgetForm extends React.Component {
         </div>
         <section className='widget-form-section'>
           
-          <input onClick={this.props.handleCheck} onChange={this.props.handleShow} type='checkbox' id='title' name='titleCard'/>
-          <label htmlFor='title'>Include Title</label>
+          <input onClick={this.props.handleShow} id='card-show-title' type='checkbox' name='titleCard'/>
+          <label htmlFor='card-show-title'>
+          <CheckboxTickIcon />
+          <h4>Product Title</h4>
+          </label>
           
-          <input onClick={this.props.handleCheck} type='checkbox' id='description' name='descCard'/>
-          <label htmlFor='description'>Include Description</label>
+          <input onClick={this.props.handleShow} id='card-show-description' type='checkbox' name='descCard'/>
+          <label htmlFor='card-show-description'>
+          <CheckboxTickIcon />
+          <h4>Product Description</h4>
+          </label>
           
-          <input onClick={this.props.handleCheck} type='checkbox' name='priceCard'/>
-          <label htmlFor='price'>Include Price</label>
+          <input onClick={this.props.handleShow} id='card-show-price' type='checkbox' name='priceCard'/>
+          <label htmlFor='card-show-price'> 
+          <CheckboxTickIcon />
+          <h4>Product Price</h4>
+          </label>
 
-          <input onClick={this.props.handleCheck} type='checkbox' name='ctaCard'/>
-          <label htmlFor='callToAction' >Include Call to Action</label>
+
+          <input onClick={this.props.handleShow} id='card-show-cta' type='checkbox' name='ctaCard'/>
+          <label htmlFor='card-show-cta' >
+          <CheckboxTickIcon />
+          <h4>Product Call to Action</h4>
+          </label>
 
           <input onChange={this.props.handleChange} type='text' name='callToActionDesc' placeholder='Buy Now...'/>
 
@@ -117,19 +130,15 @@ class WidgetForm extends React.Component {
                   <AlignJustifyIcon />
               </label>
 
+          
             <h4>Font Style</h4>  
-              <input onChange={this.props.handleRadio} id='font-italics' type='radio' value="italic" name='fontStyle'/>
+              <input onChange={this.props.handleCheck} id='font-italics' type='checkbox' value="italic" name='fontStyle'/>
               <label htmlFor='font-italics'>
                 <FontItalicsIcon />
               </label>
 
-              <input onChange={this.props.handleRadio} id='font-bold' type='radio' value="bold" name='fontWeight'/>
+              <input onChange={this.props.handleCheck} id='font-bold' type='checkbox' value="bold" name='fontWeight'/>
               <label htmlFor='font-bold'>
-                <FontBoldIcon />
-              </label>
-
-                 <input onChange={this.props.handleRadio} id='font-normal' type='radio' value="normal" name='fontWeight'/>
-              <label htmlFor='font-normal'>
                 <FontBoldIcon />
               </label>
 
