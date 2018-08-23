@@ -171,7 +171,8 @@ hexToRgb = (hex) => {
         <section className="widget-render-section">
           <h1>Rendered Widget</h1>
           <WidgetCarousel
-            callToActionDesc={this.state.callToActionDesc}/>
+            callToActionDesc={this.state.callToActionDesc}
+          />
         </section>
         {/* // TODO: Render Exportable Code */}
         <section className='widget-out-section'>

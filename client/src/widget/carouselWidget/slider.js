@@ -6,7 +6,6 @@ import Background from '../../Assets/carousel_1.jpg'
 const Slider = (props) => {
   const _divStyle = (slide) => {
     return props.showImage ? { backgroundImage: `url(${Background})` } : {};
-    // return props.showImage ? {backgroundImage: `url(${require(`srimages/img_${slide.id}.jpg`)})`} : {}
   };
 
   return (
