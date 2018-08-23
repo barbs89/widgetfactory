@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const WidgetSchema = new Schema({
   user: {
@@ -23,9 +23,8 @@ const WidgetSchema = new Schema({
     fontSize: String,
     alignment: String
   }
-})
+});
 
-const Widget = mongoose.model('Widget', WidgetSchema)
+const Widget = mongoose.model('Widget', WidgetSchema);
 
-module.exports = Widget
-
+module.exports = Widget;
