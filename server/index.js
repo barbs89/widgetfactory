@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const { homeRouter } = require('./routers/homeRouter');
-const user = require('./routers/usersRouter');
+const { userRoutes, usersRouter } = require('./routers/usersRouter');
 // const user = require('./routers/usersRouter');
 const widgetRoutes = require('./routers/widgetsRouter');
 
@@ -21,7 +21,6 @@ const port = process.env.PORT || 5000;
 // homeRouter(app);
 
 // Middleware //
-app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
@@ -29,35 +28,11 @@ app.use(nocache());
 
 app.use(cors());
 widgetRoutes(app);
-//To prevent errors from Cross Origin Resource Sharing, we will set
-//our headers to allow CORS with middleware like so:
-// app.use(function(req, res, next) {
-//  res.setHeader(`Access-Control-Allow-Origin, `*`);
-//  res.setHeader(`Access-Control-Allow-Credentials`, `true`);
-//  res.setHeader(‘Access-Control-Allow-Methods’, ‘GET,HEAD,OPTIONS,POST,PUT,DELETE’);
-//  res.setHeader(‘Access-Control-Allow-Headers’, ‘Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers’);
-// //and remove cacheing so we get the most recent comments
-//  res.setHeader(‘Cache-Control’, ‘no-cache’);
-//  next();
-// });
-
-// app.use(function(req, res, next) {
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   res.setHeader(
-//     ('Access-Control-Allow-Credentials', 'true'),
-//     ('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PUT, DELETE'),
-//     ('Access-Control-Allow-Headers',
-//     'Access-Control-Allow-Headers',
-//     'Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Access-Control-Request-Headers')
-//   );
-//   res.setHeader('Cache-Control’, ‘no-cache');
-//   next();
-// });
-
+userRoutes(app);
 // API routes
 app.use('/', homeRouter);
 // app.use('/login', usersRouter);
-app.use('/user', user);
+app.use('/users', usersRouter);
 
 // app.use('/register');
 app.use('/widgets', widgetRoutes);

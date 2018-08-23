@@ -31,7 +31,8 @@
     "mongoose": "^5.2.8",
     "nocache": "^2.0.0",
     "npm": "^6.3.0",
-    "oauth": "^0.9.15"
+    "oauth": "^0.9.15",
+    "validator": "^10.6.0"
   },
   "repository": {
     "type": "git",

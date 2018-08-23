@@ -1,103 +1,45 @@
 const express = require('express');
-const router = express.Router();
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const User = require('../models/User');
+
+const { authenticate } = require('../middleware/authenticate');
+const { User } = require('./../models/User');
+
+const usersRouter = express.Router();
 
 // place relevant controllers
-router.get('/user', (req, res) => {
-  res.send('hello form the users page');
-  res.status(200).json(users);
-  console.log('hello from the users');
-});
+const userRoutes = (usersRouter) => {
+  usersRouter.post('/login', async (req, res) => {
+    const { email, password } = req.body;
 
-router.post('/signup', function(req, res) {
-  bcrypt.hash(req.body.password, 10, function(err, hash) {
-    if (err) {
-      return res.status(500).json({
-        error: err
-      });
-    } else {
-      const user = new User({
-        _id: new mongoose.Types.ObjectId(),
-        email: req.body.email,
-        password: hash
-      });
-      user
-        .save()
-        .then(function(result) {
-          console.log(result);
-          res.status(200).json({
-            success: 'New user has been created'
-          });
-        })
-        .catch((error) => {
-          res.status(500).json({
-            error: err
-          });
-        });
+    try {
+      const user = await User.findByCredentials(email, password);
+      const token = await user.generateAuthToken();
+      res.header('authorization', `Bearer ${token}`).send({ user });
+    } catch (error) {
+      console.error(error.message);
+      res.status(400).send({ error: error.message });
     }
   });
-});
 
-// usersRouter.get('/user', (req, res) => {
-//   User.find().then((users) => {
-//     res.status(200).json(users);
-//   });
-// });
-// const usersController = require('../controllers/usersController')
-// usersRouter.post('/register', function(req, res) {
-//   bcrypt.hash(req.body.password, 10, function(err, hash) {
-//     if (err) {
-//       return res.status(500).json({
-//         error: err
-//       });
-//     } else {
-//       const user = new User({
-//         _id: new mongoose.Types.ObjectId(),
-//         email: req.body.email,
-//         password: hash
-//       });
-//       user
-//         .save()
-//         .then(function(result) {
-//           console.log(result);
-//           res.status(200).json({
-//             success: 'New user has been created'
-//           });
-//         })
-//         .catch((error) => {
-//           res.status(500).json({
-//             error: err
-//           });
-//         });
-//     }
-//   });
-// });
-// // Place relevant routes
+  usersRouter.get('/me', authenticate, async (req, res) => {
+    const { user } = req;
 
-// usersRouter.patch('/:id', (req, res) => {
-//   User.findByIdAndUpdate({ id: id }),
-//     req.body,
-//     { new: true },
-//     function(err, user) {
-//       if (err) return res.status(500).send(err);
-//       return res.json(user);
-//     };
-// });
+    try {
+      res.status(200).send({ user });
+    } catch (error) {
+      console.error(error.message);
+      res.status(400).send({ error: error.message });
+    }
+  });
+  usersRouter.delete('/logout', authenticate, async (req, res) => {
+    const { user, token } = req;
 
-// usersRouter.delete('/:id', (req, res) => {
-//   const id = req.body.params;
-
-//   user.findByIdAndRemove(id, function(err, user) {
-//     if (err) {
-//       throw err;
-//     } else {
-//       res.status(204).json({
-//         deleted: true
-//       });
-//     }
-//   });
-// });
-
-module.exports = router;
+    try {
+      await user.removeToken(token);
+      res.status(200).send();
+    } catch (error) {
+      console.error(error.message);
+      res.status(400).send({ error: error.message });
+    }
+  });
+};
+module.exports = { usersRouter, userRoutes };
