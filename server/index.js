@@ -6,7 +6,7 @@ const nocache = require('nocache');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const { homeRouter } = require('./routers/homeRouter');
+const { homeRouter, homeRoute } = require('./routers/homeRouter');
 const { userRoutes, usersRouter } = require('./routers/usersRouter');
 // const user = require('./routers/usersRouter');
 const widgetRoutes = require('./routers/widgetsRouter');
@@ -27,8 +27,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(nocache());
 
 app.use(cors());
-widgetRoutes(app);
+homeRoute(app);
 userRoutes(app);
+widgetRoutes(app);
+
 // API routes
 app.use('/', homeRouter);
 // app.use('/login', usersRouter);
