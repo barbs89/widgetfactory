@@ -142,16 +142,6 @@ class App extends Component {
             )}
           />
           <Route exact path="/users" render={() => <Account />} />
-          {/* <Route
-            path="/users"
-            render={() =>
-              this.state.loggedIn ? (
-                <Account {...this.state} />
-              ) : (
-                <Redirect to="/" />
-              )
-            }
-          /> */}
           <Route
             exact
             path="/widgets"
