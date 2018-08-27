@@ -13,7 +13,6 @@ fetchAdds = () =>
       Authorization: `Bearer ${process.env.API}`
   }
     }).then(({ data, status }) => {
-      console.log(`=> API CALL adverts data:${data.data.type}`)
       return { data, status };
     })
     .catch(err =>  console.log(err))
@@ -26,15 +25,17 @@ fetchAdds = () =>
   const uri = process.env.API_IMAGE
   const images = "/images"
   const address = `${uri}${imageID}${images}`
+
     return axios({  
       url: address,
       headers: {
         Authorization: `Bearer ${process.env.API}`
       }
-    }).then(({data, status}) => {
-      console.log(`=> API CALL Images Data: ${data.data[0].type}`);
+    })
+    .then(({data, status}) => {
       return({data, status})
-    }).catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
   }
   
 module.exports = {fetchAdds,fetchImages } ;

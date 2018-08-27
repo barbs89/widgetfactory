@@ -21,7 +21,7 @@ class App extends Component {
       axios
       .get('http://localhost:5000/widgets')
       .then((response) => {
-        // Adverts   .data.adverts.data.data.id//
+        // Adverts  //
         var adverts = response.data.adverts.data 
         this.setState({ adverts: response.data.adverts.data })
         console.log(this.state.adverts)

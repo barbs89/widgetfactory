@@ -7,19 +7,18 @@ const widgetRoutes = (app) => {
 
       app.get('/widgets', (req, res, next) =>{
         fetchAdds()
-        .then(function(response) {
-          
-         return axios.all([fetchAdds(), fetchImages(response.data.data.id)])
-        })
-        .then(axios.spread(function(adds,images){
-          res.json({
-            adverts: adds,
-            images: images
+          .then(function(response) {
+            return axios.all([fetchAdds(), fetchImages(response.data.data.id)])
           })
+            .then(axios.spread(function(adds,images){
+              res.json({
+                adverts: adds,
+                images: images
+              })
+            })
+            ).catch(err => console.log(err.message));
       })
-      ).catch(err => console.log(err.message));
-        })
-      }
+}
 
 module.exports = widgetRoutes;
 
