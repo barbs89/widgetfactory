@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { WidgetPage } from '../widget/WidgetPage';
 import {WidgetCarousel } from '../widget/carouselWidget/WidgetCarousel';
-import Home from '../home/HomePage';
+import Home from '../Home/HomePage';
 // import Navbar from '../Navbar'
 import logo from './remarkt-logo.png';
 import './app.css';
