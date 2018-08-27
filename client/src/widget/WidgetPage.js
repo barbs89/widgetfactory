@@ -9,10 +9,11 @@ import {WidgetOutput} from './widgetOutput/WidgetOutput';
 import {WidgetCarousel} from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
+
   state = {
     titleCard: 'hidden',
     priceCard: 'hidden',
-    descCard: 'visible',
+    descCard: 'hidden',
     ctaCard: 'hidden',
     callToActionDesc: 'Buy Now',
     borderOutline: 'none',
@@ -27,10 +28,9 @@ class WidgetPage extends React.Component {
     fontAlignment: 'left'
   }
 
-// Form Handlers
+// Form Handlers //
 
 //Handle Input Change
-
 handleFormChange = (e) => {
   const target = e.target
   const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.value : target.value
@@ -43,7 +43,6 @@ handleFormChange = (e) => {
 }
 
 // Handle Checkbox Inputs
-
 handleShowCheckbox = (e) => {
   const target = e.target
   const name = target.name
@@ -59,7 +58,6 @@ handleShowCheckbox = (e) => {
     console.log(this.state)
   }
 }
-
 handleCheckboxChange = (e) => {
   const target = e.target
   const name = target.name
@@ -78,7 +76,6 @@ handleCheckboxChange = (e) => {
 }
 
 // Handle Radio Inputs
-
 handleRadioChange = (e) => {
   const target = e.target
   const value = target.value
@@ -91,7 +88,6 @@ handleRadioChange = (e) => {
 }
 
 // Handle Colour Input
-
 handleFormColorChange = (e) => {
   const target = e.target
   const value = target.value
@@ -103,9 +99,18 @@ handleFormColorChange = (e) => {
     [name]: rgbVal,
   })
 }
+// Convert Hexadecimal to RGB 
+hexToRgb = (hex) => {
+  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  let value = {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16),
+  }
+  return `rgb(${Object.values(value).join(`, `)})`
+}
 
 // Handle Form Submission
-
 handleFormSubmit = (e) => {
   e.preventDefault()
   const target = e.target
@@ -118,42 +123,40 @@ handleFormSubmit = (e) => {
 }
 
 // Render Widget
-
 updateOutputProperty = (e) => {
   e.preventDefault()
   const keys = Object.keys(this.state)
   const values = Object.values(this.state)
   const arrayLength = keys.length
-  
-
+  const iframe = document.body.querySelector('iframe')
+  console.log(`the styles are as follows: ${iframe}`)
   for (let i = 0; i < arrayLength; i++) {
     document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
-    console.log(keys[i], values[i])
+    // document.getElementsByClassName("widget-iframe").style.setProperty(`--${keys[i]}`, values[i])
+    // console.log(keys[i], values[i])
   }
   console.log(this.state)
 }
 
-// Convert Hexadecimal to RGB 
-
-hexToRgb = (hex) => {
-  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  let value = {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16),
-  }
-  return `rgb(${Object.values(value).join(`, `)})`
+updateIframe = () => {
+  document.getElementById('iframeRefresher').addEventListener('click', function() {
+      var ifr = document.getElementsByClassName('widget-iframe')[0];
+      ifr.src = ifr.src;
+  });
 }
-
-
-
 // TODO: Render Widget Code Snippet
+
+getCodeSnippet = (e) => {
+  e.preventDefault()
+  const snippet = document.getElementsByClassName('iframe-container')[0]
+  console.log(snippet)
+}
 
   render() 
   {
-    return (
+    return (   
+        
       <div className="widget-page-container">
-
         {/* // TODO: handleShow on event checkedCTA */}
         <section className="widget-form-section">
           <WidgetForm
@@ -177,9 +180,15 @@ hexToRgb = (hex) => {
         {/* // TODO: Render Exportable Code */}
         <section className='widget-out-section'>
         <div>
-          <h1>Widget Output</h1>
+          <h1>iframe</h1>
         </div>
-          < WidgetOutput />
+        < WidgetOutput
+        getCodeSnippet={this.getCodeSnippet}
+        
+        /> 
+        <button onClick={this.updateIframe}id="iframeRefresher">Refresh Iframe</button>
+        <button onClick={this.getCodeSnippet}id="codecapture">Capture Code</button>
+        
         </section>
       </div>
     );

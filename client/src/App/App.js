@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { WidgetPage } from '../widget/WidgetPage';
+import {WidgetCarousel } from '../widget/carouselWidget/WidgetCarousel';
 import Home from '../home/HomePage';
 // import Navbar from '../Navbar'
 import logo from './remarkt-logo.png';
@@ -12,7 +13,6 @@ class App extends Component {
     adverts: null,
     images: null
   };
-
 
   componentDidMount() {
     // this makes a call to the routes(widgetsRouter) to hit the api //
@@ -60,6 +60,27 @@ class App extends Component {
                   fetchAdds={this.fetchAdds}
                   adverts={this.state.adverts}
                 />
+              );
+            }}
+          />
+          <Route
+            exact
+            path="/widgets/widgetpage"
+            render={() => {
+              return (
+                <WidgetPage
+                  fetchAdds={this.fetchAdds}
+                  adverts={this.state.adverts}
+                />
+              );
+            }}
+          />
+          <Route
+            exact
+            path="/widgets/widgetpage/carousel"
+            render={() => {
+              return (
+                <WidgetCarousel/>
               );
             }}
           />
