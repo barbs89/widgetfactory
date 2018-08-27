@@ -15,24 +15,27 @@ class App extends Component {
 
 
  async componentDidMount() {
+  
+    
     // this makes a call to the routes(widgetsRouter) to hit the api //
       axios
       .get('http://localhost:5000/widgets')
       .then((response) => {
         // Adverts   .data.adverts.data.data.id//
-        var adverts = response
+        var adverts = response.data.adverts.data 
         this.setState({ adverts: response.data.adverts.data })
         console.log(this.state.adverts)
          
         // Images // 
-        var images = response
+        var images = response.data.images.data.data
         this.setState({ images: response.data.images.data.data })
-        console.log(this.state.images) 
+        console.log(this.state.images)
         return {adverts, images}
         })
         .catch((error) => console.log(error.message))
       }
-      
+    
+
 
 
     render() {
