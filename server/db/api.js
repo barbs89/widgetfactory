@@ -5,34 +5,36 @@ const axios = require('axios');
 
 // Axios request that interacts with MP API. The widgetsRouter calls this funciton and connects with the client side axios request. //
 
-let id = 200357509
-const images = '/images'
-const imageAPI = process.env.API_IMAGE + id + images,
 
-fetchAdds = () =>
+fetchAdds = () => 
   axios({
     url: process.env.API_URI,
     headers: {
       Authorization: `Bearer ${process.env.API}`
-    }
-  }).then(({ data, status }) => {
-    id = data.data.id
-    console.log(imageAPI)
-    return { data, status };
-  })
-  .catch(err =>  console.log(err))
+  }
+    }).then(({ data, status }) => {
+      console.log(`=> API CALL adverts data:${data.data.type}`)
+      return { data, status };
+    })
+    .catch(err =>  console.log(err))
   
+    
 
-  fetchImages = () =>
-    axios({
-      url: imageAPI,
+
+ fetchImages = () => 
+     axios({
+      url: process.env.API_IMAGE,
       headers: {
         Authorization: `Bearer ${process.env.API}`
       }
     }).then(({data, status}) => {
-      return ({data, status})
+      console.log(`=> API CALL Images Data: ${data.data[0].type}`);
+      return({data, status})
     }).catch(err => console.log(err))
-
+  
+  
+  
+  
 
 // const instance = axios.create({
 //   baseURL: 'https://houseofhome.staging.marketplacer.com/api/v2/client/adverts',
@@ -47,3 +49,40 @@ fetchAdds = () =>
   
 module.exports = {fetchAdds,fetchImages } ;
 
+
+
+
+
+
+// fetchAdds = () =>
+// axios({
+//   url: process.env.API_URI,
+//   headers: {
+//     Authorization: `Bearer ${process.env.API}`
+//   }
+// }).then(({ data, status }) => {
+//   return { data, status };
+// })
+// .catch(err =>  console.log(err))
+
+// fetchImages = () =>
+//     axios({
+//       url: process.env.API_IMAGE,
+//       headers: {
+//         Authorization: `Bearer ${process.env.API}`
+//       }
+//     }).then(({data, status}) => {
+//       return ({data, status})
+//     }).catch(err => console.log(err))
+
+// fetchImages = async function() {
+//      await axios({
+//       url: process.env.API_IMAGE,
+//       headers: {
+//         Authorization: `Bearer ${process.env.API}`
+//       }
+//     }).then(({data, status}) => {
+//       console.log(process.env.API_IMAGE)
+//       return ({data, status})
+//     }).catch(err => console.log(err))
+//   } 

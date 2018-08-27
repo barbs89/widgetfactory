@@ -14,24 +14,31 @@ class App extends Component {
   };
 
 
-  componentDidMount() {
+ async componentDidMount() {
     // this makes a call to the routes(widgetsRouter) to hit the api //
-    axios
+      axios
       .get('http://localhost:5000/widgets')
       .then((response) => {
-        // Adverts  //
+        // Adverts   .data.adverts.data.data.id//
+        var adverts = response
         this.setState({ adverts: response.data.adverts.data })
-        console.log(response.data.adverts.data) 
+        console.log(this.state.adverts)
+         
         // Images // 
-        this.setState({ images: response.data.images.data.data})
-        console.info(response.data.images.data.data)
-      })
-      .catch((error) => console.log(error.message))
-  }
+        var images = response
+        this.setState({ images: response.data.images.data.data })
+        console.log(this.state.images) 
+        return {adverts, images}
+        })
+        .catch((error) => console.log(error.message))
+      }
+      
 
-  render() {
-    const adverts = this.state.adverts;
-    if (!adverts) {
+
+    render() {
+      const adds = this.state.adverts
+      
+    if (!adds) {
       return <h1>Loading...</h1>;
     }
     return (
