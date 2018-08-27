@@ -1,33 +1,85 @@
 .widget-form-container {
   display: flex;
   flex-direction: column;
-  margin: 0 5vw 0 5vw
+  margin: 0 5vw 0 5vw;
 }
-
 .widget-form {
   padding: 1em;
   text-align: left
 }
-
 .widget-form-section {
-  padding: 1em
+  padding: 1em;
 }
-
 .widget-form-banner {
   background-color: #333331;
   color: #FFFFFF;
   padding: .5em;
 }
-
 .widget-form {
   display: flex;
   flex-direction: column;
 }
-
 .submit-button {
   border: none;
   width: 10em;
   background: #5CC5CF;
   text-align: center;
   padding:  .5em 0 .5em 0
+}
+
+/* Form icons and buttons */
+
+.IconBackground {
+  fill: #333331
+}
+.IconFeature {
+  fill: #fff
+}
+.IconShowFeature {
+  fill: #333331
+}
+
+[type='radio'] + label:hover .IconBackground {
+  fill: #5CC5CF;
+}
+[type='checkbox'] + label:hover .IconBackground {
+  fill: #5CC5CF;
+}
+[type='checkbox'] + label:hover .IconShowFeature {
+  fill: #fff;
+}
+
+
+[type=radio]:checked + label .IconBackground {
+  fill: #5CC5CF;
+}
+[type=radio]:checked + label .IconFeature {
+  fill: #333331;
+}
+
+[type=checkbox]:checked + label .IconBackground {
+  fill: #5CC5CF;
+}
+[type=checkbox]:checked + label .IconFeature {
+  fill: #333331;
+}
+
+
+label {
+  cursor: pointer;
+}
+
+
+[type=radio] {
+  opacity: 0;
+}
+
+[type=checkbox] {
+  visibility: hidden;
+}
+
+/* Border Styles - Icon  */
+
+.BorderRoundIcon-1, .BorderSharpIcon-1, {
+  fill-opacity: 0;
 }

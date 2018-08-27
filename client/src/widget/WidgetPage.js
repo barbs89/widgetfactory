@@ -4,16 +4,16 @@ import React from 'react';
 import './WidgetPage.css';
 
 //components
-import {WidgetForm} from './widgetsForm/widgetForm';
-import {WidgetOutput} from './widgetOutput/WidgetOutput';
-import {WidgetCarousel} from './carouselWidget/WidgetCarousel';
+import { WidgetForm } from './widgetsForm/widgetForm';
+import { WidgetOutput } from './widgetOutput/WidgetOutput';
+import { WidgetCarousel } from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
   state = {
-    title: false,
-    price: false,
-    description: false,
-    callToAction: false,
+    titleCard: 'hidden',
+    priceCard: 'hidden',
+    descCard: 'visible',
+    ctaCard: 'hidden',
     callToActionDesc: 'Buy Now',
     borderOutline: 'none',
     borderStyle: '.3em',
@@ -21,153 +21,172 @@ class WidgetPage extends React.Component {
     backgroundColor: '#C4C4C4',
     buttonColor: '#5CC5CF',
     font: 'Roboto',
-    fontStyle: 'italic',
+    fontStyle: 'normal',
     fontColor: 'F0F0F0',
     fontSize: '14px',
     fontAlignment: 'left'
-  }
+  };
 
-// Functions
+  // Form Handlers
 
-handleFormChange = (e) => {
-  const target = e.target
-  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.value : target.value
-  const name = target.name
-  e.preventDefault()
-  console.log(`Key is ${name} with a value of ${value}`)
-  this.setState({
-    [name]: value,
-  })
-}
+  //Handle Input Change
 
-handleCheckboxChange = (e) => {
-  const target = e.target
-  const name = target.name
-  if(target.checked === true) {
-    this.setState({ 
-      // [name]: target.checked = true
-      [name]: target.value = true
-    })
-  } else {
-    this.setState({ 
-      // [name]: target.checked = false
-      [name]: target.value = false
-    })
-  }
-}
+  handleFormChange = (e) => {
+    const target = e.target;
+    const value =
+      target.type === 'checkbox'
+        ? target.checked
+        : target.type === 'radio'
+          ? target.value
+          : target.value;
+    const name = target.name;
+    e.preventDefault();
+    console.log(`Key is ${name} with a value of ${value}`);
+    this.setState({
+      [name]: value
+    });
+  };
 
-handleRadioChange = (e) => {
-  const target = e.target
-  const value = target.value
-  const name = target.name
-  this.setState({
-    [name]: value,
-  })
-  console.log(name, value, target)
-}
+  // Handle Checkbox Inputs
 
-handleFormSubmit = (e) => {
-  e.preventDefault()
-  const target = e.target
-  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
-  const name = target.name
-  this.setState({
-    [name]: value,
-  })
-  console.log(this.state)
-}
+  handleShowCheckbox = (e) => {
+    const target = e.target;
+    const name = target.name;
+    if (target.checked === true) {
+      this.setState({
+        [name]: (target.value = 'visible')
+      });
+      console.log(this.state);
+    } else if (target.checked === false) {
+      this.setState({
+        [name]: (target.value = 'hidden')
+      });
+      console.log(this.state);
+    }
+  };
 
+  handleCheckboxChange = (e) => {
+    const target = e.target;
+    const name = target.name;
+    const value = target.value;
+    if (target.checked === true) {
+      this.setState({
+        [name]: value
+      });
+      console.log(this.state);
+    } else if (target.checked === false) {
+      this.setState({
+        [name]: 'normal'
+      });
+      console.log(this.state);
+    }
+  };
 
+  // Handle Radio Inputs
 
-updateOutputProperty = (e) => {
-  e.preventDefault()
-  const keys = Object.keys(this.state)
-  const values = Object.values(this.state)
-  const arrayLength = keys.length
-  // console.log(keys)
-  // console.log(values)
-  // console.log(document.styleSheets[1])
-  for (let i = 0; i < arrayLength; i++) {
-    // console.log(keys[i])
-    // console.log(values[i])
-    document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
-  }
-}
+  handleRadioChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
+    console.log(name, value, target);
+    console.log(this.state);
+  };
 
-// Support Functions
+  // Handle Colour Input
 
-hexToRgb = (hex) => {
-  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  let value = {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16),
-  }
-  return `rgb(${Object.values(value).join(`, `)})`
-}
+  handleFormColorChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    const rgbVal = this.hexToRgb(value);
+    e.preventDefault();
+    console.log(`Key is ${name} with a value of ${rgbVal}`);
+    this.setState({
+      [name]: rgbVal
+    });
+  };
 
-handleFormColorChange = (e) => {
-  const target = e.target
-  const value = target.value
-  const name = target.name
-  const rgbVal = this.hexToRgb(value)
-  e.preventDefault()
-  console.log(`Key is ${name} with a value of ${rgbVal}`)
-  this.setState({
-    [name]: rgbVal,
-  })
-}
+  // Handle Form Submission
 
-// TODO: handleShow
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+    const target = e.target;
+    const value =
+      target.type === 'checkbox'
+        ? target.checked
+        : target.type === 'radio'
+          ? target.id
+          : target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
+    console.log(this.state);
+  };
 
-// handleShow = () => {
-//   const ctaChecked = document.getElementsByName('callToAction')
-//   const ctaDesc = document.getElementsByName('callToActionDesc')
-//   if (ctaChecked.checked !== true) {
-//     ctaDesc.style.display = 'none'
-//   } else {
-//     ctaDesc.style.display = 'block'
-//   }
-// }
+  // Render Widget
 
+  updateOutputProperty = (e) => {
+    e.preventDefault();
+    const keys = Object.keys(this.state);
+    const values = Object.values(this.state);
+    const arrayLength = keys.length;
 
+    for (let i = 0; i < arrayLength; i++) {
+      document.documentElement.style.setProperty(`--${keys[i]}`, values[i]);
+      console.log(keys[i], values[i]);
+    }
+    console.log(this.state);
+  };
 
-// TODO: Render Widget Code Snippet
+  // Convert Hexadecimal to RGB
 
-  render() 
-  {
+  hexToRgb = (hex) => {
+    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    let value = {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    };
+    return `rgb(${Object.values(value).join(`, `)})`;
+  };
+
+  // TODO: Render Widget Code Snippet
+
+  render() {
     return (
       <div className="widget-page-container">
-
         {/* // TODO: handleShow on event checkedCTA */}
         <section className="widget-form-section">
-          <h1>Widget Form</h1>
           <WidgetForm
             handleSubmit={this.handleFormSubmit}
             handleChange={this.handleFormChange}
-            handleColor={this.handleFormColorChange}            
+            handleColor={this.handleFormColorChange}
             handleHex={this.hexToRgb}
             handleCheck={this.handleCheckboxChange}
             handleRadio={this.handleRadioChange}
+            handleShow={this.handleShowCheckbox}
           />
           <button onClick={this.updateOutputProperty}>Render Widget</button>
-
         </section>
 
         <section className="widget-render-section">
           <h1>Rendered Widget</h1>
-          <WidgetCarousel />
+          <WidgetCarousel callToActionDesc={this.state.callToActionDesc} />
         </section>
         {/* // TODO: Render Exportable Code */}
-        <section className='widget-out-section'>
-        <div>
-          <h1>Widget Output</h1>
-        </div>
-          < WidgetOutput />
+        <section className="widget-out-section">
+          <div>
+            <h1>Widget Output</h1>
+          </div>
+          <WidgetOutput />
         </section>
       </div>
     );
   }
 }
 
-export { WidgetPage };
+export default WidgetPage;

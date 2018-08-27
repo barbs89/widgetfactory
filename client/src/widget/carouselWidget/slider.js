@@ -1,12 +1,11 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
 import Slides from './demo-data';
-import Background from '../../assets/carousel_1.jpg'
+import Background from '../../Assets/carousel_1.jpg';
 
 const Slider = (props) => {
   const _divStyle = (slide) => {
     return props.showImage ? { backgroundImage: `url(${Background})` } : {};
-    // return props.showImage ? {backgroundImage: `url(${require(`srimages/img_${slide.id}.jpg`)})`} : {}
   };
 
   return (
@@ -15,19 +14,19 @@ const Slider = (props) => {
         {Slides.map((slide) => {
           return (
             <div className="slide" key={slide.id} style={_divStyle(slide)}>
-              <section className='slider-card-headers'>
+              <section className="slider-card-headers" id="slides-header">
                 <h2 className="title-card card">{slide.title}</h2>
                 <h2 className="price-card card">${slide.price}</h2>
               </section>
-                <p className="desc-card card">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Praesent iaculis purus vel enim suscipit.
-                </p>
+              <p className="desc-card card">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent iaculis purus vel enim suscipit.
+              </p>
               <a
                 className="cta-card card"
                 href="https://www.houseofhome.com.au/"
               >
-                <h2>BUY NOW</h2>
+                <h2>{props.callToActionDesc}</h2>
               </a>
             </div>
           );
@@ -36,4 +35,4 @@ const Slider = (props) => {
     </div>
   );
 };
-export {Slider}
+export { Slider };

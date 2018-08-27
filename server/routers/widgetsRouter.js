@@ -21,4 +21,3 @@ const widgetRoutes = (app) => {
 }
 
 module.exports = widgetRoutes;
-

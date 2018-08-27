@@ -1,9 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
 
-
-
-// Axios request that interacts with MP API. The widgetsRouter calls this funciton and connects with the client side axios request. //
+// Axios request that interacts with MP API. The widgetsRouter calls this function and connects with the client side axios request. //
 
 
 fetchAdds = () => 

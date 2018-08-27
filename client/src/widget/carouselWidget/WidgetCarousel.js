@@ -4,21 +4,22 @@ import '../WidgetPage.css';
 
 const WidgetCarousel = (props) => {
   const params = {
-    // pagination: '.swiper-pagination',
     slidesPerView: 3,
-    paginationClickable: true,
-    spaceBetween: 30,
+    spaceBetween: 20,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     },
+    renderPrevButton: () => <div className='swiper-button-prev'><h1>Previous</h1></div>,
+    renderNextButton: () => <div className='swiper-button-next'><h1>Next</h1></div>,
     loop: true
   }
-
   return (
-    <div className='slider-container'>
-      <Slider params={params} showImage="true" />
-    </div>
+      <Slider className='swiper-container'
+        params={params}
+        showImage="true"
+        callToActionDesc={props.callToActionDesc}
+      />
   );
 };
 
