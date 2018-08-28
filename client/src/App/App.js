@@ -15,25 +15,6 @@ import axios from 'axios';
 import logo from './remarkt-logo.png';
 import './app.css';
 
-// const config = {
-//   issuer: 'https://{yourOktaDomain}/oauth2/default',
-//   redirect_uri: window.location.origin + '/implicit/callback',
-//   client_id: '{clientId}'
-// };
-
-// const AuthRoute = ({ component: Component, ...rest }) => (
-//   <Route
-//     {...rest}
-//     render={(props) =>
-//       checkAuth() ? (
-//         <Component {...props} />
-//       ) : (
-//         <Redirect to={{ pathname: '/login' }} />
-//       )
-//     }
-//   />
-// );
-
 class App extends Component {
   constructor() {
     super();

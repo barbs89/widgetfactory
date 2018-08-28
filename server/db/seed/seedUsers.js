@@ -10,15 +10,15 @@ const users = [
   {
     _id: clientId,
     email: 'anastasiabwidget@gmail.com',
-    password: process.env.CLIENT_PASSWORD
-    // authTokens: [jwt.sign({ _id: clientID }, process.env.JWT_SECRET).toString()]
+    password: process.env.CLIENT_PASSWORD,
+    authTokens: [jwt.sign({ _id: clientID }, process.env.JWT_SECRET).toString()]
   },
   {
     email: 'testingwidget2@email.com',
-    password: process.env.CLIENT_PASSWORD
-    // authTokens: [
-    //   jwt.sign({ _id: userTwoId }, process.env.JWT_SECRET).toString()
-    // ]
+    password: process.env.CLIENT_PASSWORD,
+    authTokens: [
+      jwt.sign({ _id: userTwoId }, process.env.JWT_SECRET).toString()
+    ]
   }
 ];
 
