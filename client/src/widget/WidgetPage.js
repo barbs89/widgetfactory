@@ -83,6 +83,7 @@ handleShowCheckbox = (e) => {
       this.setState({
         [name]: (target.value = 'hidden')
       });
+        // update to local storage
       console.log(this.state);
     }
   };
@@ -170,12 +171,19 @@ updateOutputProperty = (e) => {
   const values = Object.values(this.state)
   const arrayLength = keys.length
   const iframe = document.body.querySelector('iframe')
-  console.log(`the styles are as follows: ${iframe}`)
   for (let i = 0; i < arrayLength; i++) {
     document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
     // document.getElementsByClassName("widget-iframe").style.setProperty(`--${keys[i]}`, values[i])
     // console.log(keys[i], values[i])
   }
+  for (let i = 0; i < arrayLength; i++) {
+    localStorage.setItem([keys[i]], values[i]);
+    // document.getElementsByClassName("widget-iframe").style.setProperty(`--${keys[i]}`, values[i])
+    // console.log(keys[i], values[i])
+  }
+
+  
+  console.log(localStorage)
   console.log(this.state)
 }
 
