@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 //Routes
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../Home/Home';
-import Widget from '../widget/WidgetPage';
-import WidgetPage from '../widget/WidgetPage';
-import { WidgetCarousel } from '../widget/carouselWidget/WidgetCarousel';
+import Widget from '../Widget/WidgetPage';
+import WidgetPage from '../Widget/WidgetPage';
+import { WidgetCarousel } from '../Widget/carouselWidget/WidgetCarousel';
 import Navbar from '../Navbar';
 import Account from '../Accounts';
 
@@ -177,7 +177,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/widgets/widgetpage/carousel"
+            path="/widgets/carousel"
             render={() => {
               return (
                 <WidgetCarousel/>

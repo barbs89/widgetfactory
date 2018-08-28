@@ -68,7 +68,6 @@ handleShowCheckbox = (e) => {
       });
     };
   }
-  
 
   // Handle Checkbox Inputs
 
