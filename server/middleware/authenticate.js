@@ -2,12 +2,12 @@ const { User } = require('./../models/User');
 
 const authenticate = async (req, res, next) => {
   const authHeader = req.headers.authorization;
-  const authToken = authHeader.split(' ')[1];
+  const authTokens = authHeader.split(' ')[1];
 
   try {
-    const user = await User.findByToken(authToken);
+    const user = await User.findByToken(authTokens);
     req.user = user;
-    req.token = authToken;
+    req.token = authTokens;
     next();
   } catch (error) {
     console.error(error);
