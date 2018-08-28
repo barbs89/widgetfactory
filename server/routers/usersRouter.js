@@ -1,55 +1,45 @@
-const express = require('express')
-const usersRouter = express.Router()
+const express = require('express');
+
+const { authenticate } = require('../middleware/authenticate');
+const { User } = require('./../models/User');
+
+const usersRouter = express.Router();
 
 // place relevant controllers
+const userRoutes = (usersRouter) => {
+  usersRouter.post('/login', async (req, res) => {
+    const { email, password } = req.body;
 
-// const usersController = require('../controllers/usersController')
-
-// Place relevant routes
-
-usersRouter.get('/user', (req, res) => {
-  res.send('hello form the users page')
-})
-
-usersRouter.get('/user', (req,res) => {
-  User.find()
-    .then(users => {
-      res.status(200).json(users)
-    })
-})
-
-usersRouter.post('/new', (req, res) => {
-  const User = new User(req.body)
-  
-  user.save()
-    .then(() => {
-      res.status(201).json(user)
-    })
-    .catch(() => {
-      res.status(500).json(err.message)
-    })
-})
-
-usersRouter.patch('/:id', (req, res)=>{
-  User.findByIdAndUpdate({ id:id }), req.body,{ new:true }, function(err, user) {
-    if (err) return res.status(500).send(err);
-    return res.json(user);
-  }
-})
-
-usersRouter.delete('/:id', (req, res) => {
-  const id = req.body.params
-
-  user.findByIdAndRemove(id, function(err, user){
-    if(err) {
-      throw err;
-    } else {
-      res.status(204).json({
-        deleted: true
-      })
+    try {
+      const user = await User.findByCredentials(email, password);
+      const token = await user.generateAuthToken();
+      res.header('authorization', `Bearer ${token}`).send({ user });
+    } catch (error) {
+      console.error(error.message);
+      res.status(400).send({ error: error.message });
     }
-  })
-})
+  });
 
+  usersRouter.get('/me', authenticate, async (req, res) => {
+    const { user } = req;
 
-module.exports = usersRouter
+    try {
+      res.status(200).send({ user });
+    } catch (error) {
+      console.error(error.message);
+      res.status(400).send({ error: error.message });
+    }
+  });
+  usersRouter.delete('/logout', authenticate, async (req, res) => {
+    const { user, token } = req;
+
+    try {
+      await user.removeToken(token);
+      res.status(200).send();
+    } catch (error) {
+      console.error(error.message);
+      res.status(400).send({ error: error.message });
+    }
+  });
+};
+module.exports = { usersRouter, userRoutes };

@@ -4,9 +4,9 @@ import React from 'react';
 import './WidgetPage.css';
 
 //components
-import {WidgetForm} from './widgetsForm/widgetForm';
-import {WidgetOutput} from './widgetOutput/WidgetOutput';
-import {WidgetCarousel} from './carouselWidget/WidgetCarousel';
+import { WidgetForm } from './widgetsForm/widgetForm';
+import { WidgetOutput } from './widgetOutput/WidgetOutput';
+import { WidgetCarousel } from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
 
@@ -58,22 +58,64 @@ handleShowCheckbox = (e) => {
     console.log(this.state)
   }
 }
-handleCheckboxChange = (e) => {
-  const target = e.target
-  const name = target.name
-  const value = target.value
-  if(target.checked === true) {
-    this.setState({ 
-      [name]: value
-    })
-    console.log(this.state)
-  } else if(target.checked === false) {
+  handleCheckboxChange = (e) => {
+    const target = e.target
+    const name = target.name
+    const value = target.value
+    if(target.checked === true) {
+      this.setState({ 
+        [name]: value
+      });
+    };
+  }
+  
+
+  // Handle Checkbox Inputs
+
+  handleShowCheckbox = (e) => {
+    const target = e.target;
+    const name = target.name;
+    if (target.checked === true) {
+      this.setState({
+        [name]: (target.value = 'visible')
+      });
+      console.log(this.state);
+    } else if (target.checked === false) {
+      this.setState({
+        [name]: (target.value = 'hidden')
+      });
+      console.log(this.state);
+    }
+  };
+
+  handleCheckboxChange = (e) => {
+    const target = e.target;
+    const name = target.name;
+    const value = target.value;
+    if (target.checked === true) {
+      this.setState({
+        [name]: value
+      });
+      console.log(this.state);
+    } else if (target.checked === false) {
+      this.setState({
+        [name]: 'normal'
+      });
+      console.log(this.state);
+    }
+  };
+
+  // Handle Radio Inputs
+
+  handleRadioChange = (e) => {
+    const target = e.target;
+    const name = target.name;
     this.setState({
       [name]: 'normal'
   })
     console.log(this.state)
   }
-}
+
 
 // Handle Radio Inputs
 handleRadioChange = (e) => {
@@ -152,8 +194,7 @@ getCodeSnippet = (e) => {
   console.log(snippet)
 }
 
-  render() 
-  {
+  render() {
     return (   
         
       <div className="widget-page-container">
@@ -162,7 +203,7 @@ getCodeSnippet = (e) => {
           <WidgetForm
             handleSubmit={this.handleFormSubmit}
             handleChange={this.handleFormChange}
-            handleColor={this.handleFormColorChange}            
+            handleColor={this.handleFormColorChange}
             handleHex={this.hexToRgb}
             handleCheck={this.handleCheckboxChange}
             handleRadio={this.handleRadioChange}
@@ -173,9 +214,7 @@ getCodeSnippet = (e) => {
 
         <section className="widget-render-section">
           <h1>Rendered Widget</h1>
-          <WidgetCarousel
-            callToActionDesc={this.state.callToActionDesc}
-          />
+          <WidgetCarousel callToActionDesc={this.state.callToActionDesc} />
         </section>
         {/* // TODO: Render Exportable Code */}
         <section className='widget-out-section'>
@@ -184,7 +223,6 @@ getCodeSnippet = (e) => {
         </div>
         < WidgetOutput
         getCodeSnippet={this.getCodeSnippet}
-        
         /> 
         <button onClick={this.updateIframe}id="iframeRefresher">Refresh Iframe</button>
         <button onClick={this.getCodeSnippet}id="codecapture">Capture Code</button>
@@ -195,4 +233,4 @@ getCodeSnippet = (e) => {
   }
 }
 
-export { WidgetPage };
+export default WidgetPage;
