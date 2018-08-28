@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../Home/Home'
 import Widget from '../widget/WidgetPage';
+import WidgetPage from '../widget/WidgetPage';
+import { WidgetCarousel } from '../widget/carouselWidget/WidgetCarousel';
 import Navbar from '../Navbar';
 import Account from '../Accounts';
 
@@ -160,6 +162,27 @@ class App extends Component {
               // ) : (
               //   <Redirect to="/" />
             )}
+          />
+          <Route
+            exact
+            path="/widgets/widgetpage"
+            render={() => {
+              return (
+                <WidgetPage
+                  fetchAdds={this.fetchAdds}
+                  adverts={this.state.adverts}
+                />
+              );
+            }}
+          />
+          <Route
+            exact
+            path="/widgets/widgetpage/carousel"
+            render={() => {
+              return (
+                <WidgetCarousel/>
+              );
+            }}
           />
           <Redirect from="/widgets/*" to="/widgets" />
           <Redirect from="/users/*" to="/users" />
