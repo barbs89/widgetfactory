@@ -4,9 +4,8 @@ const axios = require('axios');
 // The following function recieves two lots of data from the API (It pulls an advert and the adverts id, provides it to fetchImages function to retrieve the corresponding image //
 
 const widgetRoutes = (app) => {
-
-  app.get('/widgets', (req, res, next) =>{
-    fetchAdds()
+//*Original Function to retrieve one add/ image *//
+fetchAdds()
       .then(function(response) {
         return axios.all([fetchAdds(), fetchImages(response.data.data.id)])
       })
@@ -20,9 +19,3 @@ const widgetRoutes = (app) => {
   })  
 
 module.exports = widgetRoutes;
-
-
-
-
-
-
