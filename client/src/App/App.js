@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 //Routes
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Home from '../Home/Home';
+import Home from '../Home/Home'
 import Widget from '../widget/WidgetPage';
 import Navbar from '../Navbar';
 import Account from '../Accounts';
