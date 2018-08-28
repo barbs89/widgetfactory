@@ -11,7 +11,6 @@ fetchAdds = () =>
     }
   })
     .then(({ data, status }) => {
-      console.log(`=> API CALL adverts data:${data.data.type}`);
       return { data, status };
     })
     .catch((err) => console.log(err));
@@ -21,6 +20,7 @@ fetchImages = (id) => {
   const uri = process.env.API_IMAGE;
   const images = '/images';
   const address = `${uri}${imageID}${images}`;
+
   return axios({
     url: address,
     headers: {
@@ -28,7 +28,6 @@ fetchImages = (id) => {
     }
   })
     .then(({ data, status }) => {
-      console.log(`=> API CALL Images Data: ${data.data[0].type}`);
       return { data, status };
     })
     .catch((err) => console.log(err));
