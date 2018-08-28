@@ -23,7 +23,7 @@ fetchAdds = () =>
   const uri = process.env.API_IMAGE
   const images = "/images"
   const address = `${uri}${imageID}${images}`
-
+  console.log(` => API ADDRESS ${address}`)
     return axios({  
       url: address,
       headers: {

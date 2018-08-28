@@ -15,7 +15,7 @@ import usersAPI from '.././Helpers/usersAPI';
 
 import axios from 'axios';
 import logo from './remarkt-logo.png';
-import './app.css';
+import './App.css';
 
 // const config = {
 //   issuer: 'https://{yourOktaDomain}/oauth2/default',
