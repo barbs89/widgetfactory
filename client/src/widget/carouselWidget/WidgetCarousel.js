@@ -1,6 +1,6 @@
 import React from 'react';
 import {Slider} from './slider';
-import '../WidgetPage.css';
+import './WidgetCarousel.css';
 
 const WidgetCarousel = (props) => {
   const params = {
