@@ -3,7 +3,7 @@ const axios = require('axios');
 
 // Axios request that interacts with MP API. The widgetsRouter calls this function and connects with the client side axios request. //
 
-
+//TODO: ADJUST API VARIABLE TO A SINGULAR SEARCH AND SINGLE ENVIRONMENT VARIABLE 200357509
 fetchAdds = () => 
   axios({
     url: process.env.API_URI,
@@ -23,7 +23,7 @@ fetchAdds = () =>
   const uri = process.env.API_IMAGE
   const images = "/images"
   const address = `${uri}${imageID}${images}`
-  console.log(` => API ADDRESS ${address}`)
+  
     return axios({  
       url: address,
       headers: {
