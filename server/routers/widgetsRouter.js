@@ -16,6 +16,5 @@ fetchAdds()
           })
         })
         ).catch(err => console.log(err.message));
-  })  
-
+      }
 module.exports = widgetRoutes;
