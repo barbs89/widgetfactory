@@ -148,9 +148,6 @@ class WidgetForm extends React.Component {
 
           </section>
 
-          <div className='submit-button'>
-              <input onChange={this.props.handleChange} type='submit' defaultValue='Generate Code Snippet'/>
-          </div>
         </form>
       </div>
 
