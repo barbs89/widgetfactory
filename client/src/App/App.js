@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../Home/Home';
 import WidgetPage from '../Widget/WidgetPage';
-import { WidgetCarousel } from '../widget/carouselWidget/WidgetCarousel';
+import { WidgetCarousel } from '../Widget/carouselWidget/WidgetCarousel';
 import Navbar from '../Navbar';
 import Account from '../Accounts';
 
@@ -102,61 +102,64 @@ class App extends Component {
     // // }
     return (
       <React.Fragment>
-        <div className="App">
+        {/* <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
           </header>
           <p className="App-intro">{this.state.response}</p>
-        </div>
-        <Navbar
-          loggedIn={this.state.loggedIn}
-          handleLogout={this.handleLogout}
-        />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Home
-                loggedIn={this.state.loggedIn}
-                handleLogin={this.handleLogin}
-              />
-            )}
-          />
-          <Route exact path="/users" render={() => <Account />} />
-          <Route
-            exact
-            path="/widgets"
-            render={() => (
-              <Widget fetchAdds={this.fetchAdds} adverts={this.state.adverts} />
-              // ) : (
-              //   <Redirect to="/" />
-            )}
-          />
-          <Route
-            exact
-            path="/widgets/widgetpage"
-            render={() => {
-              return (
+        </div> */}
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+          </header>
+          <Navbar />
+          <div className="container">
+            <Route exact path="/" component={Home} />
+            <Route
+              path="/users"
+              render={() => (
+                <Account
+                  loggedIn={this.state.loggedIn}
+                  handleLogin={this.handleLogin}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/widgets"
+              render={() => (
                 <WidgetPage
                   fetchAdds={this.fetchAdds}
                   adverts={this.state.adverts}
                 />
-              );
-            }}
-          />
-          <Route
-            exact
-            path="/widgets/widgetpage/carousel"
-            render={() => {
-              return <WidgetCarousel />;
-            }}
-          />
-          <Redirect from="/widgets/*" to="/widgets" />
-          <Redirect from="/users/*" to="/users" />
-          <Redirect to="/" />
-          />
-        </Switch>
+                // ) : (
+                //   <Redirect to="/" />
+              )}
+            />
+            <Route
+              exact
+              path="/widgets/widgetpage"
+              render={() => {
+                return (
+                  <WidgetPage
+                    fetchAdds={this.fetchAdds}
+                    adverts={this.state.adverts}
+                  />
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/widgets/widgetpage/carousel"
+              render={() => {
+                return <WidgetCarousel />;
+              }}
+            />
+            <Redirect from="/widgets/*" to="/widgets" />
+            <Redirect from="/users/*" to="/users" />
+            <Redirect to="/" />
+          </div>
+        </div>
       </React.Fragment>
     );
   }

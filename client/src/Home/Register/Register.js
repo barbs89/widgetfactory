@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Login extends React.Component {
+class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: false,
-      error: false,
+      error: null,
       email: '',
       password: ''
     };
@@ -20,12 +20,12 @@ class Login extends React.Component {
     e.preventDefault();
     this.setState({ loading: true });
     try {
-      await this.props.handleLogin(this.state.email, this.state.password);
+      await this.props.handleRegister(this.state.email, this.state.password);
       if (this.state.error) {
-        this.setState({ error: false });
+        this.setState({ error: null });
       }
     } catch (error) {
-      this.setState({ error: true });
+      this.setState({ error });
     } finally {
       this.setState({ loading: false });
     }
@@ -34,9 +34,9 @@ class Login extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="LoginPage">
+        <div className="Registerform">
           <div className="entire-form">
-            <h1>Login</h1>
+            <h1>Register</h1>
             <div className="form">
               <form onSubmit={this.handleSubmit}>
                 <input
@@ -55,11 +55,9 @@ class Login extends React.Component {
                   onChange={this.handleOnChange}
                   required
                 />
-                {this.state.error && (
-                  <div className="error">Invalid Combination</div>
-                )}
-                <button type="submit">
-                  {this.state.loading ? 'Loading' : 'Login'}
+                {this.state.error && <div>{this.state.error}</div>}
+                <button type="submit" className="register">
+                  {this.state.loading ? 'Loading' : 'Register'}
                 </button>
               </form>
             </div>
@@ -70,12 +68,12 @@ class Login extends React.Component {
   }
 }
 
-Login.propTypes = {
-  handleLogin: PropTypes.func
+Register.propTypes = {
+  handleRegister: PropTypes.func
 };
 
-Login.defaultProps = {
-  handleLogin: null
+Register.defaultProps = {
+  handleRegister: null
 };
 
-export default Login;
+export default Register;
