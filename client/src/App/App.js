@@ -1,29 +1,29 @@
 //Packages & Dependencies
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
 
 //Routes
-import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from '../Home/Home';
-import WidgetPage from '../Widget/WidgetPage';
-import { WidgetCarousel } from '../Widget/carouselWidget/WidgetCarousel';
 import Navbar from '../Navbar';
 import Account from '../Accounts';
-
-// Helper
-import usersAPI from '.././Helpers/usersAPI';
+import Login from '../Home/Login/Login';
+import WidgetPage from '../Widget/WidgetPage';
+import { WidgetCarousel } from '../Widget/carouselWidget/WidgetCarousel';
 
 import axios from 'axios';
 import logo from './remarkt-logo.png';
 import './app.css';
 
+function onAuthRequired({ history }) {
+  history.push('/login');
+}
 class App extends Component {
   constructor() {
     super();
     this.state = {
       loaded: false,
-      loggedIn: false,
       email: null,
-      authToken: null,
       adverts: null,
       images: null,
       redirectHome: false
@@ -31,7 +31,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.handleMount();
     axios
       .get('http://localhost:5000/widgets')
       .then((response) => {
@@ -45,122 +44,56 @@ class App extends Component {
       .catch((error) => console.log(error.message));
   }
 
-  handleMount = async () => {
-    const authHeader = localStorage.getItem('authorization');
-    if (authHeader) {
-      try {
-        const authToken = authHeader.split(' ')[1];
-        const res = await usersAPI.getUser(authToken);
-        const { user } = res;
-        this.setState(() => ({
-          loggedIn: true,
-          email: user.email,
-          authToken
-        }));
-      } catch (error) {
-        console.log(error);
-        this.setState(() => ({ authToken: null }));
-      }
-    }
-    this.setState(() => ({ loaded: true }));
-  };
-
-  handleLogin = async (inputEmail, inputPassword) => {
-    try {
-      const res = await usersAPI.loginUser(inputEmail, inputPassword);
-      const { user, authToken } = res;
-      this.setState(() => ({
-        loggedIn: true,
-        email: user.email,
-        authToken
-      }));
-      localStorage.setItem('authorization', `Bearer ${authToken}`);
-    } catch (error) {
-      // this.setState({ loggedIn: false });
-      throw error;
-    }
-  };
-
-  handleLogout = async () => {
-    try {
-      await usersAPI.logoutUser(this.state.authToken);
-      localStorage.removeItem('authorization');
-      this.setState(() => ({
-        loggedIn: false,
-        email: null,
-        authToken: null
-      }));
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  };
   render() {
     // const adverts = this.state.adverts;
     // // if (!adverts) {
     // //   return <h1>Loading...</h1>;
     // // }
     return (
-      <React.Fragment>
-        {/* <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-          </header>
-          <p className="App-intro">{this.state.response}</p>
-        </div> */}
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-          </header>
-          <Navbar />
-          <div className="container">
-            <Route exact path="/" component={Home} />
-            <Route
-              path="/users"
-              render={() => (
-                <Account
-                  loggedIn={this.state.loggedIn}
-                  handleLogin={this.handleLogin}
-                />
-              )}
-            />
-            <Route
-              exact
-              path="/widgets"
-              render={() => (
-                <WidgetPage
-                  fetchAdds={this.fetchAdds}
-                  adverts={this.state.adverts}
-                />
-                // ) : (
-                //   <Redirect to="/" />
-              )}
-            />
-            <Route
-              exact
-              path="/widgets/widgetpage"
-              render={() => {
-                return (
+      <Router>
+        <Security
+          issuer="https://dev-917874.oktapreview.com/oauth2/default"
+          client_id="0oag2l1yrkhrUnjVV0h7"
+          redirect_uri={window.location.origin + '/implicit/callback'}
+          onAuthRequired={onAuthRequired}
+        >
+          <div className="App">
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+            </header>
+            <Navbar />
+            <div className="container">
+              <Route exact path="/" component={Home} />
+              <SecureRoute exact path="/users" component={Account} />
+              <Route
+                path="/login"
+                render={() => (
+                  <Login baseUrl="https://dev-917874.oktapreview.com" />
+                )}
+              />
+              <Route path="/implicit/callback" component={ImplicitCallback} />
+
+              <SecureRoute
+                exact
+                path="/widgets"
+                render={() => (
                   <WidgetPage
                     fetchAdds={this.fetchAdds}
                     adverts={this.state.adverts}
                   />
-                );
-              }}
-            />
-            <Route
-              exact
-              path="/widgets/widgetpage/carousel"
-              render={() => {
-                return <WidgetCarousel />;
-              }}
-            />
-            <Redirect from="/widgets/*" to="/widgets" />
-            <Redirect from="/users/*" to="/users" />
-            <Redirect to="/" />
+                )}
+              />
+              <Route
+                exact
+                path="/widgets/widgetpage/carousel"
+                render={() => {
+                  return <WidgetCarousel />;
+                }}
+              />
+            </div>
           </div>
-        </div>
-      </React.Fragment>
+        </Security>
+      </Router>
     );
   }
 }
