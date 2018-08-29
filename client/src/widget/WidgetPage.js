@@ -9,39 +9,86 @@ import { WidgetOutput } from './widgetOutput/WidgetOutput';
 import { WidgetCarousel } from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
-  state = {
-    titleCard: '',
-    priceCard: '',
-    descCard: '',
-    ctaCard: '',
-    callToActionDesc: '',
-    borderOutline: '',
-    borderStyle: '',
-    cardColor: '',
-    backgroundColor: '',
-    buttonColor: '',
-    font: '',
-    fontStyle: '',
-    fontColor: '',
-    fontSize: '',
-    fontAlignment: ''
-  }
-  
-  componentDidMount() {
+
+  constructor(props) {
+    super(props)
+    
     const localkeys = Object.keys(localStorage)
     const localvalues = Object.values(localStorage)
-    // console.log(localkeys, localvalues)
-    for (let i = 0; i < localStorage.length; i++) {
-      console.log(localkeys[i], localvalues[i]);
-      
-      this.setState({
-        [localkeys[i]]: localvalues[i]
-      })
+    
+    const statePopulator = (locKey, locVal, object) => {
+      locKey.forEach((key,value) => object[key] = locVal[value])
     }
-    console.log(this.state)
-  }
+          
+    let finalobject = {}
+    localkeys.forEach((key,value) => finalobject[key] = localvalues[value])
 
+    console.log(finalobject)
+    // let finalKey = Object.keys(finalobject)
+
+    // const filter = (object) => {
+    //   object.forEach((key,value) => this.state[key] = object[value])
+    // }
+
+    // let variable = []
+    // for (let i = 0; i < localStorage.length; ++i) {
+    //   let variable = {[localkeys[i]]: localvalues[i]}
+    //   // let object = JSON.parse(variable)
+    //   // console.log(variable)
+    //   // console.log(variable[i])
+    //   let result = Object.assign({}, Object.keys(variable): Object.values(variable))
+    //     // , ...Object.values(variable)
+      
+    //   let stringifiedJSON = JSON.stringify(variable)
+    //   let parsedObject = JSON.parse(stringifiedJSON)
+    //   console.log(result)
+    //   // let singleObj = {...{[localkeys[i]]: localvalues[i]}}
+    //   // console.log(allObj)
+      
+
+    //   // console.log(allObj)
+    //   // let obj1 = {[localkeys[i]]: localvalues[i]}
+    //   // let obj2 = Object.assign({}, obj1)
+    //   // array.push(obj)
+    //   // console.log(obj2)
+    //   // console.log(localvalues[i])
+    //   // let cache = {[localkeys[i]]: localvalues[i]}
+    //   // let object = Object.assign(cache)
+    //   // console.log(object)      
+    // }
+    
+    // const picked = (({ finalKey }) => ({ finalobject }))(finalobject)
+    // console.log(picked)
+    this.state = finalobject
+      
+  }
+    
   
+
+  // state = {
+  //   // titleCard: '',
+  //   // priceCard: '',
+  //   // descCard: '',
+  //   // ctaCard: '',
+  //   // callToActionDesc: '',
+  //   // borderOutline: '',
+  //   // borderStyle: '',
+  //   // cardColor: '',
+  //   // backgroundColor: '',
+  //   // buttonColor: '',
+  //   // font: '',
+  //   // fontStyle: '',
+  //   // fontColor: '',
+  //   // fontSize: '',
+  //   // fontAlignment: ''
+  // }
+
+  // createVariables = (key, value) => {
+  //   for (let i = 0; localStorage.length; ++i) {
+  //       variable[i] = {[key]: value};
+  //   }
+  //   return variable;
+  // }
 
 // Form Handlers //
 
@@ -198,6 +245,8 @@ handleShowCheckbox = (e) => {
     e.preventDefault()
     const keys = Object.keys(this.state)
     const values = Object.values(this.state)
+    console.log(keys)
+    console.log(values)
     // const localkeys = Object.keys(localStorage)
     // const localvalues = Object.values(localStorage)
     const storageLength = Storage.length
@@ -213,7 +262,7 @@ handleShowCheckbox = (e) => {
         ifr.src = ifr.src;
     });
   }
-  
+
 // TODO: Render Widget Code Snippet
 
   getCodeSnippet = (e) => {
@@ -242,7 +291,7 @@ handleShowCheckbox = (e) => {
             handleShow={this.handleShowCheckbox}
           />
           <button onClick={this.updateOutputProperty}>Preview Widget</button>
-          <input onClick={this.handleFormChange} type='submit' defaultValue='Save to Cache'/>
+          <input onClick={this.updatelocalcache} type='submit' defaultValue='Save to Cache'/>
         </section>
 
         <section className="widget-render-section">
