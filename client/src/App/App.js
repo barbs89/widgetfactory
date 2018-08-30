@@ -10,6 +10,7 @@ import Home from '../Home/Home';
 import Navbar from '../Navbar';
 import Account from '../Accounts';
 import Login from '../Home/Login/Login';
+import Widget from '../Widget/WidgetPage';
 import WidgetPage from '../Widget/WidgetPage';
 import { WidgetCarousel } from '../Widget/carouselWidget/WidgetCarousel';
 
@@ -37,11 +38,8 @@ class App extends Component {
       .get('http://localhost:5000/widgets')
       .then((response) => {
         // Adverts  //
-        this.setState({ adverts: response.data.adverts.data });
-        console.log(response.data.adverts.data);
-        // Images //
-        this.setState({ images: response.data.images.data.data });
-        console.info(response.data.images.data.data);
+        this.setState({ adverts: response.data });
+        console.log(response.data);
       })
       .catch((error) => console.log(error.message));
   }
@@ -75,18 +73,20 @@ class App extends Component {
               <SecureRoute
                 exact
                 path="/widgets"
-                render={() => (
-                  <WidgetPage
-                    fetchAdds={this.fetchAdds}
-                    adverts={this.state.adverts}
-                  />
-                )}
+                render={() => <Widget adverts={this.state.adverts} />}
               />
-              <Route
+              <SecureRoute
                 exact
-                path="/widgets/widgetpage/carousel"
+                path="/widgets/widgetpage"
                 render={() => {
-                  return <WidgetCarousel />;
+                  return <WidgetPage adverts={this.adverts} />;
+                }}
+              />
+              <SecureRoute
+                exact
+                path="/widgets/carousel"
+                render={() => {
+                  return <WidgetCarousel adverts={this.adverts} />;
                 }}
               />
             </div>

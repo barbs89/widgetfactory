@@ -12,7 +12,7 @@ class WidgetOutput extends React.Component {
           <iframe
             title="widget-iframe"
             className="widget-iframe"
-            src="http://localhost:3000/widgets/WidgetPage/carousel"
+            src="http://localhost:3000/widgets/carousel"
             allowFullScreen
           />
         </div>

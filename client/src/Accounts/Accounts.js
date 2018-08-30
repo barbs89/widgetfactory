@@ -25,12 +25,7 @@ class Account extends Component {
         <p>Email: {currentUserEmail}</p>
         <p>You have reached the authorized staff area of the portal</p>
         <Link to="/widgets">
-          <button
-            className="btn btn-light btn-lg"
-            onClick="../Widget/WidgetPage.js"
-          >
-            View Widgets
-          </button>
+          <button className="btn btn-light btn-lg">View Widgets</button>
         </Link>
       </div>
     );

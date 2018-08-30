@@ -7,30 +7,28 @@ fetchAdds = () =>
   axios({
     url: process.env.API_URI,
     headers: {
-      Authorization: `Bearer ${process.env.API}`
+      Authorization: `Bearer ${process.env.API_KEY}`
     }
-  })
-    .then(({ data, status }) => {
-      return { data, status };
-    })
-    .catch((err) => console.log(err));
+  }).then(({ data, status }) => {
+    return { data, status };
+  });
 
-fetchImages = (id) => {
-  const imageID = id;
-  const uri = process.env.API_IMAGE;
+fetchImages = (advert) => {
+  const uri = process.env.API_URI;
   const images = '/images';
-  const address = `${uri}${imageID}${images}`;
+  const address = `${uri}${advert.id}${images}`;
 
   return axios({
     url: address,
     headers: {
-      Authorization: `Bearer ${process.env.API}`
+      Authorization: `Bearer ${process.env.API_KEY}`
     }
-  })
-    .then(({ data, status }) => {
-      return { data, status };
-    })
-    .catch((err) => console.log(err));
+  }).then(({ data }) => {
+    return {
+      ...advert,
+      images: data.data
+    };
+  });
 };
 
 module.exports = { fetchAdds, fetchImages };
