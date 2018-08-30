@@ -56,11 +56,8 @@ class App extends Component {
       .get('http://localhost:5000/widgets')
       .then((response) => {
         // Adverts  //
-        this.setState({ adverts: response.data.adverts.data });
-        console.log(response.data.adverts.data);
-        // Images //
-        this.setState({ images: response.data.images.data.data });
-        console.info(response.data.images.data.data);
+        this.setState({ adverts: response.data });
+        console.log(response.data);
       })
       .catch((error) => console.log(error.message));
   }
@@ -158,7 +155,7 @@ class App extends Component {
             exact
             path="/widgets"
             render={() => (
-              <Widget fetchAdds={this.fetchAdds} adverts={this.state.adverts} />
+              <Widget fetchAdds={this.fetchAdds} adverts={this.state.adverts} images = {this.state.images}/>
               // ) : (
               //   <Redirect to="/" />
             )}
@@ -170,7 +167,9 @@ class App extends Component {
               return (
                 <WidgetPage
                   fetchAdds={this.fetchAdds}
-                  adverts={this.state.adverts}
+                  adverts={this.adverts}
+                  fetchImages={this.fetchImages}
+                  images={this.state.images}
                 />
               );
             }}
@@ -180,7 +179,10 @@ class App extends Component {
             path="/widgets/widgetpage/carousel"
             render={() => {
               return (
-                <WidgetCarousel/>
+                <WidgetCarousel
+                // fetchAdds={this.fetchAdds}
+                  adverts={this.adverts}
+                  images={this.images}/>
               );
             }}
           />

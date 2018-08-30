@@ -9,7 +9,7 @@ import { WidgetOutput } from './widgetOutput/WidgetOutput';
 import { WidgetCarousel } from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
-
+  images = this.props.images
   state = {
     titleCard: 'hidden',
     priceCard: 'hidden',
@@ -214,7 +214,7 @@ getCodeSnippet = (e) => {
 
         <section className="widget-render-section">
           <h1>Rendered Widget</h1>
-          <WidgetCarousel callToActionDesc={this.state.callToActionDesc} />
+          <WidgetCarousel callToActionDesc={this.state.callToActionDesc} adverts={this.props.adverts} images={this.props.images}/>
         </section>
         {/* // TODO: Render Exportable Code */}
         <section className='widget-out-section'>
