@@ -1,9 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const nocache = require('nocache');
+// const nocache = require('nocache');
 
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const { homeRouter, homeRoute } = require('./routers/homeRouter');
@@ -24,7 +24,7 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
-app.use(nocache());
+// app.use(nocache());
 
 app.use(cors());
 homeRoute(app);
