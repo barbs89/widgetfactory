@@ -9,7 +9,6 @@ import { WidgetOutput } from './widgetOutput/WidgetOutput';
 import { WidgetCarousel } from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
-<<<<<<< HEAD
   images = this.props.images
   state = {
     titleCard: 'hidden',
@@ -28,7 +27,6 @@ class WidgetPage extends React.Component {
     fontSize: '14px',
     fontAlignment: 'left'
   }
-=======
 
   constructor(props) {
     super(props)
@@ -36,7 +34,6 @@ class WidgetPage extends React.Component {
     const localkeys = Object.keys(localStorage)
     const localvalues = Object.values(localStorage)
     const initialisedSate = {}
->>>>>>> 99561f6cce5d2a53f2dd6f7321aa88c7a2bf9d32
 
     localkeys.forEach((key,value) => initialisedSate[key] = localvalues[value])
 
