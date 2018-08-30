@@ -194,7 +194,7 @@ class WidgetPage extends React.Component {
     e.preventDefault()
     const iframeElement = document.getElementsByClassName('iframe-container')[0]
     const codeSnippet = document.createTextNode(iframeElement.outerHTML)
-    const codeSnippetContainer = document.getElementsByClassName('code-snippet-container')[0]
+    const codeSnippetContainer = document.getElementsByClassName('output-script-string')[0]
     console.log(codeSnippetContainer)
     codeSnippetContainer.appendChild(codeSnippet)
     // document.body.appendChild(codeSnippetContainer)
@@ -221,19 +221,29 @@ class WidgetPage extends React.Component {
         </section>
 
         <section className="widget-render-section">
-          <h1>Rendered Widget</h1>
+          <div className='page-banner'>
+            <h1>Rendered Widget</h1>
+          </div>
+          {/* <h1>Rendered Widget</h1> */}
           <WidgetCarousel callToActionDesc={this.state.callToActionDesc} />
+          
+          <div className='page-banner'>
+            <h1>Widget iFrame</h1>
+          </div>
+          <div className='iframe-container'>
+            <iframe title='widget-iframe' className='widget-iframe' src="/widgets/carousel" allowFullScreen></iframe>
+          </div>
         </section>
-        {/* // TODO: Render Exportable Code */}
+
         <section className='widget-out-section'>
-        <div>
-          <h1>iframe</h1>
-        </div>
-        < WidgetOutput
-        getSnippet={this.getCodeSnippet}
-        refresh={this.updateIframe}
-        /> 
-        
+          <div className='page-banner'>
+            <h1>Widget Output</h1>
+          </div>
+          < WidgetOutput
+          getSnippet={this.getCodeSnippet}
+          refresh={this.updateIframe}
+          /> 
+          
         </section>
       </div>
     );

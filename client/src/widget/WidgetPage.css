@@ -24,3 +24,20 @@
   --fontWeight: normal;
   --defaultheight: 500px
 }
+
+* {
+  --main-col-bg: #333331;
+  --main-col-bg-hover: #4D4D4A;
+  --secondary-col-bg: #F0F0F0;
+  --main-col-feat: #5CC5CF;
+  --main-col-feat-hover: #469EA6;
+  --main-text-col: #FFFFFF;
+}
+
+.page-banner {
+  background-color: #333331;
+  color: #FFFFFF;
+  padding: .1em 0 .1em 0;
+  padding-left: 3em;
+  margin: 2em 0 2em 0
+}

@@ -13,7 +13,7 @@
 .widget-form-banner {
   background-color: #333331;
   color: #FFFFFF;
-  padding: .5em;
+  padding-left: 1em;
 }
 .widget-form {
   display: flex;
@@ -39,24 +39,12 @@
   fill: #333331
 }
 
-[type='radio'] + label:hover .IconBackground {
-  fill: #5CC5CF;
-}
 [type='checkbox'] + label:hover .IconBackground {
   fill: #5CC5CF;
 }
 [type='checkbox'] + label:hover .IconShowFeature {
   fill: #fff;
 }
-
-
-[type=radio]:checked + label .IconBackground {
-  fill: #5CC5CF;
-}
-[type=radio]:checked + label .IconFeature {
-  fill: #333331;
-}
-
 [type=checkbox]:checked + label .IconBackground {
   fill: #5CC5CF;
 }
@@ -64,6 +52,15 @@
   fill: #333331;
 }
 
+[type='radio'] + label:hover .IconBackground {
+  fill: #5CC5CF;
+}
+[type=radio]:checked + label .IconBackground {
+  fill: #5CC5CF;
+}
+[type=radio]:checked + label .IconFeature {
+  fill: #333331;
+}
 
 label {
   cursor: pointer;
