@@ -9,6 +9,24 @@ import { WidgetOutput } from './widgetOutput/WidgetOutput';
 import { WidgetCarousel } from './carouselWidget/WidgetCarousel';
 
 class WidgetPage extends React.Component {
+  images = this.props.images
+  state = {
+    titleCard: 'hidden',
+    priceCard: 'hidden',
+    descCard: 'hidden',
+    ctaCard: 'hidden',
+    callToActionDesc: 'Buy Now',
+    borderOutline: 'none',
+    borderStyle: '.3em',
+    cardColor: '#F0F0F0',
+    backgroundColor: '#C4C4C4',
+    buttonColor: '#5CC5CF',
+    font: 'Roboto',
+    fontStyle: 'normal',
+    fontColor: 'F0F0F0',
+    fontSize: '14px',
+    fontAlignment: 'left'
+  }
 
   constructor(props) {
     super(props)
@@ -227,7 +245,7 @@ class WidgetPage extends React.Component {
 
         <section className="widget-render-section">
           <h1>Rendered Widget</h1>
-          <WidgetCarousel callToActionDesc={this.state.callToActionDesc} />
+          <WidgetCarousel callToActionDesc={this.state.callToActionDesc} adverts={this.props.adverts} images={this.props.images}/>
         </section>
         {/* // TODO: Render Exportable Code */}
         <section className='widget-out-section'>
