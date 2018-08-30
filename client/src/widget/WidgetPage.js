@@ -178,33 +178,28 @@ class WidgetPage extends React.Component {
 
     for (let i = 0; i < storageLength; i++) {
       console.log([keys[i]], values[i])
-      localStorage.setItem([keys[i]], values[i]);
-      
+      localStorage.setItem([keys[i]], values[i])
     }
     // localStorage.clear()
   }
-  
 
-
-
-  updateIframe = () => {
-    document.getElementById('iframeRefresher').addEventListener('click', function() {
-        var ifr = document.getElementsByClassName('widget-iframe')[0];
-        ifr.src = ifr.src;
-    });
-  }
-
-// TODO: Render Widget Code Snippet
+  // updateIframe = () => {
+  //   document.getElementById('iframeRefresher').addEventListener('click', function() {
+  //       var ifr = document.getElementsByClassName('widget-iframe')[0]
+  //       ifr.src = ifr.src
+  //   })
+  // }
 
   getCodeSnippet = (e) => {
     e.preventDefault()
-    const snippet = document.getElementsByClassName('iframe-container')[0]
-    console.log(snippet)
+    const iframeElement = document.getElementsByClassName('iframe-container')[0]
+    const codeSnippet = document.createTextNode(iframeElement.outerHTML)
+    const codeSnippetContainer = document.getElementsByClassName('code-snippet-container')[0]
+    console.log(codeSnippetContainer)
+    codeSnippetContainer.appendChild(codeSnippet)
+    // document.body.appendChild(codeSnippetContainer)
+    // console.log(codeSnippet)
   }
-      //find iframe
-      // const iframe = document.body.querySelector('iframe')
-      // document.getElementsByClassName("widget-iframe").style.setProperty(`--${keys[i]}`, values[i])
-      // console.log(keys[i], values[i])
 
   render() {
     return (   
@@ -235,10 +230,9 @@ class WidgetPage extends React.Component {
           <h1>iframe</h1>
         </div>
         < WidgetOutput
-        getCodeSnippet={this.getCodeSnippet}
+        getSnippet={this.getCodeSnippet}
+        refresh={this.updateIframe}
         /> 
-        <button onClick={this.updateIframe}id="iframeRefresher">Refresh Iframe</button>
-        <button onClick={this.getCodeSnippet}id="codecapture">Capture Code</button>
         
         </section>
       </div>
