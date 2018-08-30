@@ -179,7 +179,7 @@ class WidgetPage extends React.Component {
   //   })
   // }
 
-  // generate code snippet for the 
+// generate code snippet for widget output. Old snippets will be rewritten
   getCodeSnippet = (e) => {
     e.preventDefault()
     const iframeElement = document.getElementsByClassName('iframe-container')[0]
