@@ -11,9 +11,9 @@
   padding: 1em;
 }
 .widget-form-banner {
-  background-color: #333331;
-  color: #FFFFFF;
-  padding: .5em;
+  background-color: var(--main-col-bg);
+  color: var(--secondary-col-bg);
+  padding-left: 1em;
 }
 .widget-form {
   display: flex;
@@ -22,7 +22,7 @@
 .submit-button {
   border: none;
   width: 10em;
-  background: #5CC5CF;
+  background: var(--main-col-feat-hover);
   text-align: center;
   padding:  .5em 0 .5em 0
 }
@@ -30,33 +30,21 @@
 /* Form icons and buttons */
 
 .IconBackground {
-  fill: #333331
+  fill: var(--main-col-bg)
 }
 .IconFeature {
   fill: #fff
 }
 .IconShowFeature {
-  fill: #333331
+  fill: var(--main-col-bg)
 }
 
-[type='radio'] + label:hover .IconBackground {
-  fill: #5CC5CF;
-}
 [type='checkbox'] + label:hover .IconBackground {
   fill: #5CC5CF;
 }
 [type='checkbox'] + label:hover .IconShowFeature {
   fill: #fff;
 }
-
-
-[type=radio]:checked + label .IconBackground {
-  fill: #5CC5CF;
-}
-[type=radio]:checked + label .IconFeature {
-  fill: #333331;
-}
-
 [type=checkbox]:checked + label .IconBackground {
   fill: #5CC5CF;
 }
@@ -64,6 +52,15 @@
   fill: #333331;
 }
 
+[type='radio'] + label:hover .IconBackground {
+  fill: #5CC5CF;
+}
+[type=radio]:checked + label .IconBackground {
+  fill: #5CC5CF;
+}
+[type=radio]:checked + label .IconFeature {
+  fill: #333331;
+}
 
 label {
   cursor: pointer;
