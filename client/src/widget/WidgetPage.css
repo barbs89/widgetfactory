@@ -6,16 +6,16 @@
 /* defined variables */
 :root {
   --backgroundColor: #000000;
-  --buttonColor: #ca7a7a;
+  --buttonColor: #000000;
   --cardColor: #000000;
-  --borderOutline: solid;
+  --borderOutline: none;
   --headerWeight: bold;
   --borderStyle: .3em;
   --font: Roboto;
   --fontStyle: normal; 
   --fontColor: #ffffff;
   --fontSize: 12px;
-  --fontAlignment: justify;
+  --fontAlignment: left;
   --imageCrop: contain;
   --titleCard: hidden;
   --priceCard: hidden;

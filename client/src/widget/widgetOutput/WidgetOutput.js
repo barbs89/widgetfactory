@@ -10,6 +10,7 @@ render()
           <button onClick={this.props.getSnippet}id="codecapture">Capture Code</button>
           <div className='output-container'>
             <p className='output-script-string'>
+            Your script will be generated...
               {this.props.codeSnippet} 
             </p>
           </div>

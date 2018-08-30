@@ -27,6 +27,8 @@ class WidgetPage extends React.Component {
   //   locKey.forEach((key,value) => object[key] = locVal[value])
   // }
   
+// form inputs
+
 //Handle Input Change
   handleFormChange = (e) => {
     const target = e.target
@@ -73,13 +75,11 @@ class WidgetPage extends React.Component {
       this.setState({
         [name]: (target.value = 'visible')
       });
-      console.log(this.state);
     } else if (target.checked === false) {
       this.setState({
         [name]: (target.value = 'hidden')
       });
         // update to local storage
-      console.log(this.state);
     }
   };
   handleCheckboxChange = (e) => {
@@ -90,12 +90,10 @@ class WidgetPage extends React.Component {
       this.setState({
         [name]: value
       });
-      console.log(this.state);
     } else if (target.checked === false) {
       this.setState({
         [name]: 'normal'
       });
-      console.log(this.state);
     }
   };
 // Handle Radio Inputs
@@ -104,8 +102,7 @@ class WidgetPage extends React.Component {
     const name = target.name;
     this.setState({
       [name]: 'normal'
-  })
-    console.log(this.state)
+    })
   }
 // Handle Radio Inputs
   handleRadioChange = (e) => {
@@ -115,8 +112,6 @@ class WidgetPage extends React.Component {
     this.setState({
       [name]: value,
     })
-    console.log(name, value, target)
-    console.log(this.state)
   }
 // Handle Colour Input
   handleFormColorChange = (e) => {
@@ -149,7 +144,6 @@ class WidgetPage extends React.Component {
     this.setState({
       [name]: value,
     })
-    console.log(this.state)
   }
 // Render Widget
   updateOutputProperty = (e) => {
@@ -163,11 +157,6 @@ class WidgetPage extends React.Component {
     }
     console.log(this.state)
   }  
-  
-  arraysToObject = (locKey, locVal, object) => {
-    locKey.forEach((key,value) => object[key] = locVal[value])
-  }
-  
 
 // Update the Local Storage
   updatelocalStorage = (e) => {
@@ -190,22 +179,24 @@ class WidgetPage extends React.Component {
   //   })
   // }
 
+  // generate code snippet for the 
   getCodeSnippet = (e) => {
     e.preventDefault()
     const iframeElement = document.getElementsByClassName('iframe-container')[0]
     const codeSnippet = document.createTextNode(iframeElement.outerHTML)
     const codeSnippetContainer = document.getElementsByClassName('output-script-string')[0]
     console.log(codeSnippetContainer)
-    codeSnippetContainer.appendChild(codeSnippet)
-    // document.body.appendChild(codeSnippetContainer)
-    // console.log(codeSnippet)
+    if (codeSnippetContainer.hasChildNodes()){
+      codeSnippetContainer.replaceChild(codeSnippet, codeSnippetContainer.childNodes[0])
+    } else {
+      codeSnippetContainer.appendChild(codeSnippet)
+    }
   }
 
   render() {
     return (   
         
       <div className="widget-page-container">
-        {/* // TODO: handleShow on event checkedCTA */}
         <section className="widget-form-section">
           <WidgetForm
             handleSubmit={this.handleFormSubmit}
@@ -224,7 +215,6 @@ class WidgetPage extends React.Component {
           <div className='page-banner'>
             <h1>Rendered Widget</h1>
           </div>
-          {/* <h1>Rendered Widget</h1> */}
           <WidgetCarousel callToActionDesc={this.state.callToActionDesc} />
           
           <div className='page-banner'>
