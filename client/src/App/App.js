@@ -1,6 +1,8 @@
 //Packages & Dependencies
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+//Okta configuration
 import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
 
 //Routes
@@ -13,7 +15,7 @@ import { WidgetCarousel } from '../Widget/carouselWidget/WidgetCarousel';
 
 import axios from 'axios';
 import logo from './remarkt-logo.png';
-import './app.css';
+import './App.css';
 
 function onAuthRequired({ history }) {
   history.push('/login');
@@ -45,10 +47,6 @@ class App extends Component {
   }
 
   render() {
-    // const adverts = this.state.adverts;
-    // // if (!adverts) {
-    // //   return <h1>Loading...</h1>;
-    // // }
     return (
       <Router>
         <Security
@@ -61,6 +59,7 @@ class App extends Component {
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
             </header>
+
             <Navbar />
             <div className="container">
               <Route exact path="/" component={Home} />

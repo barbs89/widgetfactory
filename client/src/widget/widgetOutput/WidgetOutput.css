@@ -1,6 +1,6 @@
 .widget-output-container {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .iframe-container {
@@ -17,4 +17,3 @@ iframe {
   left: 0;
   top: 0;
 }
-

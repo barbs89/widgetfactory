@@ -16,6 +16,7 @@ class Account extends Component {
   }
 
   render() {
+    console.log(this.state);
     const { currentUserEmail, currentUserName } = this.state;
 
     return (

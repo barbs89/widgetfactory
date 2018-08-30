@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const nocache = require('nocache');
 const cors = require('cors');
 
 //Route Components
@@ -17,7 +16,6 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
-app.use(nocache());
 
 app.use(cors());
 homeRoute(app);
