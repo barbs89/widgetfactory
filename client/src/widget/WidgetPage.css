@@ -35,8 +35,8 @@
 }
 
 .page-banner {
-  background-color: #333331;
-  color: #FFFFFF;
+  background-color: var(--main-col-bg);
+  color: var(--main-text-col);
   padding: .1em 0 .1em 0;
   padding-left: 3em;
   margin: 2em 0 2em 0
