@@ -24,9 +24,3 @@ render()
 }
 
 export {WidgetOutput}
-
-
-{/* 
-refresher:
-<button onClick={this.props.refresh}id="iframeRefresher">Refresh Iframe</button> 
-*/}

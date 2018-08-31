@@ -59,11 +59,16 @@ updateOutputProperty = (e) => {
   const keys = Object.keys(this.state)
   const values = Object.values(this.state)
   const arrayLength = keys.length
+
+  const widgetCara = document.styleSheets
   
   for (let i = 0; i < arrayLength; i++) {
     document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
+    // widgetCara.document.style.setProperty(`--${keys[i]}`, values[i])
   }
-  console.log(this.state)
+  
+  // console.log(this.state)
+  console.log(widgetCara)
 }  
 
 // Update the Local Storage
@@ -235,7 +240,7 @@ getCodeSnippet = (e) => {
           <div className='page-banner'>
             <h1>Rendered Widget</h1>
           </div>
-          <WidgetCarousel callToActionDesc={this.state.callToActionDesc} adverts={this.props.adverts}/>
+          <WidgetCarousel className='widgetCarouselComponent' callToActionDesc={this.state.callToActionDesc} adverts={this.props.adverts}/>
           
           <div className='page-banner'>
             <h1>Widget iFrame</h1>
