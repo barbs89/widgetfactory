@@ -1,5 +1,6 @@
 * {
-  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
 }
 .App {
   text-align: center;
@@ -25,106 +26,4 @@
 
 .App-intro {
   font-size: large;
-}
-
-/*Navbar*/
-.home-btn {
-  float: right;
-  margin-top: -80px;
-}
-
-button#home {
-  cursor: pointer;
-  padding: 3px;
-  margin-top: -23px;
-  margin-right: 17px;
-  width: 80px;
-  height: 30px;
-  border: 1.5px solid #fff;
-  background-color: transparent;
-  color: white;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 13px;
-  font-family: 'Roboto', sans-serif;
-}
-
-button#home:hover {
-  background-color: white;
-  color: black;
-  border: 1px solid #fff;
-}
-
-ul {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 10px;
-  height: 40px;
-  list-style-type: none;
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  margin-top: -100px;
-  margin-right: 20px;
-}
-
-li {
-  align-self: center;
-}
-
-li a {
-  margin: 4px 30px 4px 0px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 15px;
-  color: white;
-  text-decoration: none;
-}
-
-li:only-of-type {
-  padding: 8px;
-  width: 80px;
-  height: 20px;
-  border: 1px solid #fff;
-  border-radius: 10px;
-  text-align: center;
-}
-
-li:only-of-type:hover {
-  padding: 8px;
-  width: 80px;
-  height: 20px;
-  background-color: white;
-  color: black;
-  border: 1px solid #fff;
-  border-radius: 10px;
-  text-align: center;
-}
-li a:hover {
-  border-bottom: 2px solid #fff;
-  padding-bottom: 3px;
-}
-
-li a:active {
-  border-bottom: 2px solid #6c92ff;
-  padding-bottom: 3px;
-}
-
-li button {
-  cursor: pointer;
-  padding: 3px;
-  margin: -2px;
-  width: 80px;
-  height: 30px;
-  border: 1.5px solid #fff;
-  background-color: transparent;
-  color: white;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 13px;
-  font-family: 'Roboto', sans-serif;
-}
-
-li button:hover {
-  background-color: white;
-  color: black;
-  border: 1px solid #fff;
 }

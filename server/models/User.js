@@ -9,7 +9,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    minlength: 1,
     unique: true,
     validate: {
       validator: (value) => {
@@ -20,8 +19,7 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
-    minlength: 6
+    required: true
   },
   authTokens: [String]
 });
@@ -67,7 +65,7 @@ UserSchema.statics.findByToken = async function(token) {
   const User = this;
   try {
     const decodedId = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findOne({ _id: decodedId, authTokens: token });
+    const user = await User.findOne({ _id: decodedId, authToken: token });
     if (!user) {
       throw new Error('No user with given token');
     }
