@@ -16,7 +16,7 @@ import { WidgetCarousel } from '../Widget/carouselWidget/WidgetCarousel';
 
 import axios from 'axios';
 import logo from './remarkt-logo.png';
-import './App.css';
+import './app.css';
 
 function onAuthRequired({ history }) {
   history.push('/login');
