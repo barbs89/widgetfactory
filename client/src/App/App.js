@@ -11,7 +11,7 @@ import Navbar from '../Navbar';
 import Account from '../Accounts';
 import Login from '../Home/Login';
 import WidgetPage from '../Widget';
-import { WidgetCarousel } from '../Widget/carouselWidget/WidgetCarousel';
+import WidgetCarousel from '../Widget/carouselWidget';
 
 import axios from 'axios';
 import logo from './remarkt-logo.png';
