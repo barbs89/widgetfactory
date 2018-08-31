@@ -1,64 +1,44 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { withAuth } from '@okta/okta-react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Login from './Login';
+// import Register from './Register';
 
-export default withAuth(
-  class Home extends Component {
-    state = { authenticated: null };
-
-    checkAuthentication = async () => {
-      const authenticated = await this.props.auth.isAuthenticated();
-      if (authenticated !== this.state.authenticated) {
-        this.setState({ authenticated });
-      }
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      formState: 'login'
     };
-
-    async componentDidMount() {
-      this.checkAuthentication();
-    }
-
-    async componentDidUpdate() {
-      this.checkAuthentication();
-    }
-
-    login = async () => {
-      this.props.auth.login('/');
-    };
-
-    logout = async () => {
-      this.props.auth.logout('/');
-    };
-
-    render() {
-      if (this.state.authenticated === null) return null;
-
-      const mainContent = this.state.authenticated ? (
-        <div>
-          <p className="lead">
-            You have entered the staff portal,{' '}
-            <Link to="/users">click here</Link>
-          </p>
-          <button className="btn btn-light btn-lg" onClick={this.logout}>
-            Logout
-          </button>
-        </div>
-      ) : (
-        <div>
-          <p className="lead">
-            To access the Widget Platform, please enter your user credentials.
-          </p>
-          <button className="btn btn-dark btn-lg" onClick={this.login}>
-            Login
-          </button>
-        </div>
-      );
-
-      return (
-        <div className="jumbotron">
-          <h1 className="display-4">Client Portal</h1>
-          {mainContent}
-        </div>
-      );
-    }
   }
-);
+  handleFormToggle = (e) => {
+    this.setState({ formState: e.target.name });
+  };
+  showUserForms = () => {
+    const showUserForms = !this.props.loggedIn && (
+      <React.Fragment>
+        {this.state.formState === 'login' && (
+          <Login
+            loggedIn={this.props.loggedIn}
+            handleLogin={this.props.handleLogin}
+          />
+        )}
+      </React.Fragment>
+    );
+    return showUserForms;
+  };
+
+  render() {
+    return <React.Fragment>{this.showUserForms()}</React.Fragment>;
+  }
+}
+
+Home.propTypes = {
+  loggedIn: PropTypes.bool,
+  handleLogin: PropTypes.func
+};
+
+Home.defaultProps = {
+  loggedIn: null,
+  handleLogin: null
+};
+export default Home;

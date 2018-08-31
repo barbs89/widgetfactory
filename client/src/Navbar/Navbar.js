@@ -1,105 +1,74 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { withAuth } from '@okta/okta-react';
 
-export default withAuth(
-  class Navbar extends Component {
-    state = { authenticated: null };
-
-    checkAuthentication = async () => {
-      const authenticated = await this.props.auth.isAuthenticated();
-      if (authenticated !== this.state.authenticated) {
-        this.setState({ authenticated });
-      }
-    };
-
-    async componentDidMount() {
-      this.checkAuthentication();
+class Navbar extends React.Component {
+  handleLogout = async () => {
+    try {
+      await this.props.handleLogout();
+      // this.setState({ success: true });
+    } finally {
+      // this.setState({ success: false });
     }
+  };
 
-    async componentDidUpdate() {
-      this.checkAuthentication();
-    }
+  // Display the Home, Users, Widgets and Logout links if the user is authenticated.
+  // navbarLinks = () => {
+  //   let navbarLinks;
+  //   if (this.props.loggedIn) {
+  //     navbarLinks = (
+  //       <ul>
+  //         <li>
+  //           <Link to="/"> Home </Link>
+  //         </li>
+  //         <li>
+  //           <Link to="/users"> Account </Link>
+  //         </li>
+  //         <li>
+  //           <Link to="/widgets"> Widgets </Link>
+  //         </li>
+  //         <li>
+  //           <button onClick={this.handleLogout}>Logout</button>
+  //         </li>
+  //       </ul>
+  //     );
+  //   }
+  //   return navbarLinks;
+  // };
 
-    login = async () => {
-      this.props.auth.login('/');
-    };
-
-    logout = async () => {
-      this.props.auth.logout('/');
-    };
-
-    render() {
-      if (this.state.authenticated === null) return null;
-
-      const mainContent = this.state.authenticated ? (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-          <div className="container">
-            <Link className="navbar-brand" to="/">
-              Client Portal
-            </Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNav"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to="/">
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/users">
-                    Account
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/widgets">
-                    Widgets
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/" onClick={this.logout}>
-                    Logout
-                  </Link>
-                </li>
-              </ul>
-            </div>
+  // Redirect if the success (logout) is true.
+  render() {
+    return (
+      <header>
+        <nav>
+          <div>
+            <ul>
+              <li>
+                <Link to="/"> Home </Link>
+              </li>
+              <li>
+                <Link to="/users"> Account </Link>
+              </li>
+              <li>
+                <Link to="/widgets"> Widgets </Link>
+                <button onClick={this.handleLogin}>Login</button>
+              </li>
+            </ul>
           </div>
         </nav>
-      ) : (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-          <div className="container">
-            <Link className="navbar-brand" to="/">
-              Client Portal
-            </Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNav"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to="/users" onClick={this.login}>
-                    Login
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      );
-
-      return <nav>{mainContent}</nav>;
-    }
+      </header>
+    );
   }
-);
+}
+
+Navbar.propTypes = {
+  handleLogout: PropTypes.func,
+  loggedIn: PropTypes.bool
+};
+
+Navbar.defaultProps = {
+  handleLogout: null,
+  loggedIn: null
+};
+
+export default Navbar;
