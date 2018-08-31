@@ -6,16 +6,16 @@
 /* defined variables */
 :root {
   --backgroundColor: #000000;
-  --buttonColor: #ca7a7a;
+  --buttonColor: #000000;
   --cardColor: #000000;
-  --borderOutline: solid;
+  --borderOutline: none;
   --headerWeight: bold;
   --borderStyle: .3em;
   --font: Roboto;
   --fontStyle: normal; 
   --fontColor: #ffffff;
   --fontSize: 12px;
-  --fontAlignment: justify;
+  --fontAlignment: left;
   --imageCrop: contain;
   --titleCard: hidden;
   --priceCard: hidden;
@@ -23,4 +23,21 @@
   --ctaCard: hidden;
   --fontWeight: normal;
   --defaultheight: 500px
+}
+
+* {
+  --main-col-bg: #333331;
+  --main-col-bg-hover: #4D4D4A;
+  --secondary-col-bg: #F0F0F0;
+  --main-col-feat: #5CC5CF;
+  --main-col-feat-hover: #469EA6;
+  --main-text-col: #FFFFFF;
+}
+
+.page-banner {
+  background-color: var(--main-col-bg);
+  color: var(--main-text-col);
+  padding: .1em 0 .1em 0;
+  padding-left: 3em;
+  margin: 2em 0 2em 0
 }

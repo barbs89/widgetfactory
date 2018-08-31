@@ -45,6 +45,8 @@ class WidgetPage extends React.Component {
   //   locKey.forEach((key,value) => object[key] = locVal[value])
   // }
   
+// form inputs
+
 //Handle Input Change
   handleFormChange = (e) => {
     const target = e.target
@@ -91,13 +93,11 @@ class WidgetPage extends React.Component {
       this.setState({
         [name]: (target.value = 'visible')
       });
-      console.log(this.state);
     } else if (target.checked === false) {
       this.setState({
         [name]: (target.value = 'hidden')
       });
         // update to local storage
-      console.log(this.state);
     }
   };
   handleCheckboxChange = (e) => {
@@ -108,12 +108,10 @@ class WidgetPage extends React.Component {
       this.setState({
         [name]: value
       });
-      console.log(this.state);
     } else if (target.checked === false) {
       this.setState({
         [name]: 'normal'
       });
-      console.log(this.state);
     }
   };
 // Handle Radio Inputs
@@ -122,8 +120,7 @@ class WidgetPage extends React.Component {
     const name = target.name;
     this.setState({
       [name]: 'normal'
-  })
-    console.log(this.state)
+    })
   }
 // Handle Radio Inputs
   handleRadioChange = (e) => {
@@ -133,8 +130,6 @@ class WidgetPage extends React.Component {
     this.setState({
       [name]: value,
     })
-    console.log(name, value, target)
-    console.log(this.state)
   }
 // Handle Colour Input
   handleFormColorChange = (e) => {
@@ -167,7 +162,6 @@ class WidgetPage extends React.Component {
     this.setState({
       [name]: value,
     })
-    console.log(this.state)
   }
 // Render Widget
   updateOutputProperty = (e) => {
@@ -181,11 +175,6 @@ class WidgetPage extends React.Component {
     }
     console.log(this.state)
   }  
-  
-  arraysToObject = (locKey, locVal, object) => {
-    locKey.forEach((key,value) => object[key] = locVal[value])
-  }
-  
 
 // Update the Local Storage
   updatelocalStorage = (e) => {
@@ -196,39 +185,36 @@ class WidgetPage extends React.Component {
 
     for (let i = 0; i < storageLength; i++) {
       console.log([keys[i]], values[i])
-      localStorage.setItem([keys[i]], values[i]);
-      
+      localStorage.setItem([keys[i]], values[i])
     }
     // localStorage.clear()
   }
-  
 
+  // updateIframe = () => {
+  //   document.getElementById('iframeRefresher').addEventListener('click', function() {
+  //       var ifr = document.getElementsByClassName('widget-iframe')[0]
+  //       ifr.src = ifr.src
+  //   })
+  // }
 
-
-  updateIframe = () => {
-    document.getElementById('iframeRefresher').addEventListener('click', function() {
-        var ifr = document.getElementsByClassName('widget-iframe')[0];
-        ifr.src = ifr.src;
-    });
-  }
-
-// TODO: Render Widget Code Snippet
-
+// generate code snippet for widget output. Old snippets will be rewritten
   getCodeSnippet = (e) => {
     e.preventDefault()
-    const snippet = document.getElementsByClassName('iframe-container')[0]
-    console.log(snippet)
+    const iframeElement = document.getElementsByClassName('iframe-container')[0]
+    const codeSnippet = document.createTextNode(iframeElement.outerHTML)
+    const codeSnippetContainer = document.getElementsByClassName('output-script-string')[0]
+    console.log(codeSnippetContainer)
+    if (codeSnippetContainer.hasChildNodes()){
+      codeSnippetContainer.replaceChild(codeSnippet, codeSnippetContainer.childNodes[0])
+    } else {
+      codeSnippetContainer.appendChild(codeSnippet)
+    }
   }
-      //find iframe
-      // const iframe = document.body.querySelector('iframe')
-      // document.getElementsByClassName("widget-iframe").style.setProperty(`--${keys[i]}`, values[i])
-      // console.log(keys[i], values[i])
 
   render() {
     return (   
         
       <div className="widget-page-container">
-        {/* // TODO: handleShow on event checkedCTA */}
         <section className="widget-form-section">
           <WidgetForm
             handleSubmit={this.handleFormSubmit}
@@ -244,20 +230,28 @@ class WidgetPage extends React.Component {
         </section>
 
         <section className="widget-render-section">
-          <h1>Rendered Widget</h1>
+          <div className='page-banner'>
+            <h1>Rendered Widget</h1>
+          </div>
           <WidgetCarousel callToActionDesc={this.state.callToActionDesc} adverts={this.props.adverts} images={this.props.images}/>
+          
+          <div className='page-banner'>
+            <h1>Widget iFrame</h1>
+          </div>
+          <div className='iframe-container'>
+            <iframe title='widget-iframe' className='widget-iframe' src="/widgets/carousel" allowFullScreen></iframe>
+          </div>
         </section>
-        {/* // TODO: Render Exportable Code */}
+
         <section className='widget-out-section'>
-        <div>
-          <h1>iframe</h1>
-        </div>
-        < WidgetOutput
-        getCodeSnippet={this.getCodeSnippet}
-        /> 
-        <button onClick={this.updateIframe}id="iframeRefresher">Refresh Iframe</button>
-        <button onClick={this.getCodeSnippet}id="codecapture">Capture Code</button>
-        
+          <div className='page-banner'>
+            <h1>Widget Output</h1>
+          </div>
+          < WidgetOutput
+          getSnippet={this.getCodeSnippet}
+          refresh={this.updateIframe}
+          /> 
+          
         </section>
       </div>
     );

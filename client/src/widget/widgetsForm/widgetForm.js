@@ -130,7 +130,6 @@ class WidgetForm extends React.Component {
               <label htmlFor='align-justify'>
                   <AlignJustifyIcon />
               </label>
-
           
             <h4>Font Style</h4>  
               <input onChange={this.props.handleCheck} id='font-italics' type='checkbox' value="italic" name='fontStyle'/>
@@ -145,12 +144,9 @@ class WidgetForm extends React.Component {
 
             <h4>Font Colour</h4>  
             <input onChange={this.props.handleColor.bind(this)} type='color' defaultValue='#5CC5CF' name='fontColor'/>
-
           </section>
-
         </form>
       </div>
-
     )
   }
 }

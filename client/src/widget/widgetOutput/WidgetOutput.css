@@ -1,6 +1,7 @@
 .widget-output-container {
   display: flex;
   flex-direction: column;
+  margin: 0 5vw 0 5vw;
 }
 
 .iframe-container {
@@ -16,4 +17,24 @@ iframe {
   border: 0;
   left: 0;
   top: 0;
+}
+
+.instructions-container {
+  padding: 0 3em 0 3em;
+  color: #ffffff;
+  background-color: #469ea6;
+}
+.instructions-snippet {
+  padding: 0 2em 0 2em;
+}
+.output-script-string {
+  display: flex;
+  padding: 0 3em 0 3em;
+  /* padding-left: 2em; */
+  background-color: #f0f0f0;
+  min-height: 6em;
+  align-items: center;
+}
+.instructions-container {
+  padding: 0.1em 0 0.1em 0;
 }
