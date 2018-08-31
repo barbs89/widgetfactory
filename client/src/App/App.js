@@ -9,8 +9,7 @@ import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
 import Home from '../Home/Home';
 import Navbar from '../Navbar';
 import Account from '../Accounts';
-import Login from '../Home';
-import Widget from '../Widget/WidgetPage';
+import Login from '../Home/Login';
 import WidgetPage from '../Widget/WidgetPage';
 import { WidgetCarousel } from '../Widget/carouselWidget/WidgetCarousel';
 
@@ -73,7 +72,7 @@ class App extends Component {
               <SecureRoute
                 exact
                 path="/widgets"
-                render={() => <Widget adverts={this.state.adverts} />}
+                render={() => <WidgetPage adverts={this.state.adverts} />}
               />
               <SecureRoute
                 exact
