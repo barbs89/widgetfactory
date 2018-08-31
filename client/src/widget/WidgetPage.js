@@ -11,21 +11,7 @@ import { WidgetCarousel } from './carouselWidget/WidgetCarousel';
 class WidgetPage extends React.Component {
   images = this.props.images
   state = {
-    titleCard: 'hidden',
-    priceCard: 'hidden',
-    descCard: 'hidden',
-    ctaCard: 'hidden',
-    callToActionDesc: 'Buy Now',
-    borderOutline: 'none',
-    borderStyle: '.3em',
-    cardColor: '#F0F0F0',
-    backgroundColor: '#C4C4C4',
-    buttonColor: '#5CC5CF',
-    font: 'Roboto',
-    fontStyle: 'normal',
-    fontColor: 'F0F0F0',
-    fontSize: '14px',
-    fontAlignment: 'left'
+    
   }
 
   constructor(props) {
@@ -39,13 +25,91 @@ class WidgetPage extends React.Component {
 
     console.log(initialisedSate)
     this.state = initialisedSate 
+    // updateOutputProperty()
+  }
+  componentWillMount() {
+    const keys = Object.keys(this.state)
+    const values = Object.values(this.state)
+    const arrayLength = keys.length
+  
+    for (let i = 0; i < arrayLength; i++) {
+      document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
+    }
   }
 // Multiple Singe Arrays into a single object
   // const arraysToObject = (locKey, locVal, object) => {
   //   locKey.forEach((key,value) => object[key] = locVal[value])
   // }
+
+//----- Core Functions -----//
+
+// Handle Form Submission
+handleFormSubmit = (e) => {
+  e.preventDefault()
+  const target = e.target
+  const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
+  const name = target.name
+  this.setState({
+    [name]: value,
+  })
+}
+// Render Widget
+updateOutputProperty = (e) => {
+  e.preventDefault()
+  const keys = Object.keys(this.state)
+  const values = Object.values(this.state)
+  const arrayLength = keys.length
+
+  const widgetCara = document.styleSheets
   
-// form inputs
+  for (let i = 0; i < arrayLength; i++) {
+    document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
+    // widgetCara.document.style.setProperty(`--${keys[i]}`, values[i])
+  }
+  
+  // console.log(this.state)
+  console.log(widgetCara)
+}  
+
+// Update the Local Storage
+updatelocalStorage = (e) => {
+  e.preventDefault()
+  const keys = Object.keys(this.state)
+  const values = Object.values(this.state)
+  const storageLength = values.length
+
+  for (let i = 0; i < storageLength; i++) {
+    console.log([keys[i]], values[i])
+    localStorage.setItem([keys[i]], values[i])
+  }
+  // localStorage.clear()
+}
+
+// rerender iFrame //
+
+// updateIframe = () => {
+//   document.getElementById('iframeRefresher').addEventListener('click', function() {
+//       var ifr = document.getElementsByClassName('widget-iframe')[0]
+//       ifr.src = ifr.src
+//   })
+// }
+
+// generate code snippet for widget output. Old snippets will be rewritten
+
+getCodeSnippet = (e) => {
+  e.preventDefault()
+  const iframeElement = document.getElementsByClassName('iframe-container')[0]
+  const codeSnippet = document.createTextNode(iframeElement.outerHTML)
+  const codeSnippetContainer = document.getElementsByClassName('output-script-string')[0]
+  console.log(codeSnippetContainer)
+  if (codeSnippetContainer.hasChildNodes()){
+    codeSnippetContainer.replaceChild(codeSnippet, codeSnippetContainer.childNodes[0])
+  } else {
+    codeSnippetContainer.appendChild(codeSnippet)
+  }
+}
+
+//----- form inputs -----//
 
 //Handle Input Change
   handleFormChange = (e) => {
@@ -153,63 +217,6 @@ class WidgetPage extends React.Component {
     }
     return `rgb(${Object.values(value).join(`, `)})`
   }
-// Handle Form Submission
-  handleFormSubmit = (e) => {
-    e.preventDefault()
-    const target = e.target
-    const value = target.type === 'checkbox' ? target.checked : target.type === 'radio' ? target.id : target.value
-    const name = target.name
-    this.setState({
-      [name]: value,
-    })
-  }
-// Render Widget
-  updateOutputProperty = (e) => {
-    e.preventDefault()
-    const keys = Object.keys(this.state)
-    const values = Object.values(this.state)
-    const arrayLength = keys.length
-    
-    for (let i = 0; i < arrayLength; i++) {
-      document.documentElement.style.setProperty(`--${keys[i]}`, values[i])
-    }
-    console.log(this.state)
-  }  
-
-// Update the Local Storage
-  updatelocalStorage = (e) => {
-    e.preventDefault()
-    const keys = Object.keys(this.state)
-    const values = Object.values(this.state)
-    const storageLength = values.length
-
-    for (let i = 0; i < storageLength; i++) {
-      console.log([keys[i]], values[i])
-      localStorage.setItem([keys[i]], values[i])
-    }
-    // localStorage.clear()
-  }
-
-  // updateIframe = () => {
-  //   document.getElementById('iframeRefresher').addEventListener('click', function() {
-  //       var ifr = document.getElementsByClassName('widget-iframe')[0]
-  //       ifr.src = ifr.src
-  //   })
-  // }
-
-// generate code snippet for widget output. Old snippets will be rewritten
-  getCodeSnippet = (e) => {
-    e.preventDefault()
-    const iframeElement = document.getElementsByClassName('iframe-container')[0]
-    const codeSnippet = document.createTextNode(iframeElement.outerHTML)
-    const codeSnippetContainer = document.getElementsByClassName('output-script-string')[0]
-    console.log(codeSnippetContainer)
-    if (codeSnippetContainer.hasChildNodes()){
-      codeSnippetContainer.replaceChild(codeSnippet, codeSnippetContainer.childNodes[0])
-    } else {
-      codeSnippetContainer.appendChild(codeSnippet)
-    }
-  }
 
   render() {
     return (   
@@ -233,7 +240,7 @@ class WidgetPage extends React.Component {
           <div className='page-banner'>
             <h1>Rendered Widget</h1>
           </div>
-          <WidgetCarousel callToActionDesc={this.state.callToActionDesc} adverts={this.props.adverts} images={this.props.images}/>
+          <WidgetCarousel className='widgetCarouselComponent' callToActionDesc={this.state.callToActionDesc} adverts={this.props.adverts}/>
           
           <div className='page-banner'>
             <h1>Widget iFrame</h1>
