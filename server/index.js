@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 //Route Components
 const { homeRouter, homeRoute } = require('./routers/homeRouter');
