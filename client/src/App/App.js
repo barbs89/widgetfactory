@@ -9,7 +9,7 @@ import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
 import Home from '../Home/Home';
 import Navbar from '../Navbar';
 import Account from '../Accounts';
-import Login from '../Home/Login/index';
+import Login from '../Home/Login/Login';
 import WidgetPage from '../Widget';
 import WidgetCarousel from '../Widget/carouselWidget';
 
