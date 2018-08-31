@@ -10,7 +10,7 @@ import Home from '../Home/Home';
 import Navbar from '../Navbar';
 import Account from '../Accounts';
 import Login from '../Home/Login';
-import { WidgetPage } from '../Widget/WidgetPage';
+import WidgetPage from '../Widget';
 import { WidgetCarousel } from '../Widget/carouselWidget/WidgetCarousel';
 
 import axios from 'axios';

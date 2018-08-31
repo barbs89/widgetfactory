@@ -288,4 +288,4 @@ class WidgetPage extends React.Component {
   }
 }
 
-export { WidgetPage };
+export default WidgetPage;
